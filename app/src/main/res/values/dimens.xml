@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    //ViewPortSize
+    <dimen name="viwe_port_30">30dp</dimen>
+
+    //Margin
+    <dimen name="margin_30">30dp</dimen>
+
+
+</resources>
