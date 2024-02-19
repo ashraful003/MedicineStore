@@ -5,6 +5,32 @@
 
     //Margin
     <dimen name="margin_30">30dp</dimen>
+    <dimen name="margin_60">60dp</dimen>
+    <dimen name="margin_8">8dp</dimen>
+    <dimen name="margin_left_86">86dp</dimen>
+    <dimen name="margin_10">10dp</dimen>
+    <dimen name="margin_50">50dp</dimen>
+    <dimen name="margin_88">88dp</dimen>
+    <dimen name="margin_36">36dp</dimen>
+
+    //padding
+    <dimen name="padding_bottom_74">74dp</dimen>
+    <dimen name="padding_30">30dp</dimen>
+    <dimen name="padding_12">12dp</dimen>
+
+    //layout
+    <dimen name="width_8">8dp</dimen>
+    <dimen name="height_8">8dp</dimen>
+    <dimen name="view_height_56">56dp</dimen>
+
+    //radius
+    <dimen name="card_radius_20">20dp</dimen>
+    <dimen name="radius_8">8dp</dimen>
+    <dimen name="radius_30">30dp</dimen>
+
+    //text
+    <dimen name="text_size_30">30sp</dimen>
+    <dimen name="text_size_17">17sp</dimen>
 
 
 </resources>
