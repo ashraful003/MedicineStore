@@ -20,4 +20,9 @@
     <string name="error_address">Must write your address</string>
     <string name="error_dob">Write your birth date</string>
     <string name="already_have_an_account">Already have an account?</string>
+    <string name="login_page_subtitle">This is a Placeholder text</string>
+    <string name="login_error_msg">Oh no! Your account or password is incorrect, please check again.</string>
+    <string name="remember_me">Remember me</string>
+    <string name="forgot_password">Forgot Password!</string>
+    <string name="you_don_t_have_an_account">You don’t have an account?</string>
 </resources>

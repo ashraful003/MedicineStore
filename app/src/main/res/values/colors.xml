@@ -15,4 +15,5 @@
     <color name="page_title_text_color">#222B45</color>
     <color name="hint_text_color">#82888A</color>
     <color name="red_500">#FFFF5949</color>
+    <color name="text_color">#8F9BB3</color>
 </resources>
