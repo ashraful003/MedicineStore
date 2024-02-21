@@ -10,12 +10,14 @@ import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentLoginForgotPasswordBinding
 import com.jakewharton.rxbinding2.widget.RxTextView
 
 class LoginForgotPasswordFragment : Fragment() {
+    val actionVerify = Navigation.createNavigateOnClickListener(R.id.action_forgotPasswordFragment_to_loginVerifyPassFragment)
     private lateinit var binding: FragmentLoginForgotPasswordBinding
     private lateinit var viewModel : LoginViewModel
     @SuppressLint("CheckResult")
