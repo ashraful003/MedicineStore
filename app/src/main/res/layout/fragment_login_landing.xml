@@ -140,7 +140,7 @@
                         android:background="@drawable/button_style_bg"
                         android:onClick="@{model.actionSignUp}"
                         android:padding="@dimen/padding_12"
-                        android:text="Sign Up"
+                        android:text="@string/sign_up"
                         android:textColor="@color/white"
                         android:textAllCaps="false"
                         android:textSize="@dimen/text_size_17" />
@@ -157,7 +157,7 @@
                         android:gravity="center"
                         android:onClick="@{model.actionLogin}"
                         android:padding="@dimen/padding_12"
-                        android:text="Sign In"
+                        android:text="@string/sign_in"
                         android:textAllCaps="false"
                         android:textColor="@color/white"
                         android:textSize="@dimen/text_size_17" />
