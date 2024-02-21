@@ -23,6 +23,8 @@
     <dimen name="margin_41">41dp</dimen>
     <dimen name="margin_45">45dp</dimen>
     <dimen name="margin_5">5dp</dimen>
+    <dimen name="margin_29">29dp</dimen>
+    <dimen name="margin_6">6dp</dimen>
 
     //padding
     <dimen name="padding_bottom_74">74dp</dimen>
@@ -32,6 +34,7 @@
     <dimen name="padding_14">14dp</dimen>
     <dimen name="padding_7">7dp</dimen>
     <dimen name="button_padding">14dp</dimen>
+    <dimen name="padding_3">3dp</dimen>
 
     //layout
     <dimen name="width_8">8dp</dimen>

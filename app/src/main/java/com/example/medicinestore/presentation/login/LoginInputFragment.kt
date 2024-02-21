@@ -18,6 +18,7 @@ import io.reactivex.Observable
 class LoginInputFragment : Fragment() {
     val actionSignUp =
         Navigation.createNavigateOnClickListener(R.id.action_loginInputFragment_to_loginCreateFragment)
+    val actionForgotPassword = Navigation.createNavigateOnClickListener(R.id.action_loginInputFragment_to_forgotPasswordFragment2)
     private lateinit var binding: FragmentLoginInputBinding
     private lateinit var viewModel: LoginViewModel
     override fun onCreateView(

@@ -166,6 +166,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/forgot_password"
                         android:textColor="@color/text_color"
+                        android:onClick="@{model.actionForgotPassword}"
                         android:textSize="@dimen/text_size"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
