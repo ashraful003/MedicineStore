@@ -27,4 +27,10 @@
     <string name="you_don_t_have_an_account">You don’t have an account?</string>
     <string name="recover">Please enter your Email so we can help you recover your password.</string>
     <string name="next">Next</string>
+    <string name="verification_title">Verification</string>
+    <string name="verification_text">Enter the OTP code from the phone we just sent you.</string>
+    <string name="verification_error">Oh no! You entered wrong OTP code, please check it again.</string>
+    <string name="otp_text">Didn’t receive OTP code!</string>
+    <string name="resend">Resend</string>
+    <string name="submit">Submit</string>
 </resources>
