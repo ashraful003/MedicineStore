@@ -33,4 +33,10 @@
     <string name="otp_text">Didn’t receive OTP code!</string>
     <string name="resend">Resend</string>
     <string name="submit">Submit</string>
+    <string name="reset_password_title">Reset Password</string>
+    <string name="reset_password_subtitle">Enter your new password and confirm.</string>
+    <string name="done">Done</string>
+    <string name="password">New password</string>
+    <string name="confirm_password">Confirm new password</string>
+    <string name="confirm_pass_text">Password are not same</string>
 </resources>

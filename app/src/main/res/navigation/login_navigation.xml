@@ -62,5 +62,20 @@
         <action
             android:id="@+id/action_loginVerifyPassFragment_to_forgotPasswordFragment"
             app:destination="@id/forgotPasswordFragment2" />
+        <action
+            android:id="@+id/action_loginVerifyPassFragment_to_loginChangePassFragment"
+            app:destination="@id/loginChangePassFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginChangePassFragment"
+        android:name="com.example.medicinestore.presentation.login.LoginChangePassFragment"
+        android:label="fragment_login_change_pass"
+        tools:layout="@layout/fragment_login_change_pass" >
+        <action
+            android:id="@+id/action_loginChangePassFragment_to_loginVerifyPassFragment"
+            app:destination="@id/loginVerifyPassFragment" />
+        <action
+            android:id="@+id/action_loginChangePassFragment_to_loginInputFragment"
+            app:destination="@id/loginInputFragment" />
     </fragment>
 </navigation>

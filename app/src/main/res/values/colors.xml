@@ -16,4 +16,5 @@
     <color name="hint_text_color">#82888A</color>
     <color name="red_500">#FFFF5949</color>
     <color name="text_color">#8F9BB3</color>
+    <color name="black_500">#4d4d4d</color>
 </resources>
