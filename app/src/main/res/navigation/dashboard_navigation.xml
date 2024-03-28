@@ -1,11 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/dashboard_navigation"
     app:startDestination="@id/adminHomeFragment">
 
     <fragment
         android:id="@+id/adminHomeFragment"
         android:name="com.example.medicinestore.presentation.dashboard.admin.AdminHomeFragment"
-        android:label="AdminHomeFragment" />
+        android:label="AdminHomeFragment" >
+        <action
+            android:id="@+id/action_adminHomeFragment_to_addMedicinFragment"
+            app:destination="@id/addMedicineFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_medicinListFragment"
+            app:destination="@id/medicineListFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_expireMedicinFragment"
+            app:destination="@id/expireMedicineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addMedicineFragment"
+        android:name="com.example.medicinestore.presentation.dashboard.medicin.AddMedicinFragment"
+        android:label="fragment_add_medicine"
+        tools:layout="@layout/fragment_add_medicin" >
+        <action
+            android:id="@+id/action_addMedicinFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/expireMedicineFragment"
+        android:name="com.example.medicinestore.presentation.dashboard.medicin.ExpireMedicinFragment"
+        android:label="fragment_expire_medicine"
+        tools:layout="@layout/fragment_expire_medicin" >
+        <action
+            android:id="@+id/action_expireMedicinFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicineListFragment"
+        android:name="com.example.medicinestore.presentation.dashboard.medicin.MedicinListFragment"
+        android:label="fragment_medicine_list"
+        tools:layout="@layout/fragment_medicin_list" >
+        <action
+            android:id="@+id/action_medicinListFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+    </fragment>
 </navigation>
