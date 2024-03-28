@@ -9,6 +9,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentAdminHomeBinding
 import com.example.medicinestore.presentation.MainActivity
@@ -18,6 +19,10 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 @AndroidEntryPoint
 class AdminHomeFragment : Fragment() {
+    var actionAddMedicin = Navigation.createNavigateOnClickListener(R.id.action_adminHomeFragment_to_addMedicinFragment)
+    val actionMedicinList = Navigation.createNavigateOnClickListener(R.id.action_adminHomeFragment_to_medicinListFragment)
+    val actionExpireMedicin = Navigation.createNavigateOnClickListener(R.id.action_adminHomeFragment_to_expireMedicinFragment)
+
     @Inject
     lateinit var sharedPrefs: SharePreferenceUtil
     @Inject
@@ -33,7 +38,7 @@ class AdminHomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_admin_home, container, false)
         binding.model = this
         activityUtil.hideBottomNavigation(false)
-        binding.logout.setOnClickListener {
+        binding.employee.setOnClickListener {
             sharedPrefs.setAuthToken("")
             activity?.let {
                 startActivity(MainActivity.getLaunchIntent(it))

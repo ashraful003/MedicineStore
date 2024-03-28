@@ -10,6 +10,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#82888A</color>
     <color name="blue_500">#9999ff</color>
+    <color name="blue_300">#e6e6ff</color>
     <color name="slidePage">#e6e6e6</color>
     <color name="background">#F7F9FC</color>
     <color name="page_title_text_color">#222B45</color>
@@ -17,4 +18,6 @@
     <color name="red_500">#FFFF5949</color>
     <color name="text_color">#8F9BB3</color>
     <color name="black_500">#4d4d4d</color>
+    <color name="dash_board_text_color">#222B45</color>
+    <color name="profile_image_background">#82888A</color>
 </resources>
