@@ -43,4 +43,9 @@
     <string name="medicine_list">Medicine List</string>
     <string name="expire_medicine">Expire Medicine</string>
     <string name="employee">Employee</string>
+    <string name="profile">Profile</string>
+    <string name="profile_name">Profile Name</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="logout">Logout</string>
+    <string name="notifications">Notifications</string>
 </resources>
