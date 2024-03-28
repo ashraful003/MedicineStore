@@ -38,12 +38,6 @@ class AdminHomeFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_admin_home, container, false)
         binding.model = this
         activityUtil.hideBottomNavigation(false)
-        binding.employee.setOnClickListener {
-            sharedPrefs.setAuthToken("")
-            activity?.let {
-                startActivity(MainActivity.getLaunchIntent(it))
-            }
-        }
         return binding.root
     }
     override fun onActivityCreated(savedInstanceState: Bundle?) {

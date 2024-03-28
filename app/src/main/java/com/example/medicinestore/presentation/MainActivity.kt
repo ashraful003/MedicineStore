@@ -52,7 +52,7 @@ class MainActivity : AppCompatActivity(), MSActivityUtil.ActivityListener {
             when (it.itemId) {
                 R.id.home -> navHostFragment.findNavController().navigate(R.id.adminHomeFragment)
                 R.id.order -> {}
-                R.id.profile -> {}
+                R.id.profile -> navHostFragment.findNavController().navigate(R.id.profileFragment)
             }
             true
         }
