@@ -49,4 +49,21 @@
     <string name="logout">Logout</string>
     <string name="notifications">Notifications</string>
     <string name="save">Save</string>
+    <string name="name">Name</string>
+    <string name="company">Company</string>
+    <string name="details">Details</string>
+    <string name="price">Price</string>
+    <string name="expire_date">Expire Date</string>
+    <string name="self">Self</string>
+    <string name="row">Row</string>
+    <string name="column">Column</string>
+    <string name="error_medicine_name">Medicine name can not empty </string>
+    <string name="error_company_name">Company name can not empty</string>
+    <string name="error_details">Add medicine details</string>
+    <string name="error_expire_date">Expire date can not empty</string>
+    <string name="error_price">Price can not empty</string>
+    <string name="error_self">Self can not empty</string>
+    <string name="error_row">Row can not empty</string>
+    <string name="error_column">Column can not empty</string>
+
 </resources>
