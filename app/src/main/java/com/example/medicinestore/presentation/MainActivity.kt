@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity(), MSActivityUtil.ActivityListener {
         binding.bottomNavigationView.setOnItemSelectedListener {
             when (it.itemId) {
                 R.id.home -> navHostFragment.findNavController().navigate(R.id.adminHomeFragment)
-                R.id.order -> {}
+                R.id.order -> navHostFragment.findNavController().navigate(R.id.orderMedicineFragment)
                 R.id.profile -> navHostFragment.findNavController().navigate(R.id.profileFragment)
             }
             true

@@ -69,5 +69,6 @@
     <string name="company_name">Company name:</string>
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
+    <string name="order_medicine">Order Medicine</string>
 
 </resources>

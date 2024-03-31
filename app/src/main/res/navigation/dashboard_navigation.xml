@@ -63,4 +63,8 @@
             android:id="@+id/action_editProfileFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
     </fragment>
+    <fragment
+        android:id="@+id/orderMedicineFragment"
+        android:name="com.example.medicinestore.presentation.dashboard.medicin.OrderMedicineFragment"
+        android:label="OrderMedicineFragment" />
 </navigation>
