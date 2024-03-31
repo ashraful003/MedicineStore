@@ -2,13 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.dashboard.medicin.ExpireMedicinFragment">
+    tools:context=".presentation.dashboard.medicin.OrderMedicineFragment">
 
     <data>
 
         <variable
             name="model"
-            type="com.example.medicinestore.presentation.dashboard.medicin.ExpireMedicinFragment" />
+            type="com.example.medicinestore.presentation.dashboard.medicin.OrderMedicineFragment" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -36,7 +36,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_horizontal"
-                android:text="@string/expire_medicine"
+                android:text="@string/order_medicine"
                 android:textColor="@color/page_title_text_color"
                 android:textSize="@dimen/title_text_size"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -63,11 +63,11 @@
                 app:layout_constraintTop_toBottomOf="@id/searchMedicine">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/expireMedicineRecycle"
+                    android:id="@+id/orderMedicineRecycle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/margin_8"
-                    tools:listitem="@layout/expire_medicine_item" />
+                    tools:listitem="@layout/order_medicine_item" />
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
