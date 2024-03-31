@@ -68,5 +68,6 @@
     <string name="medicine_name">Medicine name:</string>
     <string name="company_name">Company name:</string>
     <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
 
 </resources>
