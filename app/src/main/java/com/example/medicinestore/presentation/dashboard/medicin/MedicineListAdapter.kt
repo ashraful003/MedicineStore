@@ -10,9 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.medicinestore.R
 
 class MedicineListAdapter(private var data: ArrayList<Medicine>, internal var context: Context) :
-    RecyclerView.Adapter<MedicineListAdapter.viewHolder>() {
+    RecyclerView.Adapter<MedicineListAdapter.ViewHolder>() {
 
-    class viewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView
         val company: TextView
         val edite: TextView
@@ -31,17 +31,17 @@ class MedicineListAdapter(private var data: ArrayList<Medicine>, internal var co
         }
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): viewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val itemView =
             LayoutInflater.from(context).inflate(R.layout.medicine_list_item, parent, false)
-        return viewHolder(itemView)
+        return ViewHolder(itemView)
     }
 
     override fun getItemCount(): Int {
         return data.size
     }
 
-    override fun onBindViewHolder(holder: viewHolder, position: Int) {
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
     }
