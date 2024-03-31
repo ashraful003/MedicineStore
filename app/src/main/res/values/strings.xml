@@ -49,8 +49,8 @@
     <string name="logout">Logout</string>
     <string name="notifications">Notifications</string>
     <string name="save">Save</string>
-    <string name="name">Name</string>
-    <string name="company">Company</string>
+    <string name="name">Name :</string>
+    <string name="company">Company :</string>
     <string name="details">Details</string>
     <string name="price">Price</string>
     <string name="expire_date">Expire Date</string>
@@ -65,5 +65,8 @@
     <string name="error_self">Self can not empty</string>
     <string name="error_row">Row can not empty</string>
     <string name="error_column">Column can not empty</string>
+    <string name="medicine_name">Medicine name:</string>
+    <string name="company_name">Company name:</string>
+    <string name="edit">Edit</string>
 
 </resources>
