@@ -22,6 +22,7 @@ class AdminHomeFragment : Fragment() {
     var actionAddMedicin = Navigation.createNavigateOnClickListener(R.id.action_adminHomeFragment_to_addMedicinFragment)
     val actionMedicinList = Navigation.createNavigateOnClickListener(R.id.action_adminHomeFragment_to_medicinListFragment)
     val actionExpireMedicin = Navigation.createNavigateOnClickListener(R.id.action_adminHomeFragment_to_expireMedicinFragment)
+    val actionEmployee = Navigation.createNavigateOnClickListener(R.id.action_adminHomeFragment_to_employeeFragment)
 
     @Inject
     lateinit var sharedPrefs: SharePreferenceUtil

@@ -18,6 +18,9 @@
         <action
             android:id="@+id/action_adminHomeFragment_to_expireMedicinFragment"
             app:destination="@id/expireMedicineFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_employeeFragment"
+            app:destination="@id/employeeFragment" />
     </fragment>
     <fragment
         android:id="@+id/addMedicineFragment"
@@ -67,4 +70,13 @@
         android:id="@+id/orderMedicineFragment"
         android:name="com.example.medicinestore.presentation.dashboard.medicin.OrderMedicineFragment"
         android:label="OrderMedicineFragment" />
+    <fragment
+        android:id="@+id/employeeFragment"
+        android:name="com.example.medicinestore.presentation.dashboard.admin.EmployeeFragment"
+        android:label="fragment_employee"
+        tools:layout="@layout/fragment_employee" >
+        <action
+            android:id="@+id/action_employeeFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+    </fragment>
 </navigation>
