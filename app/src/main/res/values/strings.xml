@@ -70,5 +70,8 @@
     <string name="edit">Edit</string>
     <string name="delete">Delete</string>
     <string name="order_medicine">Order Medicine</string>
+    <string name="email">Email :</string>
+    <string name="employee_list">Employee List</string>
+    <string name="employee_name">Employee Name</string>
 
 </resources>
