@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.medicinestore.R
@@ -17,6 +18,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class EmployeeFragment : Fragment() {
+    val actionAddEmployee = Navigation.createNavigateOnClickListener(R.id.action_employeeFragment_to_addEmployeeFragment)
     @Inject
     lateinit var activityUtil: MSActivityUtil
     private lateinit var viewModel: AdminHomeViewModel
