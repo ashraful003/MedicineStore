@@ -43,7 +43,7 @@ class SharePreferenceUtil @Inject constructor(@ApplicationContext context: Conte
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
-    override fun gerAuthToken(): String? {
+    override fun getAuthToken(): String? {
         with(getString(AUTH_TOKEN, "")) {
             if (isNullOrEmpty()) {
                 return null

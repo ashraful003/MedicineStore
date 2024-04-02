@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity(), MSActivityUtil.ActivityListener {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater).apply { setContentView(root) }
         val authedUser: Boolean = try {
-            !sharedPrefs.gerAuthToken().isNullOrEmpty()
+            !sharedPrefs.getAuthToken().isNullOrEmpty()
         } catch (e: Exception) {
             false
         }

@@ -9,6 +9,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.Observable
@@ -17,6 +18,12 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentLoginCreateBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.jakewharton.rxbinding2.widget.RxTextView
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -25,9 +32,12 @@ import java.util.Locale
 import java.util.regex.Pattern
 
 class LoginCreateFragment : Fragment() {
-    val actionSignIn = Navigation.createNavigateOnClickListener(R.id.action_loginCreateFragment_to_loginInputFragment)
+    val actionSignIn =
+        Navigation.createNavigateOnClickListener(R.id.action_loginCreateFragment_to_loginInputFragment)
     private lateinit var binding: FragmentLoginCreateBinding
     private lateinit var viewModel: LoginViewModel
+    lateinit var auth: FirebaseAuth
+    lateinit var database: DatabaseReference
 
     @SuppressLint("CheckResult", "ClickableViewAccessibility")
     override fun onCreateView(
@@ -41,6 +51,9 @@ class LoginCreateFragment : Fragment() {
         binding.backIv.setOnClickListener {
             findNavController().popBackStack()
         }
+        auth = Firebase.auth
+        database = Firebase.database.reference
+
         val fullNameStream = RxTextView.textChanges(binding.fullNameEt)
             .skipInitialValue()
             .map { name ->
@@ -87,7 +100,7 @@ class LoginCreateFragment : Fragment() {
                 datePickerDialog.setOnDateSetListener { _, year, month, dayOfMonth ->
                     val selectedDate = Calendar.getInstance()
                     selectedDate.set(year, month, dayOfMonth)
-                    val dateFormat = SimpleDateFormat("DD/MM/YYYY", Locale.US)
+                    val dateFormat = SimpleDateFormat("dd/mm/yyyy", Locale.US)
                     val formattedDate = dateFormat.format(selectedDate.time)
                     binding.dobEt.setText(formattedDate)
                 }
@@ -126,7 +139,51 @@ class LoginCreateFragment : Fragment() {
         invalidFiledStream.subscribe { isValid ->
             isEnableSignUpButton(isValid)
         }
+        binding.continueButton.setOnClickListener {
+            val email = binding.emailEt.text.toString()
+            val password = binding.passwordEt.text.toString()
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                auth.createUserWithEmailAndPassword(email, password)
+                    .addOnCompleteListener(requireActivity()) {
+
+                        if (it.isSuccessful) {
+                            Toast.makeText(
+                                activity,
+                                "Authentication Successful",
+                                Toast.LENGTH_SHORT
+                            ).show()
+                            saveData()
+                            findNavController().navigate(R.id.action_loginCreateFragment_to_loginInputFragment)
+                        } else {
+                            Toast.makeText(activity, it.exception?.message, Toast.LENGTH_SHORT)
+                                .show()
+                        }
+                    }
+            }
+        }
         return binding.root
+    }
+
+    fun saveData() {
+        database = FirebaseDatabase.getInstance().getReference("User")
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+        val user = HashMap<String, String>()
+        user.put("uid", userId)
+        user.put("Name", binding.fullNameEt.text.toString().trim())
+        user.put("Email", binding.emailEt.text.toString().trim())
+        user.put("Number", binding.phoneNumberEt.text.toString().trim())
+        user.put("Location", binding.locationEt.text.toString().trim())
+        user.put("Dob", binding.dobEt.text.toString().trim())
+        user.put("Password", binding.passwordEt.text.toString().trim())
+        user.put("User", "1")
+        database.child(userId).setValue(user)
+        binding.fullNameEt.text?.clear()
+        binding.emailEt.text?.clear()
+        binding.phoneNumberEt.text?.clear()
+        binding.locationEt.text?.clear()
+        binding.dobEt.text?.clear()
+        binding.passwordEt.text?.clear()
+        binding.confirmPassEt.text?.clear()
     }
 
     private fun isEnableSignUpButton(isEnable: Boolean) {
