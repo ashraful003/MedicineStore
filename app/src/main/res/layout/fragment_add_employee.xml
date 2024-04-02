@@ -6,7 +6,7 @@
 
         <variable
             name="model"
-            type="com.example.medicinestore.presentation.login.LoginCreateFragment" />
+            type="com.example.medicinestore.presentation.dashboard.admin.AddEmployeeFragment" />
     </data>
 
     <ScrollView
@@ -64,7 +64,7 @@
                     app:passwordToggleTint="@color/hint_text_color">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/fullNameEt"
+                        android:id="@+id/eFullNameEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -88,11 +88,35 @@
                     app:passwordToggleTint="@color/hint_text_color">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/emailEt"
+                        android:id="@+id/eEmailEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:hint="@string/hint_email"
+                        android:inputType="text"
+                        android:paddingLeft="@dimen/padding_14"
+                        android:textColor="@color/page_title_text_color"
+                        android:textSize="@dimen/text_size" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/post"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_20"
+                    android:background="@drawable/rounded_editetext_bg"
+                    android:textColorHint="@color/hint_text_color"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@+id/email"
+                    app:passwordToggleTint="@color/hint_text_color">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ePostEt"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@android:color/transparent"
+                        android:hint="@string/hint_post"
                         android:inputType="text"
                         android:paddingLeft="@dimen/padding_14"
                         android:textColor="@color/page_title_text_color"
@@ -108,11 +132,11 @@
                     android:textColorHint="@color/hint_text_color"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/email"
+                    app:layout_constraintTop_toBottomOf="@+id/post"
                     app:passwordToggleTint="@color/hint_text_color">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/phoneNumberEt"
+                        android:id="@+id/ePhoneNumberEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -136,7 +160,7 @@
                     app:passwordToggleTint="@color/hint_text_color">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/locationEt"
+                        android:id="@+id/eLocationEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -160,7 +184,7 @@
                     app:passwordToggleTint="@color/hint_text_color">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/dobEt"
+                        android:id="@+id/eDobEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -185,7 +209,7 @@
                     app:passwordToggleTint="@color/hint_text_color">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/passwordEt"
+                        android:id="@+id/ePasswordEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -212,7 +236,7 @@
                     app:passwordToggleTint="@color/hint_text_color">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/confirmPassEt"
+                        android:id="@+id/eConfirmPassEt"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
@@ -224,13 +248,14 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <Button
-                    android:id="@+id/continue_button"
+                    android:id="@+id/eContinueButton"
                     style="@style/Button"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/button_top_margin"
                     android:layout_marginBottom="@dimen/button_bottom_margin"
                     android:backgroundTint="@color/colorPrimary"
+                    android:onClick="@{model.actionEmployee}"
                     android:padding="@dimen/button_padding"
                     android:text="@string/create_button_text"
                     android:textSize="@dimen/text_size"
@@ -240,42 +265,6 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/confirmPassword"
                     app:layout_constraintVertical_bias="0.0" />
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/signInCon"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_30"
-                    android:paddingBottom="@dimen/padding_30"
-                    app:layout_constraintTop_toBottomOf="@+id/continue_button"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
-
-                    <TextView
-                        android:id="@+id/signInTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/already_have_an_account"
-                        android:layout_marginLeft="@dimen/margin_20"
-                        android:textColor="@color/page_title_text_color"
-                        app:layout_constraintStart_toEndOf="@id/signInbtn"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent" />
-
-                    <TextView
-                        android:id="@+id/signInbtn"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/sign_in"
-                        android:onClick="@{model.actionSignIn}"
-                        android:layout_marginLeft="@dimen/margin_3"
-                        android:textColor="@color/red_500"
-                        android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                       app:layout_constraintStart_toEndOf="@id/signInTv"/>
-
-                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
