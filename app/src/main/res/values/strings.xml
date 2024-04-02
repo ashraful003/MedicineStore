@@ -76,5 +76,6 @@
     <string name="employee_name">Employee Name</string>
     <string name="hint_post">Post</string>
     <string name="add">Add</string>
+    <string name="auth_massage">Authentication Successful</string>
 
 </resources>
