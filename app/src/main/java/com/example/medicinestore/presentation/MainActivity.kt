@@ -8,6 +8,7 @@ import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import androidx.annotation.RequiresApi
+import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -69,8 +70,10 @@ class MainActivity : AppCompatActivity(), MSActivityUtil.ActivityListener {
     override fun setFullScreenLoading(short: Boolean) {
         if (short) {
             binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            binding.fullscreenLoading.visibility = View.VISIBLE
         } else {
             binding.drawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED)
+            binding.fullscreenLoading.visibility = View.GONE
         }
     }
 
@@ -79,6 +82,16 @@ class MainActivity : AppCompatActivity(), MSActivityUtil.ActivityListener {
         if (view != null) {
             val imm = this.getSystemService(Context.INPUT_METHOD_SERVICE) as InputMethodManager
             imm.hideSoftInputFromWindow(view.windowToken, 0)
+        }
+    }
+
+    override fun onBackPressed() {
+        if (binding.fullscreenLoading.visibility != View.GONE){
+            if (binding.drawerLayout.isDrawerOpen(GravityCompat.START)){
+
+            }else{
+                super.onBackPressed()
+            }
         }
     }
 

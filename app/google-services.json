@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "651124203579",
+    "project_id": "medicinestore-5669d",
+    "storage_bucket": "medicinestore-5669d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:651124203579:android:8d5b49aca5b2a879d77c1e",
+        "android_client_info": {
+          "package_name": "com.example.medicinestore"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "651124203579-o4om8mls8us7i47h82t0p9lo0p6232t4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCKMjXqLqdnqBbJREi9WGJrAigZbg5P71U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "651124203579-o4om8mls8us7i47h82t0p9lo0p6232t4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

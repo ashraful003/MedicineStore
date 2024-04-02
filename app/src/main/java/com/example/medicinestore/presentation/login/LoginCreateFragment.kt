@@ -12,7 +12,6 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
-import androidx.databinding.Observable
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
@@ -25,11 +24,7 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jakewharton.rxbinding2.widget.RxTextView
-import dagger.hilt.android.AndroidEntryPoint
-import java.text.SimpleDateFormat
-import java.util.Calendar
 import java.util.Locale
-import java.util.regex.Pattern
 
 class LoginCreateFragment : Fragment() {
     val actionSignIn =
@@ -98,9 +93,9 @@ class LoginCreateFragment : Fragment() {
             if (event.action == MotionEvent.ACTION_UP) {
                 val datePickerDialog = DatePickerDialog(requireContext())
                 datePickerDialog.setOnDateSetListener { _, year, month, dayOfMonth ->
-                    val selectedDate = Calendar.getInstance()
+                    val selectedDate = android.icu.util.Calendar.getInstance()
                     selectedDate.set(year, month, dayOfMonth)
-                    val dateFormat = SimpleDateFormat("dd/mm/yyyy", Locale.US)
+                    val dateFormat = android.icu.text.SimpleDateFormat("dd/MM/yyyy", Locale.US)
                     val formattedDate = dateFormat.format(selectedDate.time)
                     binding.dobEt.setText(formattedDate)
                 }
@@ -149,7 +144,7 @@ class LoginCreateFragment : Fragment() {
                         if (it.isSuccessful) {
                             Toast.makeText(
                                 activity,
-                                "Authentication Successful",
+                                getString(R.string.auth_massage),
                                 Toast.LENGTH_SHORT
                             ).show()
                             saveData()
