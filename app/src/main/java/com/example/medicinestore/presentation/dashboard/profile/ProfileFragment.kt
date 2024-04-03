@@ -11,11 +11,18 @@ import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
+import com.bumptech.glide.Glide
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentProfileBinding
 import com.example.medicinestore.presentation.MainActivity
+import com.example.medicinestore.presentation.dashboard.admin.AdminModel
 import com.example.medicinestore.util.MSActivityUtil
 import com.example.medicinestore.util.SharePreferenceUtil
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -28,6 +35,7 @@ class ProfileFragment : Fragment() {
     lateinit var activityUtil: MSActivityUtil
     lateinit var binding: FragmentProfileBinding
     private lateinit var viewModel: ProfileViewModel
+    lateinit var database:DatabaseReference
 
     @RequiresApi(Build.VERSION_CODES.O)
     override fun onCreateView(
@@ -37,10 +45,26 @@ class ProfileFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater, R.layout.fragment_profile, container, false)
         binding.model = this
         activityUtil.hideBottomNavigation(false)
+        database = Firebase.database.reference
         binding.btnSignOut.setOnClickListener {
             logout(it)
         }
         return binding.root
+    }
+
+    override fun onResume() {
+        super.onResume()
+        profile()
+    }
+    private fun profile(){
+        activityUtil.setFullScreenLoading(true)
+        val uid = FirebaseAuth.getInstance().currentUser!!.uid
+        database.child("User").child(uid).get().addOnSuccessListener {
+            activityUtil.setFullScreenLoading(false)
+             binding.fullNameTv.text = it.child("Name").value.toString()
+             binding.phoneNumberTv.text = it.child("Number").value.toString()
+        }
+
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
