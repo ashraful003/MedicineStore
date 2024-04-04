@@ -29,6 +29,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class ProfileFragment : Fragment() {
     val actionEditProfile = Navigation.createNavigateOnClickListener(R.id.action_profileFragment_to_editProfileFragment)
+    val actionPassword = Navigation.createNavigateOnClickListener(R.id.action_profileFragment_to_passwordFragment)
     @Inject
     lateinit var sharedPrefs: SharePreferenceUtil
     @Inject
