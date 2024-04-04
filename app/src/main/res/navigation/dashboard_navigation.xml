@@ -56,6 +56,9 @@
         <action
             android:id="@+id/action_profileFragment_to_editProfileFragment"
             app:destination="@id/editProfileFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
     </fragment>
     <fragment
         android:id="@+id/editProfileFragment"
@@ -90,5 +93,25 @@
         <action
             android:id="@+id/action_addEmployeeFragment_to_employeeFragment"
             app:destination="@id/employeeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/passwordFragment"
+        android:name="com.example.medicinestore.presentation.PasswordFragment"
+        android:label="fragment_password"
+        tools:layout="@layout/fragment_password" >
+        <action
+            android:id="@+id/action_passwordFragment_to_profileFragment"
+            app:destination="@id/profileFragment" />
+        <action
+            android:id="@+id/action_passwordFragment_to_loginChangePassFragment2"
+            app:destination="@id/loginChangePassFragment2" />
+    </fragment>
+    <fragment
+        android:id="@+id/loginChangePassFragment2"
+        android:name="com.example.medicinestore.presentation.login.LoginChangePassFragment"
+        android:label="LoginChangePassFragment" >
+        <action
+            android:id="@+id/action_loginChangePassFragment2_to_passwordFragment"
+            app:destination="@id/passwordFragment" />
     </fragment>
 </navigation>

@@ -10,11 +10,17 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentEditProfileBinding
 import com.example.medicinestore.util.MSActivityUtil
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.jakewharton.rxbinding2.widget.RxTextView
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -28,6 +34,8 @@ class EditProfileFragment : Fragment() {
     lateinit var activityUtil: MSActivityUtil
     private lateinit var binding: FragmentEditProfileBinding
     private lateinit var viewModel: EditProfileViewModel
+    private var uid = FirebaseAuth.getInstance().currentUser!!.uid
+    private lateinit var database:DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +45,7 @@ class EditProfileFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_edit_profile, container, false)
         binding.model = this
         activityUtil.hideBottomNavigation(true)
+        database = Firebase.database.reference
         binding.backIv.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -48,10 +57,10 @@ class EditProfileFragment : Fragment() {
         fullNameStream.subscribe {
             binding.fullNameEt.error = if (it) getString(R.string.error_name) else null
         }
-        val passwordStream = RxTextView.textChanges(binding.passwordEt)
+        val passwordStream = RxTextView.textChanges(binding.addressEt)
             .skipInitialValue()
-            .map { password ->
-                password.isEmpty()
+            .map { address ->
+                address.isEmpty()
             }
         val phoneNumberStream = RxTextView.textChanges(binding.phoneNumberEt)
             .skipInitialValue()
@@ -85,8 +94,49 @@ class EditProfileFragment : Fragment() {
             }
             false
         })
-
+        showToData()
+        binding.saveTv.setOnClickListener {
+            updateData(
+                binding.fullNameEt.text.toString().trim(),
+                binding.addressEt.text.toString().trim(),
+                binding.phoneNumberEt.text.toString().trim(),
+                binding.dobEt.text.toString().trim()
+            )
+        }
         return binding.root
+    }
+
+    private fun updateData(name: String, address: String, phone: String, dob: String) {
+        activityUtil.setFullScreenLoading(true)
+        if (name.isNotEmpty() && address.isNotEmpty() && phone.isNotEmpty() && dob.isNotEmpty()){
+            database = FirebaseDatabase.getInstance().getReference("User")
+            val user = HashMap<String,Any>()
+            user.put("Name",name)
+            user.put("Location",address)
+            user.put("Number",phone)
+            user.put("Dob",dob)
+            database.child(uid).updateChildren(user).addOnSuccessListener {
+                findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
+                activityUtil.setFullScreenLoading(false)
+                binding.fullNameEt.text!!.clear()
+                binding.addressEt.text!!.clear()
+                binding.phoneNumberEt.text!!.clear()
+                binding.dobEt.text!!.clear()
+                Toast.makeText(activity, getString(R.string.update_massage), Toast.LENGTH_SHORT).show()
+            }
+        }
+
+    }
+
+    private fun showToData(){
+        activityUtil.setFullScreenLoading(true)
+        database.child("User").child(uid).get().addOnSuccessListener {
+            activityUtil.setFullScreenLoading(false)
+            binding.fullNameEt.setText(it.child("Name").value.toString())
+            binding.addressEt.setText(it.child("Location").value.toString())
+            binding.phoneNumberEt.setText(it.child("Number").value.toString())
+            binding.dobEt.setText(it.child("Dob").value.toString())
+        }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {

@@ -92,7 +92,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_10"
-                                android:hint="@string/profile_name"
+                                android:text="@string/profile_name"
                                 android:textColor="@color/page_title_text_color"
                                 android:textColorHint="@color/hint_text_color"
                                 android:textSize="@dimen/text_size_20"
@@ -106,7 +106,7 @@
                                 android:layout_marginTop="@dimen/margin_9"
                                 android:layout_marginBottom="@dimen/margin_10"
                                 android:text="@string/phone_number"
-                                android:textColor="@color/text_color"
+                                android:textColor="@color/page_title_text_color"
                                 android:textSize="@dimen/text_size"
                                 app:layout_constraintBottom_toBottomOf="parent"
                                 app:layout_constraintStart_toStartOf="parent"
@@ -140,36 +140,37 @@
                 app:layout_constraintTop_toBottomOf="@+id/frontConstraint">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/btnAddress"
+                    android:id="@+id/btnPassword"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    android:onClick="@{model.actionPassword}"
                     android:layout_marginLeft="@dimen/margin_15"
                     android:layout_marginTop="@dimen/margin_20"
                     android:layout_marginRight="@dimen/margin_12">
 
                     <ImageView
-                        android:id="@+id/addressIv"
+                        android:id="@+id/passwordIv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:background="@drawable/ic_location"
+                        android:background="@drawable/ic_password"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <TextView
-                        android:id="@+id/addressTv"
+                        android:id="@+id/passwordTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_15"
-                        android:text="Address"
+                        android:text="Change Password"
                         android:textColor="@color/page_title_text_color"
                         android:textSize="@dimen/text_size"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/addressIv"
+                        app:layout_constraintStart_toEndOf="@+id/passwordIv"
                         app:layout_constraintTop_toTopOf="parent" />
 
                     <ImageView
-                        android:id="@+id/addressRIv"
+                        android:id="@+id/passwordRIv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="@dimen/margin_3"
