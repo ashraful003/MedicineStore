@@ -78,5 +78,7 @@
     <string name="add">Add</string>
     <string name="auth_massage">Authentication Successful</string>
     <string name="update_massage">Update Successful</string>
+    <string name="error_wrong_password_massage">Your password is incorrect please input correct password</string>
+    <string name="old_password">Old Password</string>
 
 </resources>
