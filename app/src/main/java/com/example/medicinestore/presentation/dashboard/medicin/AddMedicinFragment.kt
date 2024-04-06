@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -14,6 +15,9 @@ import androidx.navigation.fragment.findNavController
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentAddMedicinBinding
 import com.example.medicinestore.util.MSActivityUtil
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.jakewharton.rxbinding2.widget.RxTextView
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Observable
@@ -28,6 +32,7 @@ class AddMedicinFragment : Fragment() {
     lateinit var activityUtil : MSActivityUtil
     private lateinit var binding:FragmentAddMedicinBinding
     private lateinit var viewModel:MedicinViewModel
+    lateinit var database: DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -35,6 +40,7 @@ class AddMedicinFragment : Fragment() {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_add_medicin, container, false)
         binding.model = this
         activityUtil.hideBottomNavigation(true)
+        database = Firebase.database.reference
         binding.backIv.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -141,6 +147,33 @@ class AddMedicinFragment : Fragment() {
             isEnableSaveButton(isValid)
         }
 
+        binding.btnSave.setOnClickListener {
+            activityUtil.setFullScreenLoading(true)
+            val medicineId = database.push().key!!
+
+            val medicine = HashMap<String,Any>()
+
+            medicine.put("Name",binding.nameEt.text!!.toString().trim())
+            medicine.put("Company",binding.companyEt.text!!.toString().trim())
+            medicine.put("Details",binding.detailsEt.text!!.toString().trim())
+            medicine.put("Price",binding.priceEt.text!!.toString().trim())
+            medicine.put("Date",binding.expireDateEt.text!!.toString().trim())
+            medicine.put("Self",binding.selfEt.text!!.toString().trim())
+            medicine.put("Row",binding.rowEt.text!!.toString().trim())
+            medicine.put("Column",binding.columnEt.text!!.toString().trim())
+            database.child("Medicine").child(medicineId).setValue(medicine)
+            activityUtil.setFullScreenLoading(false)
+            Toast.makeText(activity,getText(R.string.update_massage),Toast.LENGTH_SHORT).show()
+            binding.nameEt.text!!.toString().chars()
+            binding.companyEt.text!!.toString().chars()
+            binding.detailsEt.text!!.toString().chars()
+            binding.priceEt.text!!.toString().chars()
+            binding.expireDateEt.text!!.toString().chars()
+            binding.selfEt.text!!.toString().chars()
+            binding.rowEt.text!!.toString().chars()
+            binding.columnEt.text!!.toString().chars()
+
+        }
         return binding.root
     }
     private fun isEnableSaveButton(isEnable:Boolean){
