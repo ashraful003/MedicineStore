@@ -141,7 +141,7 @@
                         android:layout_height="wrap_content"
                         android:background="@android:color/transparent"
                         android:hint="@string/price"
-                        android:inputType="numberDecimal"
+                        android:inputType="text"
                         android:paddingLeft="@dimen/padding_14"
                         android:textColor="@color/page_title_text_color"
                         android:textSize="@dimen/text_size" />

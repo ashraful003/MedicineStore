@@ -42,6 +42,7 @@
     <dimen name="margin_65">65dp</dimen>
     <dimen name="margin_25">25dp</dimen>
     <dimen name="margin_2">2dp</dimen>
+    <dimen name="margin_18">18dp</dimen>
 
     //padding
     <dimen name="padding_bottom_74">74dp</dimen>
@@ -65,6 +66,7 @@
     <dimen name="height_40">40dp</dimen>
     <dimen name="layout_size_68">68dp</dimen>
     <dimen name="layout_315">315dp</dimen>
+    <dimen name="layout_80">80dp</dimen>
 
     //radius
     <dimen name="card_radius_20">20dp</dimen>

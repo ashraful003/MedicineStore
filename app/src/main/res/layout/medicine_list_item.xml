@@ -2,19 +2,19 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="@dimen/layout_80"
     android:layout_marginStart="@dimen/margin_3"
     android:layout_marginTop="@dimen/margin_3"
     android:layout_marginEnd="@dimen/margin_2"
     android:layout_marginBottom="@dimen/margin_3"
-    android:background="@color/offsky"
+    android:background="@color/blue_300"
     android:orientation="horizontal">
 
     <androidx.cardview.widget.CardView
         android:id="@+id/medicineItemCard"
         android:layout_width="@dimen/layout_315"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/offsky"
+        android:layout_height="@dimen/layout_80"
+        android:backgroundTint="@color/blue_300"
         app:cardCornerRadius="@dimen/radius_8"
         app:cardElevation="@dimen/card_radius_20"
         app:cardMaxElevation="@dimen/card_radius_20">
@@ -27,6 +27,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_10"
                 android:orientation="horizontal">
 
                 <TextView
@@ -53,13 +54,14 @@
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
                 android:orientation="horizontal">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_10"
+                    android:layout_marginLeft="@dimen/margin_5"
                     android:layout_marginTop="@dimen/margin_5"
                     android:layout_marginRight="@dimen/margin_5"
                     android:layout_marginBottom="@dimen/margin_5"
@@ -87,7 +89,7 @@
         android:layout_width="@dimen/layout_size_60"
         android:layout_height="wrap_content"
         android:layout_marginLeft="@dimen/margin_5"
-        android:layout_marginTop="@dimen/margin_10"
+        android:layout_marginTop="@dimen/margin_18"
         android:orientation="vertical">
 
         <TextView

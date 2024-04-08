@@ -40,7 +40,10 @@ class MedicineListAdapter(private var data: ArrayList<Medicine>, internal var co
     override fun getItemCount(): Int {
         return data.size
     }
-
+    fun searchDataList(searchList:List<Medicine>){
+        data = searchList as ArrayList<Medicine>
+        notifyDataSetChanged()
+    }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
