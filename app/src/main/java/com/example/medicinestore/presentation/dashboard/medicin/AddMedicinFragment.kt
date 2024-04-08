@@ -50,52 +50,38 @@ class AddMedicinFragment : Fragment() {
             .map { name ->
                 name.isEmpty()
             }
-        nameStream.subscribe {
-            binding.nameEt.error = if (it) getString(R.string.error_name) else null
-        }
 
         val companyStream = RxTextView.textChanges(binding.companyEt)
             .skipInitialValue()
             .map { company ->
                 company.isEmpty()
             }
-        companyStream.subscribe {
-            binding.companyEt.error = if (it) getString(R.string.error_company_name) else null
-        }
 
         val detailsStream = RxTextView.textChanges(binding.detailsEt)
             .skipInitialValue()
             .map { details ->
                 details.isEmpty()
             }
-        detailsStream.subscribe {
-            binding.detailsEt.error = if (it) getString(R.string.error_details) else null
-        }
 
         val priceStream = RxTextView.textChanges(binding.priceEt)
             .skipInitialValue()
             .map { price ->
                 price.isEmpty()
             }
-        priceStream.subscribe {
-            binding.priceEt.error = if (it) getString(R.string.error_price) else null
-        }
 
         val expireDateStream = RxTextView.textChanges(binding.expireDateEt)
             .skipInitialValue()
             .map { expire ->
                 expire.isEmpty()
             }
-        expireDateStream.subscribe {
-            binding.expireDateEt.error = if (it) getString(R.string.error_expire_date) else null
-        }
+
         binding.expireDateEt.setOnTouchListener(View.OnTouchListener { v, event ->
             if (event.action == MotionEvent.ACTION_UP) {
                 val datePickerDialog = DatePickerDialog(requireContext())
                 datePickerDialog.setOnDateSetListener { _, year, month, dayOfMonth ->
                     val selectedDate = Calendar.getInstance()
                     selectedDate.set(year, month, dayOfMonth)
-                    val dateFormat = SimpleDateFormat("DD/MM/YYYY", Locale.US)
+                    val dateFormat = SimpleDateFormat("MM/dd/yyyy", Locale.US)
                     val formattedDate = dateFormat.format(selectedDate.time)
                     binding.expireDateEt.setText(formattedDate)
                 }
@@ -109,27 +95,18 @@ class AddMedicinFragment : Fragment() {
             .map { self ->
                 self.isEmpty()
             }
-        selfStream.subscribe {
-            binding.selfEt.error = if (it) getString(R.string.error_self) else null
-        }
 
         val rowStream = RxTextView.textChanges(binding.rowEt)
             .skipInitialValue()
             .map { row ->
                 row.isEmpty()
             }
-        rowStream.subscribe {
-            binding.rowEt.error = if (it) getString(R.string.error_row) else null
-        }
 
         val columnStream = RxTextView.textChanges(binding.columnEt)
             .skipInitialValue()
             .map { column ->
                 column.isEmpty()
             }
-        columnStream.subscribe {
-            binding.columnEt.error = if (it) getString(R.string.error_column) else null
-        }
 
         val invalidFiledStream = Observable.combineLatest(
             nameStream,
@@ -150,28 +127,26 @@ class AddMedicinFragment : Fragment() {
         binding.btnSave.setOnClickListener {
             activityUtil.setFullScreenLoading(true)
             val medicineId = database.push().key!!
-
             val medicine = HashMap<String,Any>()
-
-            medicine.put("Name",binding.nameEt.text!!.toString().trim())
-            medicine.put("Company",binding.companyEt.text!!.toString().trim())
-            medicine.put("Details",binding.detailsEt.text!!.toString().trim())
-            medicine.put("Price",binding.priceEt.text!!.toString().trim())
-            medicine.put("Date",binding.expireDateEt.text!!.toString().trim())
-            medicine.put("Self",binding.selfEt.text!!.toString().trim())
-            medicine.put("Row",binding.rowEt.text!!.toString().trim())
-            medicine.put("Column",binding.columnEt.text!!.toString().trim())
+            medicine.put("name",binding.nameEt.text!!.toString().trim())
+            medicine.put("company",binding.companyEt.text!!.toString().trim())
+            medicine.put("details",binding.detailsEt.text!!.toString().trim())
+            medicine.put("price",binding.priceEt.text!!.toString().trim())
+            medicine.put("date",binding.expireDateEt.text!!.toString().trim())
+            medicine.put("self",binding.selfEt.text!!.toString().trim())
+            medicine.put("row",binding.rowEt.text!!.toString().trim())
+            medicine.put("column",binding.columnEt.text!!.toString().trim())
             database.child("Medicine").child(medicineId).setValue(medicine)
             activityUtil.setFullScreenLoading(false)
             Toast.makeText(activity,getText(R.string.update_massage),Toast.LENGTH_SHORT).show()
-            binding.nameEt.text!!.toString().chars()
-            binding.companyEt.text!!.toString().chars()
-            binding.detailsEt.text!!.toString().chars()
-            binding.priceEt.text!!.toString().chars()
-            binding.expireDateEt.text!!.toString().chars()
-            binding.selfEt.text!!.toString().chars()
-            binding.rowEt.text!!.toString().chars()
-            binding.columnEt.text!!.toString().chars()
+            binding.nameEt.text!!.clear()
+            binding.companyEt.text!!.clear()
+            binding.detailsEt.text!!.clear()
+            binding.priceEt.text!!.clear()
+            binding.expireDateEt.text!!.clear()
+            binding.selfEt.text!!.clear()
+            binding.rowEt.text!!.clear()
+            binding.columnEt.text!!.clear()
 
         }
         return binding.root

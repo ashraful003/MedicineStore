@@ -6,7 +6,7 @@ data class Medicine(
     var company:String? = null,
     var details:String? = null,
     var price:String? = null,
-    var expireDate:String? = null,
+    var date:String? = null,
     var self:String? = null,
     var row:String? = null,
     var column:String? = null
