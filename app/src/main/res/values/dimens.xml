@@ -67,6 +67,7 @@
     <dimen name="layout_size_68">68dp</dimen>
     <dimen name="layout_315">315dp</dimen>
     <dimen name="layout_80">80dp</dimen>
+    <dimen name="layout_85">85dp</dimen>
 
     //radius
     <dimen name="card_radius_20">20dp</dimen>

@@ -73,6 +73,19 @@ class MedicinListFragment : Fragment() {
             bundle.putString("details",it.details)
             findNavController().navigate(R.id.action_medicineListFragment_to_medicineDetailsFragment,bundle)
         }
+        adapter.onUpdateItemClick = {
+            var bundle = Bundle()
+                bundle.putString("id",it.medicineId)
+                bundle.putString("name",it.name)
+                bundle.putString("company",it.company)
+                bundle.putString("details",it.details)
+                bundle.putString("price",it.price)
+                bundle.putString("date",it.date)
+                bundle.putString("self",it.self)
+                bundle.putString("row",it.row)
+                bundle.putString("column",it.column)
+            findNavController().navigate(R.id.action_medicineListFragment_to_updateMedicineInfoFragment,bundle)
+        }
         return binding.root
     }
 

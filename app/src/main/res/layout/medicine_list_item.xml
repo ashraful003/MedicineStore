@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="@dimen/layout_80"
@@ -7,14 +7,17 @@
     android:layout_marginTop="@dimen/margin_3"
     android:layout_marginEnd="@dimen/margin_2"
     android:layout_marginBottom="@dimen/margin_3"
-    android:background="@color/blue_300"
-    android:orientation="horizontal">
-
+    app:cardCornerRadius="@dimen/radius_8">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="@color/black_200">
     <androidx.cardview.widget.CardView
         android:id="@+id/medicineItemCard"
         android:layout_width="@dimen/layout_315"
         android:layout_height="@dimen/layout_80"
-        android:backgroundTint="@color/blue_300"
+        android:backgroundTint="@color/black_200"
         app:cardCornerRadius="@dimen/radius_8"
         app:cardElevation="@dimen/card_radius_20"
         app:cardMaxElevation="@dimen/card_radius_20">
@@ -28,6 +31,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_10"
+                android:layout_marginLeft="@dimen/margin_5"
                 android:orientation="horizontal">
 
                 <TextView
@@ -56,6 +60,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/margin_8"
+                android:layout_marginLeft="@dimen/margin_5"
                 android:orientation="horizontal">
 
                 <TextView
@@ -104,3 +109,5 @@
             android:textSize="@dimen/text_18" />
     </LinearLayout>
 </LinearLayout>
+
+</androidx.cardview.widget.CardView>
