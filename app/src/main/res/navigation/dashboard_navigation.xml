@@ -51,6 +51,9 @@
         <action
             android:id="@+id/action_medicineListFragment_to_medicineDetailsFragment"
             app:destination="@id/medicineDetailsFragment2" />
+        <action
+            android:id="@+id/action_medicineListFragment_to_updateMedicineInfoFragment"
+            app:destination="@id/updateMedicineInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -124,6 +127,15 @@
         tools:layout="@layout/fragment_medicine_details" >
         <action
             android:id="@+id/action_medicineDetailsFragment_to_medicineListFragment"
+            app:destination="@id/medicineListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/updateMedicineInfoFragment"
+        android:name="com.example.medicinestore.presentation.dashboard.medicin.UpdateMedicineInfoFragment"
+        android:label="fragment_update_medicine_info"
+        tools:layout="@layout/fragment_update_medicine_info" >
+        <action
+            android:id="@+id/action_updateMedicineInfoFragment_to_medicineListFragment"
             app:destination="@id/medicineListFragment" />
     </fragment>
 </navigation>
