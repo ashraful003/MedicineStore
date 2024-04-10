@@ -48,6 +48,9 @@
         <action
             android:id="@+id/action_medicinListFragment_to_adminHomeFragment"
             app:destination="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_medicineListFragment_to_medicineDetailsFragment"
+            app:destination="@id/medicineDetailsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -113,5 +116,14 @@
         <action
             android:id="@+id/action_loginChangePassFragment2_to_passwordFragment"
             app:destination="@id/passwordFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/medicineDetailsFragment2"
+        android:name="com.example.medicinestore.presentation.dashboard.medicin.MedicineDetailsFragment"
+        android:label="fragment_medicine_details"
+        tools:layout="@layout/fragment_medicine_details" >
+        <action
+            android:id="@+id/action_medicineDetailsFragment_to_medicineListFragment"
+            app:destination="@id/medicineListFragment" />
     </fragment>
 </navigation>

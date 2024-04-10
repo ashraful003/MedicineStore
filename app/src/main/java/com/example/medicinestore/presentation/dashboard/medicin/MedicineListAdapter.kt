@@ -11,7 +11,7 @@ import com.example.medicinestore.R
 
 class MedicineListAdapter(private var data: ArrayList<Medicine>, internal var context: Context) :
     RecyclerView.Adapter<MedicineListAdapter.ViewHolder>() {
-
+  var onItemClick:((Medicine) -> Unit)? = null
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView
         val company: TextView
@@ -47,5 +47,8 @@ class MedicineListAdapter(private var data: ArrayList<Medicine>, internal var co
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
+        holder.card.setOnClickListener {
+            onItemClick?.invoke(item)
+        }
     }
 }
