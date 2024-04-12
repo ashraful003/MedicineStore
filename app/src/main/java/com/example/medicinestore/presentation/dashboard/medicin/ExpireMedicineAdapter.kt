@@ -36,7 +36,10 @@ class ExpireMedicineAdapter(private var data:ArrayList<Medicine>, internal var c
     override fun getItemCount(): Int {
         return data.size
     }
-
+   fun searchExpireDataList(searchList:List<Medicine>){
+       data = searchList as ArrayList<Medicine>
+       notifyDataSetChanged()
+   }
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
