@@ -1,104 +1,113 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/margin_5"
+    android:layout_height="@dimen/layout_80"
+    android:layout_marginStart="@dimen/margin_3"
     android:layout_marginTop="@dimen/margin_3"
-    android:layout_marginEnd="@dimen/margin_5"
+    android:layout_marginEnd="@dimen/margin_2"
     android:layout_marginBottom="@dimen/margin_3"
-    android:background="@color/offsky"
-    android:orientation="horizontal">
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/expireMedicineItemCard"
-        android:layout_width="@dimen/layout_315"
-        android:layout_height="wrap_content"
-        android:backgroundTint="@color/offsky"
-        app:cardCornerRadius="@dimen/radius_8"
-        app:cardElevation="@dimen/card_radius_20"
-        app:cardMaxElevation="@dimen/card_radius_20">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-
-                <TextView
-                    android:id="@+id/textView3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_10"
-                    android:layout_marginRight="@dimen/margin_5"
-                    android:text="@string/name"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_17" />
-
-                <TextView
-                    android:id="@+id/expireMedicineItemName"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_15"
-                    android:layout_marginRight="@dimen/margin_5"
-                    android:hint="@string/medicine_name"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_17" />
-            </LinearLayout>
+    app:cardCornerRadius="@dimen/radius_8">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:background="@color/black_200">
+        <androidx.cardview.widget.CardView
+            android:id="@+id/expireMedicineItemCard"
+            android:layout_width="@dimen/layout_315"
+            android:layout_height="@dimen/layout_80"
+            android:backgroundTint="@color/black_200"
+            app:cardCornerRadius="@dimen/radius_8"
+            app:cardElevation="@dimen/card_radius_20"
+            app:cardMaxElevation="@dimen/card_radius_20">
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="vertical">
 
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_10"
-                    android:layout_marginTop="@dimen/margin_5"
-                    android:layout_marginRight="@dimen/margin_5"
-                    android:layout_marginBottom="@dimen/margin_5"
-                    android:text="@string/company"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_17" />
-
-                <TextView
-                    android:id="@+id/expireMedicineItemCompany"
+                <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_5"
-                    android:layout_marginRight="@dimen/margin_5"
-                    android:layout_marginBottom="@dimen/margin_5"
-                    android:hint="@string/company_name"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_17" />
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginLeft="@dimen/margin_5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/textView3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:layout_marginRight="@dimen/margin_5"
+                        android:text="@string/name"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_17" />
+
+                    <TextView
+                        android:id="@+id/expireMedicineItemName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_15"
+                        android:layout_marginRight="@dimen/margin_5"
+                        android:hint="@string/medicine_name"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/text_size_17" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_8"
+                    android:layout_marginLeft="@dimen/margin_5"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:layout_marginRight="@dimen/margin_5"
+                        android:layout_marginBottom="@dimen/margin_5"
+                        android:text="@string/company"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_17" />
+
+                    <TextView
+                        android:id="@+id/expireMedicineItemCompany"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:layout_marginRight="@dimen/margin_5"
+                        android:layout_marginBottom="@dimen/margin_5"
+                        android:hint="@string/company_name"
+                        android:textColor="@color/black"
+                        android:textAlignment="center"
+                        android:textSize="@dimen/text_size_17" />
+                </LinearLayout>
             </LinearLayout>
-        </LinearLayout>
-    </androidx.cardview.widget.CardView>
+        </androidx.cardview.widget.CardView>
 
-    <LinearLayout
-        android:layout_width="@dimen/layout_size_60"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="@dimen/margin_5"
-        android:layout_marginTop="@dimen/margin_10"
-        android:orientation="vertical">
-
-        <TextView
-            android:id="@+id/itemDeleteBtn"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="@dimen/layout_size_60"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/margin_8"
-            android:gravity="center_horizontal"
-            android:text="@string/delete"
-            android:textAlignment="center"
-            android:textColor="@color/black"
-            android:textSize="@dimen/text_18" />
+            android:layout_marginLeft="@dimen/margin_5"
+            android:layout_marginTop="@dimen/margin_18"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/itemDeleteBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_8"
+                android:gravity="center_horizontal"
+                android:text="@string/delete"
+                android:textAlignment="center"
+                android:textColor="@color/black"
+                android:textSize="@dimen/text_18" />
+        </LinearLayout>
     </LinearLayout>
-</LinearLayout>
+
+</androidx.cardview.widget.CardView>

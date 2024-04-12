@@ -1,5 +1,6 @@
 package com.example.medicinestore.presentation.dashboard.medicin
 
+import android.annotation.SuppressLint
 import android.icu.text.SimpleDateFormat
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -33,6 +34,7 @@ class MedicinListFragment : Fragment() {
      lateinit var  adapter:MedicineListAdapter
      lateinit var userArray : ArrayList<Medicine>
      private lateinit var database: DatabaseReference
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
