@@ -88,5 +88,6 @@
     <string name="medicine_details">Medicine details</string>
     <string name="about_medicine">About Medicine</string>
     <string name="update_medicine_info">Update Medicine Info</string>
+    <string name="cancelled">Cancelled</string>
 
 </resources>

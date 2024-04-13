@@ -1,5 +1,6 @@
 package com.example.medicinestore.presentation.dashboard.medicin
 
+import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -19,6 +20,8 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
 import java.util.Date
@@ -46,6 +49,7 @@ class ExpireMedicinFragment : Fragment() {
         }
         binding.expireMedicineRecycle.layoutManager = LinearLayoutManager(activity)
         userArray = arrayListOf()
+        database = Firebase.database.reference
         adapter = ExpireMedicineAdapter(userArray,this.requireContext())
         binding.expireMedicineRecycle.adapter = adapter
         binding.searchMedicine.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
@@ -59,7 +63,46 @@ class ExpireMedicinFragment : Fragment() {
                 return true
             }
         })
+        adapter.onItemClick = {
+            var bundle = Bundle()
+            bundle.putString("id",it.medicineId)
+            bundle.putString("name",it.name)
+            bundle.putString("company",it.company)
+            bundle.putString("price",it.price)
+            bundle.putString("date",it.date)
+            bundle.putString("self",it.self)
+            bundle.putString("row",it.row)
+            bundle.putString("column",it.column)
+            bundle.putString("details",it.details)
+            findNavController().navigate(R.id.action_expireMedicineFragment_to_medicineDetailsFragment,bundle)
+        }
+        adapter.onDeleteItem = {
+            deleteMedicine(it)
+        }
         return binding.root
+    }
+    private fun deleteMedicine(medicine: Medicine) {
+       val builder = AlertDialog.Builder(context)
+        builder.setTitle("Delete Medicine")
+        builder.setMessage("Are you sure!")
+        builder.setCancelable(false)
+        builder.setPositiveButton("Yes"){_,_ ->
+        activityUtil.setFullScreenLoading(true)
+            medicine.medicineId?.let {medicineId ->
+                FirebaseDatabase.getInstance().getReference("Medicine").child(medicineId).ref.removeValue()
+                    .addOnSuccessListener {
+                        loadedMedicine()
+                        activityUtil.setFullScreenLoading(false)
+                    }.addOnFailureListener {
+                        Toast.makeText(context,it.message.toString(),Toast.LENGTH_SHORT).show()
+                    }
+            }
+        }
+        builder.setNegativeButton("No"){_,_ ->
+            Toast.makeText(context,getString(R.string.cancelled),Toast.LENGTH_SHORT).show()
+        }
+        val alertDialog = builder.create()
+        alertDialog.show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -69,6 +112,7 @@ class ExpireMedicinFragment : Fragment() {
 
     private fun loadedMedicine() {
         activityUtil.setFullScreenLoading(true)
+        userArray.clear()
         database = FirebaseDatabase.getInstance().getReference("Medicine")
         database.addValueEventListener(object :ValueEventListener{
             override fun onDataChange(snapshot: DataSnapshot) {

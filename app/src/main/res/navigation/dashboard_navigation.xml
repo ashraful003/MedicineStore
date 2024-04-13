@@ -39,6 +39,9 @@
         <action
             android:id="@+id/action_expireMedicinFragment_to_adminHomeFragment"
             app:destination="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_expireMedicineFragment_to_medicineDetailsFragment"
+            app:destination="@id/medicineDetailsFragment2" />
     </fragment>
     <fragment
         android:id="@+id/medicineListFragment"
@@ -128,6 +131,9 @@
         <action
             android:id="@+id/action_medicineDetailsFragment_to_medicineListFragment"
             app:destination="@id/medicineListFragment" />
+        <action
+            android:id="@+id/action_medicineDetailsFragment_to_expireMedicineFragment"
+            app:destination="@id/expireMedicineFragment" />
     </fragment>
     <fragment
         android:id="@+id/updateMedicineInfoFragment"
