@@ -17,6 +17,7 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentLoginCreateBinding
+import com.example.medicinestore.util.MSActivityUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.database.DatabaseReference
@@ -24,8 +25,10 @@ import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.jakewharton.rxbinding2.widget.RxTextView
+import dagger.hilt.android.AndroidEntryPoint
 import java.util.Locale
-
+import javax.inject.Inject
+@AndroidEntryPoint
 class LoginCreateFragment : Fragment() {
     val actionSignIn =
         Navigation.createNavigateOnClickListener(R.id.action_loginCreateFragment_to_loginInputFragment)
@@ -33,6 +36,8 @@ class LoginCreateFragment : Fragment() {
     private lateinit var viewModel: LoginViewModel
     lateinit var auth: FirebaseAuth
     lateinit var database: DatabaseReference
+    @Inject
+    lateinit var activityUtil:MSActivityUtil
 
     @SuppressLint("CheckResult", "ClickableViewAccessibility")
     override fun onCreateView(
@@ -43,6 +48,7 @@ class LoginCreateFragment : Fragment() {
             DataBindingUtil.inflate(inflater, R.layout.fragment_login_create, container, false)
         binding.model = this
         isEnableSignUpButton(false)
+        activityUtil.hideBottomNavigation(true)
         binding.backIv.setOnClickListener {
             findNavController().popBackStack()
         }
@@ -150,8 +156,7 @@ class LoginCreateFragment : Fragment() {
                             saveData()
                             findNavController().navigate(R.id.action_loginCreateFragment_to_loginInputFragment)
                         } else {
-                            Toast.makeText(activity, it.exception?.message, Toast.LENGTH_SHORT)
-                                .show()
+                            Toast.makeText(activity, it.exception?.message, Toast.LENGTH_SHORT).show()
                         }
                     }
             }
@@ -160,6 +165,7 @@ class LoginCreateFragment : Fragment() {
     }
 
     fun saveData() {
+        activityUtil.setFullScreenLoading(true)
         database = FirebaseDatabase.getInstance().getReference("User")
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
         val user = HashMap<String, String>()
@@ -172,6 +178,7 @@ class LoginCreateFragment : Fragment() {
         user.put("Password", binding.passwordEt.text.toString().trim())
         user.put("User", "1")
         database.child(userId).setValue(user)
+        activityUtil.setFullScreenLoading(false)
         binding.fullNameEt.text?.clear()
         binding.emailEt.text?.clear()
         binding.phoneNumberEt.text?.clear()
