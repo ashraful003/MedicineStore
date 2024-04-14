@@ -111,10 +111,10 @@ class EditProfileFragment : Fragment() {
         if (name.isNotEmpty() && address.isNotEmpty() && phone.isNotEmpty() && dob.isNotEmpty()){
             database = FirebaseDatabase.getInstance().getReference("User")
             val user = HashMap<String,Any>()
-            user.put("Name",name)
-            user.put("Location",address)
-            user.put("Number",phone)
-            user.put("Dob",dob)
+            user.put("name",name)
+            user.put("location",address)
+            user.put("number",phone)
+            user.put("dob",dob)
             database.child(uid).updateChildren(user).addOnSuccessListener {
                 findNavController().navigate(R.id.action_editProfileFragment_to_profileFragment)
                 activityUtil.setFullScreenLoading(false)
@@ -132,10 +132,10 @@ class EditProfileFragment : Fragment() {
         activityUtil.setFullScreenLoading(true)
         database.child("User").child(uid).get().addOnSuccessListener {
             activityUtil.setFullScreenLoading(false)
-            binding.fullNameEt.setText(it.child("Name").value.toString())
-            binding.addressEt.setText(it.child("Location").value.toString())
-            binding.phoneNumberEt.setText(it.child("Number").value.toString())
-            binding.dobEt.setText(it.child("Dob").value.toString())
+            binding.fullNameEt.setText(it.child("name").value.toString())
+            binding.addressEt.setText(it.child("location").value.toString())
+            binding.phoneNumberEt.setText(it.child("number").value.toString())
+            binding.dobEt.setText(it.child("dob").value.toString())
         }
     }
 

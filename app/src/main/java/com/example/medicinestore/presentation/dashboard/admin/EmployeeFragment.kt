@@ -5,6 +5,8 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.SearchView
+import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
@@ -13,6 +15,11 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentEmployeeBinding
 import com.example.medicinestore.util.MSActivityUtil
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ValueEventListener
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -25,6 +32,7 @@ class EmployeeFragment : Fragment() {
     private lateinit var binding: FragmentEmployeeBinding
     lateinit var employeeArray: ArrayList<EmployeeModel>
     lateinit var adapter: EmployeeAdapter
+    lateinit var database:DatabaseReference
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -37,6 +45,20 @@ class EmployeeFragment : Fragment() {
         binding.backIv.setOnClickListener {
             findNavController().popBackStack()
         }
+        loadEmployee()
+        binding.searchMedicine.setOnQueryTextListener(object: SearchView.OnQueryTextListener{
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
+
+            override fun onQueryTextChange(text: String?): Boolean {
+                if (text!=null){
+                    searchList(text)
+                }
+                return true
+            }
+
+        })
         binding.employeeListRecycle.layoutManager = LinearLayoutManager(activity)
         employeeArray = arrayListOf()
         adapter = EmployeeAdapter(employeeArray, requireContext())
@@ -44,6 +66,40 @@ class EmployeeFragment : Fragment() {
         return binding.root
     }
 
+    fun loadEmployee(){
+        activityUtil.setFullScreenLoading(true)
+        database = FirebaseDatabase.getInstance().getReference("User")
+        database.addValueEventListener(object: ValueEventListener{
+            override fun onDataChange(snapshot: DataSnapshot) {
+             activityUtil.setFullScreenLoading(false)
+                if (snapshot.exists()){
+                    for (snap in snapshot.children){
+                      if (snap.hasChild("Employee")){
+                          val employee = snap.getValue(EmployeeModel::class.java)
+                          if (!employeeArray.contains(employee)){
+                              employeeArray.add(employee!!)
+                          }
+                      }
+                    }
+                    adapter.searchDataList(employeeArray)
+                }
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(requireActivity(),error.toString(),Toast.LENGTH_SHORT).show()
+            }
+
+        })
+    }
+    fun searchList(text:String){
+        val search = ArrayList<EmployeeModel>()
+        for (employee in employeeArray){
+            if (employee.name?.lowercase()?.contains(text.lowercase())==true){
+                search.add(employee)
+            }
+        }
+        adapter.searchDataList(search)
+    }
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(AdminHomeViewModel::class.java)

@@ -62,8 +62,8 @@ class ProfileFragment : Fragment() {
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
         database.child("User").child(uid).get().addOnSuccessListener {
             activityUtil.setFullScreenLoading(false)
-             binding.fullNameTv.text = it.child("Name").value.toString()
-             binding.phoneNumberTv.text = it.child("Number").value.toString()
+             binding.fullNameTv.text = it.child("name").value.toString()
+             binding.phoneNumberTv.text = it.child("number").value.toString()
         }
 
     }
