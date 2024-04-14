@@ -107,11 +107,11 @@ class LoginInputFragment : Fragment() {
                         Log.d("Tag", "onSuccess" + data.getValue())
                         if (data.exists()) {
                             if (data.hasChild("Admin")||data.hasChild("Employee")) {
-                                activityUtil.setFullScreenLoading(false)
                                 Handler().postDelayed({
                                     sharedPref.setAuthToken(uid)
                                     activity?.let {
                                         startActivity(MainActivity.getLaunchIntent(it))
+                                        activityUtil.setFullScreenLoading(false)
                                     }
                                 }, 3000)
                             }

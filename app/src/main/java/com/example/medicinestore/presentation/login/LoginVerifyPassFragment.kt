@@ -21,7 +21,6 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 
 class LoginVerifyPassFragment : Fragment() {
-    val actionVarify = Navigation.createNavigateOnClickListener(R.id.action_loginVerifyPassFragment_to_loginChangePassFragment)
     private lateinit var viewModel: LoginViewModel
     private lateinit var binding: FragmentLoginVerifyPassBinding
     override fun onCreateView(

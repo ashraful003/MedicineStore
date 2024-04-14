@@ -16,7 +16,6 @@ import com.jakewharton.rxbinding2.widget.RxTextView
 import io.reactivex.Observable
 
 class LoginChangePassFragment : Fragment() {
-val actionSignIn = Navigation.createNavigateOnClickListener(R.id.action_loginChangePassFragment_to_loginInputFragment)
     private lateinit var binding:FragmentLoginChangePassBinding
     private lateinit var viewModel: LoginViewModel
     override fun onCreateView(

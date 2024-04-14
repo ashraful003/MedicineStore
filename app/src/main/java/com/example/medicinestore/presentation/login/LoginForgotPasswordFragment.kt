@@ -1,6 +1,7 @@
 package com.example.medicinestore.presentation.login
 
 import android.annotation.SuppressLint
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Patterns
 import androidx.fragment.app.Fragment
@@ -14,12 +15,20 @@ import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentLoginForgotPasswordBinding
+import com.example.medicinestore.presentation.MainActivity
+import com.example.medicinestore.util.MSActivityUtil
+import com.google.firebase.auth.FirebaseAuth
 import com.jakewharton.rxbinding2.widget.RxTextView
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class LoginForgotPasswordFragment : Fragment() {
-    val actionVerify = Navigation.createNavigateOnClickListener(R.id.action_forgotPasswordFragment_to_loginVerifyPassFragment)
+    @Inject
+    lateinit var activityUtil: MSActivityUtil
     private lateinit var binding: FragmentLoginForgotPasswordBinding
     private lateinit var viewModel : LoginViewModel
+    private lateinit var auth:FirebaseAuth
     @SuppressLint("CheckResult")
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,6 +36,8 @@ class LoginForgotPasswordFragment : Fragment() {
     ): View? {
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_login_forgot_password, container, false)
         binding.model = this
+        auth = FirebaseAuth.getInstance()
+        activityUtil.hideBottomNavigation(true)
         val emailStream = RxTextView.textChanges(binding.emailEt)
             .skipInitialValue()
             .map { email ->
@@ -48,6 +59,26 @@ class LoginForgotPasswordFragment : Fragment() {
         binding.backIv.setOnClickListener {
             findNavController().popBackStack()
         }
+        binding.btnNext.setOnClickListener {
+            activityUtil.setFullScreenLoading(true)
+            auth.sendPasswordResetEmail(binding.emailEt.text.toString().trim())
+                .addOnCompleteListener(requireActivity()){
+                    activityUtil.setFullScreenLoading(false)
+                    if (it.isSuccessful){
+                        val builder = AlertDialog.Builder(context)
+                        builder.setTitle("Successful")
+                        builder.setMessage("Check your email to reset password")
+                        builder.setCancelable(false)
+                        builder.setPositiveButton("Done") { _, _ ->
+                            activity?.let {
+                               findNavController().navigate(R.id.action_forgotPasswordFragment2_to_loginInputFragment)
+                            }
+                        }
+                        val alartDialog = builder.create()
+                        alartDialog.show()
+                    }
+                    }
+                }
         return binding.root
     }
 

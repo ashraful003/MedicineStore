@@ -200,7 +200,6 @@
                     android:enabled="false"
                     android:padding="@dimen/padding_11"
                     android:text="@string/submit"
-                    android:onClick="@{model.actionVarify}"
                     android:textSize="@dimen/text_size"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
