@@ -6,7 +6,7 @@ data class EmployeeModel(
     val name:String? = null,
     val email:String? = null,
     val post:String? = null,
-    val phone:String? = null,
+    val number:String? = null,
     val location:String? = null,
     val dob : String? = null,
     val password:String? = null,

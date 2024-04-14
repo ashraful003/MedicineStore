@@ -12,6 +12,7 @@ import com.example.medicinestore.R
 
 class EmployeeAdapter(private var data: ArrayList<EmployeeModel>, internal var context: Context) :
     RecyclerView.Adapter<EmployeeAdapter.ViewHolder>() {
+    var onItemClick:((EmployeeModel) -> Unit)? = null
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView
         val post: TextView
@@ -45,6 +46,9 @@ class EmployeeAdapter(private var data: ArrayList<EmployeeModel>, internal var c
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
+        holder.card.setOnClickListener {
+            onItemClick?.invoke(item)
+        }
     }
     fun searchDataList(searchListData:List<EmployeeModel>){
         data = searchListData as ArrayList<EmployeeModel>

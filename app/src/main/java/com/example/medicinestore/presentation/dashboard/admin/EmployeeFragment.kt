@@ -63,6 +63,20 @@ class EmployeeFragment : Fragment() {
         employeeArray = arrayListOf()
         adapter = EmployeeAdapter(employeeArray, requireContext())
         binding.employeeListRecycle.adapter = adapter
+
+        adapter.onItemClick = {
+            val bundle = Bundle()
+            bundle.putString("id",it.id)
+            bundle.putString("name",it.name)
+            bundle.putString("email",it.email)
+            bundle.putString("post",it.post)
+            bundle.putString("number",it.number)
+            bundle.putString("location",it.location)
+            bundle.putString("dob",it.dob)
+            bundle.putString("image",it.image)
+            findNavController().navigate(R.id.action_employeeFragment_to_employeeDetailsFragment,bundle)
+        }
+
         return binding.root
     }
 

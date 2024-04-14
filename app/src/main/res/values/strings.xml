@@ -89,5 +89,15 @@
     <string name="about_medicine">About Medicine</string>
     <string name="update_medicine_info">Update Medicine Info</string>
     <string name="cancelled">Cancelled</string>
+    <string name="about_employee">About Employee</string>
+    <string name="employee_email">Employee Email</string>
+    <string name="dob">Dob :</string>
+    <string name="employee_birthday">Employee birthday</string>
+    <string name="post">Post :</string>
+    <string name="post_name">Post name</string>
+    <string name="phone">Phone :</string>
+    <string name="employee_number">Employee Number</string>
+    <string name="address">Address:</string>
+    <string name="employee_address">Employee Address</string>
 
 </resources>

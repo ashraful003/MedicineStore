@@ -93,6 +93,9 @@
         <action
             android:id="@+id/action_employeeFragment_to_addEmployeeFragment"
             app:destination="@id/addEmployeeFragment" />
+        <action
+            android:id="@+id/action_employeeFragment_to_employeeDetailsFragment"
+            app:destination="@id/employeeDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addEmployeeFragment"
@@ -143,5 +146,14 @@
         <action
             android:id="@+id/action_updateMedicineInfoFragment_to_medicineListFragment"
             app:destination="@id/medicineListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/employeeDetailsFragment"
+        android:name="com.example.medicinestore.presentation.dashboard.admin.EmployeeDetailsFragment"
+        android:label="fragment_employee_details"
+        tools:layout="@layout/fragment_employee_details" >
+        <action
+            android:id="@+id/action_employeeDetailsFragment_to_employeeFragment"
+            app:destination="@id/employeeFragment" />
     </fragment>
 </navigation>
