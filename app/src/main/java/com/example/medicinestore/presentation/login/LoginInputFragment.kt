@@ -90,43 +90,35 @@ class LoginInputFragment : Fragment() {
         binding.btnSignIn.setOnClickListener {
             val email: String = binding.emailEt.text.toString().trim()
             val password: String = binding.passwordEt.text.toString().trim()
-            if (email.isNotEmpty() && password.isNotEmpty()) {
-                login(email, password)
-            } else {
-                Toast.makeText(activity, it.toString(), Toast.LENGTH_SHORT).show()
-            }
-
+            login(email, password)
         }
         return binding.root
     }
 
     @RequiresApi(Build.VERSION_CODES.O)
     private fun login(email: String, password: String) {
-        auth.signInWithEmailAndPassword(email, password)
-            .addOnSuccessListener(OnSuccessListener<AuthResult> {
-                loadData()
-            })
-    }
-
-    @RequiresApi(Build.VERSION_CODES.O)
-    private fun loadData() {
-        val uid = FirebaseAuth.getInstance().currentUser!!.uid
-        database = FirebaseDatabase.getInstance().getReference("User").child(uid)
-        database.get().addOnSuccessListener { data ->
-            Log.d("Tag", "onSuccess" + data.getValue())
-            if (data.exists()) {
-                if (data.hasChild("Admin")) {
-                    activityUtil.setFullScreenLoading(true)
-                    Handler().postDelayed({
-                        sharedPref.setAuthToken(uid)
-                        activity?.let {
-                            startActivity(MainActivity.getLaunchIntent(it))
+        activityUtil.setFullScreenLoading(true)
+        if (email.isNotEmpty() && password.isNotEmpty()) {
+            auth.signInWithEmailAndPassword(email, password)
+                .addOnSuccessListener(OnSuccessListener<AuthResult> {
+                    val uid = FirebaseAuth.getInstance().currentUser!!.uid
+                    database = FirebaseDatabase.getInstance().getReference("User").child(uid)
+                    database.get().addOnSuccessListener { data ->
+                        Log.d("Tag", "onSuccess" + data.getValue())
+                        if (data.exists()) {
+                            if (data.hasChild("Admin")||data.hasChild("Employee")) {
+                                activityUtil.setFullScreenLoading(false)
+                                Handler().postDelayed({
+                                    sharedPref.setAuthToken(uid)
+                                    activity?.let {
+                                        startActivity(MainActivity.getLaunchIntent(it))
+                                    }
+                                }, 3000)
+                            }
                         }
-                    }, 3000)
-                }
-            }
+                    }
+                })
         }
-
     }
 
     private fun isEnableSignInButton(isEnable: Boolean) {

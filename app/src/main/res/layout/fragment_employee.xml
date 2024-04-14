@@ -68,7 +68,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.appcompat.widget.SearchView
+            <SearchView
                 android:id="@+id/searchMedicine"
                 android:layout_width="@dimen/layout_315"
                 android:layout_height="@dimen/height_40"

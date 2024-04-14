@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -16,6 +17,12 @@ import androidx.navigation.fragment.findNavController
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentAddEmployeeBinding
 import com.example.medicinestore.util.MSActivityUtil
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.jakewharton.rxbinding2.widget.RxTextView
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Observable
@@ -26,11 +33,12 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class AddEmployeeFragment : Fragment() {
-    val actionEmployee = Navigation.createNavigateOnClickListener(R.id.action_addEmployeeFragment_to_employeeFragment)
     @Inject
     lateinit var activityUtil: MSActivityUtil
     private lateinit var viewModel:AdminHomeViewModel
     private lateinit var binding:FragmentAddEmployeeBinding
+    lateinit var auth: FirebaseAuth
+    lateinit var database:DatabaseReference
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -43,6 +51,8 @@ class AddEmployeeFragment : Fragment() {
             findNavController().popBackStack()
         }
         isEnableContinueBTN(false)
+        auth = Firebase.auth
+        database = Firebase.database.reference
         val fullNameStream = RxTextView.textChanges(binding.eFullNameEt)
             .skipInitialValue()
             .map { name ->
@@ -102,7 +112,7 @@ class AddEmployeeFragment : Fragment() {
                 datePicker.setOnDateSetListener { _, year, month, dayOfMonth ->
                     val selectedDate = Calendar.getInstance()
                     selectedDate.set(year,month,dayOfMonth)
-                    val dateFormat = SimpleDateFormat("dd/mm/yyyy", Locale.US)
+                    val dateFormat = SimpleDateFormat("dd/MM/yyyy", Locale.US)
                     val formattedDate = dateFormat.format(selectedDate.time)
                     binding.eDobEt.setText(formattedDate)
                 }
@@ -144,9 +154,54 @@ class AddEmployeeFragment : Fragment() {
             isEnableContinueBTN(isValid)
         }
 
+        binding.eContinueButton.setOnClickListener {
+            val email = binding.eEmailEt.text.toString().trim()
+            val password = binding.ePasswordEt.text.toString().trim()
+            if (email.isNotEmpty() && password.isNotEmpty()){
+                auth.createUserWithEmailAndPassword(email,password)
+                    .addOnCompleteListener(requireActivity()){
+                        if (it.isSuccessful){
+                            Toast.makeText(activity,getString(R.string.auth_massage),Toast.LENGTH_SHORT).show()
+                            saveData()
+                            findNavController().navigate(R.id.action_addEmployeeFragment_to_employeeFragment)
+                        }
+                        else{
+                            Toast.makeText(activity, it.exception?.message, Toast.LENGTH_SHORT).show()
+                        }
+                    }
+            }
+
+        }
 
         return binding.root
     }
+
+    private fun saveData() {
+        activityUtil.setFullScreenLoading(true)
+        database = FirebaseDatabase.getInstance().getReference("User")
+        val userId = FirebaseAuth.getInstance().currentUser!!.uid
+        val employee = HashMap<String, String>()
+        employee.put("uid", userId)
+        employee.put("name", binding.eFullNameEt.text.toString().trim())
+        employee.put("email", binding.eEmailEt.text.toString().trim())
+        employee.put("post", binding.ePostEt.text.toString().trim())
+        employee.put("number", binding.ePhoneNumberEt.text.toString().trim())
+        employee.put("location", binding.eLocationEt.text.toString().trim())
+        employee.put("dob", binding.eDobEt.text.toString().trim())
+        employee.put("password", binding.ePasswordEt.text.toString().trim())
+        employee.put("Employee", "1")
+        database.child(userId).setValue(employee)
+        activityUtil.setFullScreenLoading(false)
+        binding.eFullNameEt.text?.clear()
+        binding.eEmailEt.text?.clear()
+        binding.ePostEt.text?.clear()
+        binding.ePhoneNumberEt.text?.clear()
+        binding.eLocationEt.text?.clear()
+        binding.eDobEt.text?.clear()
+        binding.ePasswordEt.text?.clear()
+        binding.eConfirmPassEt.text?.clear()
+    }
+
     private fun isEnableContinueBTN(isEnable:Boolean){
         if (isEnable){
             binding.eContinueButton.isEnabled = true

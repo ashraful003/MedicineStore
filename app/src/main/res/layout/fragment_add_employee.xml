@@ -255,7 +255,6 @@
                     android:layout_marginTop="@dimen/button_top_margin"
                     android:layout_marginBottom="@dimen/button_bottom_margin"
                     android:backgroundTint="@color/colorPrimary"
-                    android:onClick="@{model.actionEmployee}"
                     android:padding="@dimen/button_padding"
                     android:text="@string/create_button_text"
                     android:textSize="@dimen/text_size"

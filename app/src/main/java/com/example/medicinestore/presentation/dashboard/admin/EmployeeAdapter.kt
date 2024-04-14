@@ -4,6 +4,7 @@ import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
@@ -13,20 +14,21 @@ class EmployeeAdapter(private var data: ArrayList<EmployeeModel>, internal var c
     RecyclerView.Adapter<EmployeeAdapter.ViewHolder>() {
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView
-        val email: TextView
-        val delete: TextView
+        val post: TextView
+        val image: ImageView
         val card: CardView
 
         init {
-            name = itemView.findViewById(R.id.employeeNameTv)
-            email = itemView.findViewById(R.id.employeeEmailTv)
-            delete = itemView.findViewById(R.id.employeeDeleteBtn)
-            card = itemView.findViewById(R.id.employeeItemCard)
+            name = itemView.findViewById(R.id.cardEmpName)
+            post = itemView.findViewById(R.id.cardEmpPost)
+            image = itemView.findViewById(R.id.cardImage)
+            card = itemView.findViewById(R.id.empCard)
         }
 
         fun bind(employee: EmployeeModel) {
             name.text = employee.name
-            email.text = employee.email
+            post.text = employee.post
+         //  image.setImageResource(employee.image!!.toInt())
         }
     }
 
@@ -43,5 +45,9 @@ class EmployeeAdapter(private var data: ArrayList<EmployeeModel>, internal var c
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
+    }
+    fun searchDataList(searchListData:List<EmployeeModel>){
+        data = searchListData as ArrayList<EmployeeModel>
+        notifyDataSetChanged()
     }
 }
