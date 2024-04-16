@@ -99,5 +99,7 @@
     <string name="employee_number">Employee Number</string>
     <string name="address">Address:</string>
     <string name="employee_address">Employee Address</string>
+    <string name="hint_medicine_name">Medicine Name</string>
+    <string name="hint_company_name">Company Name</string>
 
 </resources>
