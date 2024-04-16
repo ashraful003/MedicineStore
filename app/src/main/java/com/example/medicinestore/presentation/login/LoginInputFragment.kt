@@ -106,15 +106,13 @@ class LoginInputFragment : Fragment() {
                     database.get().addOnSuccessListener { data ->
                         Log.d("Tag", "onSuccess" + data.getValue())
                         if (data.exists()) {
-                            if (data.hasChild("Admin")||data.hasChild("Employee")) {
-                                Handler().postDelayed({
-                                    sharedPref.setAuthToken(uid)
-                                    activity?.let {
-                                        startActivity(MainActivity.getLaunchIntent(it))
-                                        activityUtil.setFullScreenLoading(false)
-                                    }
-                                }, 3000)
-                            }
+                            Handler().postDelayed({
+                                sharedPref.setAuthToken(uid)
+                                activity?.let {
+                                    startActivity(MainActivity.getLaunchIntent(it))
+                                    activityUtil.setFullScreenLoading(false)
+                                }
+                            }, 3000)
                         }
                     }
                 })

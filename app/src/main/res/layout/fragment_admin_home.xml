@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
 
@@ -14,155 +15,216 @@
         android:layout_height="match_parent"
         android:background="@color/background">
 
-        <GridLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="20dp"
-            android:columnCount="2"
-            android:paddingBottom="@dimen/padding_20"
-            android:rowCount="5">
+            android:layout_height="match_parent">
+            <GridLayout
+                android:id="@+id/gridLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:columnCount="2"
+                android:paddingBottom="@dimen/padding_20"
+                android:rowCount="5"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/addMedicine"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/height_117"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="@dimen/margin_11"
-                android:layout_marginTop="@dimen/margin_top_12"
-                android:onClick="@{model.actionAddMedicin}"
-                android:backgroundTint="@color/black_200"
-                app:cardCornerRadius="@dimen/corner_radius_10">
-
-                <LinearLayout
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/addMedicine"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_height="@dimen/height_117"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_marginLeft="@dimen/margin_11"
+                    android:layout_marginTop="@dimen/margin_top_12"
+                    android:backgroundTint="@color/black_200"
+                    android:onClick="@{model.actionAddMedicin}"
+                    app:cardCornerRadius="@dimen/corner_radius_10">
 
-                    <ImageView
-                        android:layout_width="@dimen/width_40"
-                        android:layout_height="@dimen/height_40"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_medicine" />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/add_medicine"
-                        android:textColor="@color/dash_board_text_color"
-                        android:textSize="@dimen/text_size_11" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/medicineList"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/height_117"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="@dimen/margin_left_13"
-                android:layout_marginTop="@dimen/margin_top_12"
-                android:layout_marginRight="@dimen/margin_11"
-                android:onClick="@{model.actionMedicinList}"
-                android:backgroundTint="@color/black_200"
-                app:cardCornerRadius="@dimen/corner_radius_10">
+                        <ImageView
+                            android:layout_width="@dimen/width_40"
+                            android:layout_height="@dimen/height_40"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/ic_medicine" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/add_medicine"
+                            android:textColor="@color/dash_board_text_color"
+                            android:textSize="@dimen/text_size_11" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/medicineList"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_height="@dimen/height_117"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_marginLeft="@dimen/margin_left_13"
+                    android:layout_marginTop="@dimen/margin_top_12"
+                    android:layout_marginRight="@dimen/margin_11"
+                    android:backgroundTint="@color/black_200"
+                    android:onClick="@{model.actionMedicinList}"
+                    app:cardCornerRadius="@dimen/corner_radius_10">
 
-                    <ImageView
-                        android:layout_width="@dimen/width_40"
-                        android:layout_height="@dimen/height_40"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_medicine" />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/medicine_list"
-                        android:textColor="@color/dash_board_text_color"
-                        android:textSize="@dimen/text_size_11" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/expireMedicine"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/height_117"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="@dimen/margin_11"
-                android:layout_marginTop="@dimen/margin_top_12"
-                android:onClick="@{model.actionExpireMedicin}"
-                android:backgroundTint="@color/black_200"
-                app:cardCornerRadius="@dimen/corner_radius_10">
+                        <ImageView
+                            android:layout_width="@dimen/width_40"
+                            android:layout_height="@dimen/height_40"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/ic_medicine" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/medicine_list"
+                            android:textColor="@color/dash_board_text_color"
+                            android:textSize="@dimen/text_size_11" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/expireMedicine"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_height="@dimen/height_117"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_marginLeft="@dimen/margin_11"
+                    android:layout_marginTop="@dimen/margin_top_12"
+                    android:backgroundTint="@color/black_200"
+                    android:onClick="@{model.actionExpireMedicin}"
+                    app:cardCornerRadius="@dimen/corner_radius_10">
 
-                    <ImageView
-                        android:layout_width="@dimen/width_40"
-                        android:layout_height="@dimen/height_40"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_medicine" />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/expire_medicine"
-                        android:textColor="@color/dash_board_text_color"
-                        android:textSize="@dimen/text_size_11" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:gravity="center"
+                        android:orientation="vertical">
 
-            <androidx.cardview.widget.CardView
-                android:id="@+id/employee"
-                android:layout_width="wrap_content"
-                android:layout_height="@dimen/height_117"
-                android:layout_rowWeight="1"
-                android:layout_columnWeight="1"
-                android:layout_marginLeft="@dimen/margin_left_13"
-                android:layout_marginTop="@dimen/margin_top_12"
-                android:layout_marginRight="@dimen/margin_11"
-                android:onClick="@{model.actionEmployee}"
-                android:backgroundTint="@color/black_200"
-                app:cardCornerRadius="@dimen/corner_radius_10">
+                        <ImageView
+                            android:layout_width="@dimen/width_40"
+                            android:layout_height="@dimen/height_40"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/ic_medicine" />
 
-                <LinearLayout
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/expire_medicine"
+                            android:textColor="@color/dash_board_text_color"
+                            android:textSize="@dimen/text_size_11" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+
+                <androidx.cardview.widget.CardView
+                    android:id="@+id/employee"
                     android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_vertical|center_horizontal"
-                    android:gravity="center"
-                    android:orientation="vertical">
+                    android:layout_height="@dimen/height_117"
+                    android:layout_rowWeight="1"
+                    android:layout_columnWeight="1"
+                    android:layout_marginLeft="@dimen/margin_left_13"
+                    android:layout_marginTop="@dimen/margin_top_12"
+                    android:layout_marginRight="@dimen/margin_11"
+                    android:backgroundTint="@color/black_200"
+                    android:onClick="@{model.actionEmployee}"
+                    app:cardCornerRadius="@dimen/corner_radius_10">
 
-                    <ImageView
-                        android:layout_width="@dimen/width_40"
-                        android:layout_height="@dimen/height_40"
-                        android:layout_gravity="center_horizontal"
-                        android:src="@drawable/ic_employee" />
-
-                    <TextView
+                    <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:text="@string/employee"
-                        android:textColor="@color/dash_board_text_color"
-                        android:textSize="@dimen/text_size_11" />
-                </LinearLayout>
-            </androidx.cardview.widget.CardView>
-        </GridLayout>
+                        android:layout_gravity="center_vertical|center_horizontal"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <ImageView
+                            android:layout_width="@dimen/width_40"
+                            android:layout_height="@dimen/height_40"
+                            android:layout_gravity="center_horizontal"
+                            android:src="@drawable/ic_employee" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:text="@string/employee"
+                            android:textColor="@color/dash_board_text_color"
+                            android:textSize="@dimen/text_size_11" />
+                    </LinearLayout>
+                </androidx.cardview.widget.CardView>
+            </GridLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/recycleView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_20"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/gridLayout">
+
+                <TextView
+                    android:id="@+id/titleTv"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:text="@string/medicine_list"
+                    android:textColor="@color/page_title_text_color"
+                    android:textSize="@dimen/title_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <SearchView
+                    android:id="@+id/userSearchMedicine"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/height_40"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/margin_40"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:layout_marginRight="@dimen/margin_40"
+                    android:background="@drawable/search_fild"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/titleTv" />
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_5"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_5"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/userSearchMedicine">
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/userMedicineRecycle"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginTop="8dp"
+                        tools:listitem="@layout/user_medicine_item" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
 </layout>
