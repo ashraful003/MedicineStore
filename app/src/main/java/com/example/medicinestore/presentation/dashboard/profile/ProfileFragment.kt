@@ -64,6 +64,7 @@ class ProfileFragment : Fragment() {
             activityUtil.setFullScreenLoading(false)
              binding.fullNameTv.text = it.child("name").value.toString()
              binding.phoneNumberTv.text = it.child("number").value.toString()
+            Glide.with(this).load(it.child("image").value.toString()).into(binding.profileIv)
         }
 
     }

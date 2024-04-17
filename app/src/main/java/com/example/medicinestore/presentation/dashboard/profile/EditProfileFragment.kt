@@ -2,6 +2,7 @@ package com.example.medicinestore.presentation.dashboard.profile
 
 import android.annotation.SuppressLint
 import android.app.DatePickerDialog
+import android.net.Uri
 import androidx.lifecycle.ViewModelProvider
 import android.os.Bundle
 import android.util.Patterns
@@ -11,8 +12,11 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResultCallback
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentEditProfileBinding
 import com.example.medicinestore.util.MSActivityUtil
@@ -21,6 +25,7 @@ import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.ktx.storage
 import com.jakewharton.rxbinding2.widget.RxTextView
 import dagger.hilt.android.AndroidEntryPoint
 import java.text.SimpleDateFormat
@@ -36,6 +41,8 @@ class EditProfileFragment : Fragment() {
     private lateinit var viewModel: EditProfileViewModel
     private var uid = FirebaseAuth.getInstance().currentUser!!.uid
     private lateinit var database:DatabaseReference
+    private var storageRef = Firebase.storage
+    private lateinit var uri: Uri
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -103,6 +110,7 @@ class EditProfileFragment : Fragment() {
                 binding.dobEt.text.toString().trim()
             )
         }
+        uploadImage()
         return binding.root
     }
 
@@ -127,7 +135,41 @@ class EditProfileFragment : Fragment() {
         }
 
     }
-
+    private fun uploadImage() {
+        val galleryImage = registerForActivityResult(
+            ActivityResultContracts.GetContent(),
+            ActivityResultCallback {
+                if (it != null) {
+                    uri = it
+                    activityUtil.setFullScreenLoading(true)
+                    storageRef.getReference("images").child(System.currentTimeMillis().toString())
+                        .putFile(uri)
+                        .addOnSuccessListener {task ->
+                            task.metadata!!.reference!!.downloadUrl
+                                .addOnSuccessListener{
+                                    val user = mapOf<String,String>(
+                                        "image" to it.toString(),
+                                    )
+                                    val databaseReference = FirebaseDatabase.getInstance().getReference("User")
+                                    databaseReference.child(uid).updateChildren(user)
+                                        .addOnSuccessListener{
+                                            activityUtil.setFullScreenLoading(false)
+                                            showToData()
+                                            Toast.makeText(activity,"Image Uploaded Successfully", Toast.LENGTH_SHORT).show()
+                                        }.addOnFailureListener {
+                                            Toast.makeText(activity,it.toString(), Toast.LENGTH_SHORT).show()
+                                        }
+                                }.addOnFailureListener {
+                                    Toast.makeText(activity,it.toString(), Toast.LENGTH_SHORT).show()
+                                }
+                        }
+                }
+            }
+        )
+        binding.imageView.setOnClickListener {
+            galleryImage.launch("image/*")
+        }
+    }
     private fun showToData(){
         activityUtil.setFullScreenLoading(true)
         database.child("User").child(uid).get().addOnSuccessListener {
@@ -136,6 +178,7 @@ class EditProfileFragment : Fragment() {
             binding.addressEt.setText(it.child("location").value.toString())
             binding.phoneNumberEt.setText(it.child("number").value.toString())
             binding.dobEt.setText(it.child("dob").value.toString())
+            Glide.with(this).load(it.child("image").value.toString()).into(binding.imageView)
         }
     }
 

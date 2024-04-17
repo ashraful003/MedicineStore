@@ -182,6 +182,7 @@ class AddEmployeeFragment : Fragment() {
         val userId = FirebaseAuth.getInstance().currentUser!!.uid
         val employee = HashMap<String, String>()
         employee.put("uid", userId)
+        employee.put("image","")
         employee.put("name", binding.eFullNameEt.text.toString().trim())
         employee.put("email", binding.eEmailEt.text.toString().trim())
         employee.put("post", binding.ePostEt.text.toString().trim())
