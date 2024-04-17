@@ -176,6 +176,7 @@ class LoginCreateFragment : Fragment() {
         user.put("location", binding.locationEt.text.toString().trim())
         user.put("dob", binding.dobEt.text.toString().trim())
         user.put("password", binding.passwordEt.text.toString().trim())
+        user.put("image","")
         user.put("User", "1")
         database.child(userId).setValue(user)
         activityUtil.setFullScreenLoading(false)
