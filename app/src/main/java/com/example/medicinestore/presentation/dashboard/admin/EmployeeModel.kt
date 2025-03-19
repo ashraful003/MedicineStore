@@ -8,8 +8,6 @@ data class EmployeeModel(
     val post:String? = null,
     val number:String? = null,
     val location:String? = null,
-    val dob : String? = null,
-    val password:String? = null,
-    val conformPassword:String? = null
+    val dob : String? = null
 
 )

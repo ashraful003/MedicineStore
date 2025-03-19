@@ -12,21 +12,15 @@ import com.example.medicinestore.R
 
 class ExpireMedicineAdapter(private var data:ArrayList<Medicine>, internal var context: Context):RecyclerView.Adapter<ExpireMedicineAdapter.ViewHolder>() {
     var onItemClick:((Medicine) ->Unit)? = null
-    var onDeleteItem:((Medicine) -> Unit)? = null
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView){
         val name:TextView
-        val company:TextView
-        val delete:TextView
         val card:CardView
         init {
             name = itemView.findViewById(R.id.expireMedicineItemName)
-            company = itemView.findViewById(R.id.expireMedicineItemCompany)
-            delete = itemView.findViewById(R.id.itemDeleteBtn)
             card = itemView.findViewById(R.id.expireMedicineItemCard)
         }
         fun bind(medicine: Medicine){
             name.text = medicine.name
-            company.text = medicine.company
         }
     }
 
@@ -47,9 +41,6 @@ class ExpireMedicineAdapter(private var data:ArrayList<Medicine>, internal var c
         holder.bind(item)
         holder.card.setOnClickListener {
             onItemClick?.invoke(item)
-        }
-        holder.delete.setOnClickListener {
-            onDeleteItem?.invoke(item)
         }
     }
 }

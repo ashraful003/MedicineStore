@@ -1,6 +1,5 @@
 package com.example.medicinestore.presentation.dashboard.medicin
 
-import android.app.AlertDialog
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -11,7 +10,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.GridLayoutManager
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentExpireMedicinBinding
 import com.example.medicinestore.util.MSActivityUtil
@@ -47,7 +46,7 @@ class ExpireMedicinFragment : Fragment() {
         binding.backIv.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.expireMedicineRecycle.layoutManager = LinearLayoutManager(activity)
+        binding.expireMedicineRecycle.layoutManager = GridLayoutManager(activity,2)
         userArray = arrayListOf()
         database = Firebase.database.reference
         adapter = ExpireMedicineAdapter(userArray,this.requireContext())
@@ -76,33 +75,7 @@ class ExpireMedicinFragment : Fragment() {
             bundle.putString("details",it.details)
             findNavController().navigate(R.id.action_expireMedicineFragment_to_medicineDetailsFragment,bundle)
         }
-        adapter.onDeleteItem = {
-            deleteMedicine(it)
-        }
         return binding.root
-    }
-    private fun deleteMedicine(medicine: Medicine) {
-       val builder = AlertDialog.Builder(context)
-        builder.setTitle("Delete Medicine")
-        builder.setMessage("Are you sure!")
-        builder.setCancelable(false)
-        builder.setPositiveButton("Yes"){_,_ ->
-        activityUtil.setFullScreenLoading(true)
-            medicine.medicineId?.let {medicineId ->
-                FirebaseDatabase.getInstance().getReference("Medicine").child(medicineId).ref.removeValue()
-                    .addOnSuccessListener {
-                        loadedMedicine()
-                        activityUtil.setFullScreenLoading(false)
-                    }.addOnFailureListener {
-                        Toast.makeText(context,it.message.toString(),Toast.LENGTH_SHORT).show()
-                    }
-            }
-        }
-        builder.setNegativeButton("No"){_,_ ->
-            Toast.makeText(context,getString(R.string.cancelled),Toast.LENGTH_SHORT).show()
-        }
-        val alertDialog = builder.create()
-        alertDialog.show()
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

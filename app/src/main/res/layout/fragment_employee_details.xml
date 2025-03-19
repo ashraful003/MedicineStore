@@ -41,72 +41,23 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/backIv">
 
-                <TextView
-                    android:id="@+id/titleTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="@string/about_employee"
-                    android:textColor="@color/page_title_text_color"
-                    android:textSize="@dimen/title_text_size"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/empProfileCv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                   android:layout_marginTop="@dimen/margin_20"
+                    android:layout_marginTop="@dimen/margin_20"
                     app:cardCornerRadius="@dimen/margin_10"
-                    app:layout_constraintBottom_toTopOf="@+id/container1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/titleTv">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <ImageView
                         android:id="@+id/profileIv"
-                        android:layout_width="@dimen/layout_size_68"
-                        android:layout_height="@dimen/layout_size_68"
-                        android:background="@color/profile_image_background"
-                        tools:srcCompat="@tools:sample/avatars" />
+                        android:layout_width="@dimen/layout_85"
+                        android:layout_height="@dimen/layout_85"
+                        android:src="@drawable/human" />
                 </androidx.cardview.widget.CardView>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/container1"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_5"
-                    android:layout_marginTop="@dimen/margin_30"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/empProfileCv">
-
-                    <TextView
-                        android:id="@+id/empName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/name"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/empNameTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_5"
-                        android:hint="@string/employee_name"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toRightOf="@id/empName"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container2"
@@ -114,56 +65,25 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_5"
                     android:layout_marginTop="@dimen/margin_5"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
+                    android:paddingTop="@dimen/padding_10"
+                    android:paddingBottom="@dimen/padding_10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/container1">
+                    app:layout_constraintTop_toBottomOf="@id/empProfileCv">
 
                     <TextView
-                        android:id="@+id/empEmail"
+                        android:id="@+id/empNameTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/email"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
-
-                    <TextView
-                        android:id="@+id/empEmailTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
                         android:layout_marginLeft="@dimen/margin_5"
-                        android:hint="@string/employee_email"
+                        android:paddingTop="@dimen/padding_10"
+                        android:paddingBottom="@dimen/padding_10"
+                        android:hint="@string/employee_name"
+                        android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toRightOf="@id/empEmail"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/container3"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_5"
-                    android:layout_marginTop="@dimen/margin_5"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/container2">
-
-                    <TextView
-                        android:id="@+id/empDob"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/dob"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -172,120 +92,79 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_5"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:paddingTop="@dimen/padding_10"
+                        android:paddingBottom="@dimen/padding_10"
                         android:hint="@string/employee_birthday"
+                        android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toRightOf="@id/empDob"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/container4"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_5"
-                    android:layout_marginTop="@dimen/margin_5"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/container3">
-
-                    <TextView
-                        android:id="@+id/empPost"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/post"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/empNameTv" />
 
                     <TextView
                         android:id="@+id/empPostTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_5"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:paddingTop="@dimen/padding_10"
+                        android:paddingBottom="@dimen/padding_10"
                         android:hint="@string/post_name"
+                        android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toRightOf="@id/empPost"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/container5"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_5"
-                    android:layout_marginTop="@dimen/margin_5"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/container4">
-
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/empDobTv"/>
                     <TextView
-                        android:id="@+id/empPhone"
+                        android:id="@+id/empEmailTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="@string/phone"
+                        android:layout_marginLeft="@dimen/margin_5"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:paddingTop="@dimen/padding_10"
+                        android:paddingBottom="@dimen/padding_10"
+                        android:hint="@string/employee_email"
+                        android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/empPostTv"/>
 
                     <TextView
                         android:id="@+id/empPhoneTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_5"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:paddingTop="@dimen/padding_10"
+                        android:paddingBottom="@dimen/padding_10"
                         android:hint="@string/employee_number"
+                        android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toRightOf="@id/empPhone"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/container6"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_5"
-                    android:layout_marginTop="@dimen/margin_5"
-                    android:paddingTop="10dp"
-                    android:paddingBottom="10dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/container5">
-
-                    <TextView
-                        android:id="@+id/empLocation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/address"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toBottomOf="@id/empEmailTv" />
 
                     <TextView
                         android:id="@+id/empLocationTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginLeft="@dimen/margin_5"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:paddingTop="@dimen/padding_10"
+                        android:paddingBottom="@dimen/padding_10"
                         android:hint="@string/employee_address"
+                        android:textAlignment="center"
                         android:textColor="@color/black"
                         android:textSize="@dimen/text_size"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toRightOf="@id/empLocation"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/empPhoneTv"/>
                 </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>

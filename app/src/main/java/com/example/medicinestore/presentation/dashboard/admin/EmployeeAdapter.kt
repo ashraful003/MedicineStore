@@ -8,28 +8,24 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.medicinestore.R
 
-class EmployeeAdapter(private var data: ArrayList<EmployeeModel>, internal var context: Context) :
-    RecyclerView.Adapter<EmployeeAdapter.ViewHolder>() {
-    var onItemClick:((EmployeeModel) -> Unit)? = null
-    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        val name: TextView
-        val post: TextView
-        val image: ImageView
-        val card: CardView
 
-        init {
-            name = itemView.findViewById(R.id.cardEmpName)
-            post = itemView.findViewById(R.id.cardEmpPost)
-            image = itemView.findViewById(R.id.cardImage)
-            card = itemView.findViewById(R.id.empCard)
-        }
+class EmployeeAdapter(
+    private var data: ArrayList<EmployeeModel>, private val context: Context) : RecyclerView.Adapter<EmployeeAdapter.ViewHolder>() {
+
+    var onItemClick: ((EmployeeModel) -> Unit)? = null
+
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val name: TextView = itemView.findViewById(R.id.employeelistItemName)
+        val post: TextView = itemView.findViewById(R.id.employeelistItemPost)
+        val imageV: ImageView = itemView.findViewById(R.id.employeeListItemImage)
+        val card: CardView = itemView.findViewById(R.id.employeelistItemCard)
 
         fun bind(employee: EmployeeModel) {
             name.text = employee.name
             post.text = employee.post
-         //  image.setImageResource(employee.image!!.toInt())
         }
     }
 
@@ -39,19 +35,18 @@ class EmployeeAdapter(private var data: ArrayList<EmployeeModel>, internal var c
         return ViewHolder(itemView)
     }
 
-    override fun getItemCount(): Int {
-        return data.size
-    }
+    override fun getItemCount(): Int = data.size
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = data[position]
         holder.bind(item)
+        Glide.with(context).load(item.image).into(holder.imageV)
         holder.card.setOnClickListener {
             onItemClick?.invoke(item)
         }
     }
-    fun searchDataList(searchListData:List<EmployeeModel>){
-        data = searchListData as ArrayList<EmployeeModel>
+    fun searchDataList(searchListData: List<EmployeeModel>) {
+        data = ArrayList(searchListData)
         notifyDataSetChanged()
     }
 }

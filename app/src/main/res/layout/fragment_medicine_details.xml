@@ -41,17 +41,15 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/backIv">
 
-                <TextView
-                    android:id="@+id/titleTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="@string/about_medicine"
-                    android:textColor="@color/page_title_text_color"
-                    android:textSize="@dimen/title_text_size"
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/medicineItemImage"
+                    android:layout_width="@dimen/layout_160"
+                    android:layout_height="@dimen/layout_140"
+                    android:layout_margin="@dimen/layout_10"
+                    android:src="@drawable/vaccine"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"/>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/container1"
@@ -59,11 +57,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_30"
                     android:layout_marginLeft="@dimen/margin_5"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
+                    android:paddingBottom="@dimen/padding_10"
+                    android:paddingTop="@dimen/padding_10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/titleTv">
+                    app:layout_constraintTop_toBottomOf="@id/medicineItemImage">
 
                     <TextView
                         android:id="@+id/name"
@@ -95,8 +93,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_5"
                     android:layout_marginLeft="@dimen/margin_5"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
+                    android:paddingBottom="@dimen/padding_10"
+                    android:paddingTop="@dimen/padding_10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/container1">
@@ -131,8 +129,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_5"
                     android:layout_marginLeft="@dimen/margin_5"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
+                    android:paddingBottom="@dimen/padding_10"
+                    android:paddingTop="@dimen/padding_10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/container2">
@@ -167,8 +165,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_5"
                     android:layout_marginLeft="@dimen/margin_5"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
+                    android:paddingBottom="@dimen/padding_10"
+                    android:paddingTop="@dimen/padding_10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/container3">
@@ -203,8 +201,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_5"
                     android:layout_marginLeft="@dimen/margin_5"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
+                    android:paddingBottom="@dimen/padding_10"
+                    android:paddingTop="@dimen/padding_10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/container4">
@@ -239,8 +237,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_5"
                     android:layout_marginLeft="@dimen/margin_5"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
+                    android:paddingBottom="@dimen/padding_10"
+                    android:paddingTop="@dimen/padding_10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/container5">
@@ -275,8 +273,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_5"
                     android:layout_marginLeft="@dimen/margin_5"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
+                    android:paddingBottom="@dimen/padding_10"
+                    android:paddingTop="@dimen/padding_10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/container6">
@@ -311,8 +309,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="@dimen/margin_5"
                     android:layout_marginLeft="@dimen/margin_5"
-                    android:paddingBottom="10dp"
-                    android:paddingTop="10dp"
+                    android:paddingBottom="@dimen/padding_10"
+                    android:paddingTop="@dimen/padding_10"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@id/container7">
