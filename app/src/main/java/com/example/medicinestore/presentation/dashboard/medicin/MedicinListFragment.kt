@@ -12,6 +12,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentMedicinListBinding
@@ -48,7 +49,7 @@ class MedicinListFragment : Fragment() {
         }
          userArray = arrayListOf()
         adapter = MedicineListAdapter(userArray,this.requireContext())
-        binding.medicineListRecycle.layoutManager = LinearLayoutManager(requireContext())
+        binding.medicineListRecycle.layoutManager = GridLayoutManager(activity,2)
         binding.medicineListRecycle.adapter = adapter
         binding.searchMedicine.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
@@ -74,19 +75,6 @@ class MedicinListFragment : Fragment() {
             bundle.putString("column",it.column)
             bundle.putString("details",it.details)
             findNavController().navigate(R.id.action_medicineListFragment_to_medicineDetailsFragment,bundle)
-        }
-        adapter.onUpdateItemClick = {
-            var bundle = Bundle()
-                bundle.putString("id",it.medicineId)
-                bundle.putString("name",it.name)
-                bundle.putString("company",it.company)
-                bundle.putString("details",it.details)
-                bundle.putString("price",it.price)
-                bundle.putString("date",it.date)
-                bundle.putString("self",it.self)
-                bundle.putString("row",it.row)
-                bundle.putString("column",it.column)
-            findNavController().navigate(R.id.action_medicineListFragment_to_updateMedicineInfoFragment,bundle)
         }
         return binding.root
     }

@@ -11,24 +11,18 @@ import com.example.medicinestore.R
 
 class MedicineListAdapter(private var data: ArrayList<Medicine>, internal var context: Context) :
     RecyclerView.Adapter<MedicineListAdapter.ViewHolder>() {
-  var onItemClick:((Medicine) -> Unit)? = null
-    var onUpdateItemClick:((Medicine) -> Unit)? = null
+    var onItemClick:((Medicine) -> Unit)? = null
     class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView
-        val company: TextView
-        val edite: TextView
         val card: CardView
 
         init {
-            name = itemView.findViewById(R.id.medicineListItemName)
-            company = itemView.findViewById(R.id.medicineListItemCompany)
-            edite = itemView.findViewById(R.id.itemEditeBtn)
-            card = itemView.findViewById(R.id.medicineItemCard)
+            name = itemView.findViewById(R.id.medicinelistItemName)
+            card = itemView.findViewById(R.id.medicinelistItemCard)
         }
 
         fun bind(medicine: Medicine) {
             name.text = medicine.name
-            company.text = medicine.company
         }
     }
 
@@ -50,9 +44,6 @@ class MedicineListAdapter(private var data: ArrayList<Medicine>, internal var co
         holder.bind(item)
         holder.card.setOnClickListener {
             onItemClick?.invoke(item)
-        }
-        holder.edite.setOnClickListener {
-            onUpdateItemClick?.invoke(item)
         }
     }
 }

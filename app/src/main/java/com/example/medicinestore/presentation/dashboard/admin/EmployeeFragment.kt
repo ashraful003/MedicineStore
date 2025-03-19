@@ -11,6 +11,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentEmployeeBinding
@@ -59,7 +60,7 @@ class EmployeeFragment : Fragment() {
             }
 
         })
-        binding.employeeListRecycle.layoutManager = LinearLayoutManager(activity)
+        binding.employeeListRecycle.layoutManager = GridLayoutManager(activity,2)
         employeeArray = arrayListOf()
         adapter = EmployeeAdapter(employeeArray, requireContext())
         binding.employeeListRecycle.adapter = adapter
@@ -95,6 +96,7 @@ class EmployeeFragment : Fragment() {
                           }
                       }
                     }
+
                     adapter.searchDataList(employeeArray)
                 }
             }
