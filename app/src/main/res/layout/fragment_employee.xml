@@ -10,12 +10,6 @@
             name="model"
             type="com.example.medicinestore.presentation.dashboard.admin.EmployeeFragment" />
     </data>
-    <ScrollView
-        android:id="@+id/scrol"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background"
-        android:fillViewport="true">
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -25,8 +19,8 @@
                 android:id="@+id/containerOne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_15"
-                android:layout_marginTop="@dimen/margin_20"
+                android:layout_marginLeft="@dimen/margin_11"
+                android:layout_marginTop="@dimen/margin_5"
                 android:layout_marginRight="@dimen/margin_15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -37,67 +31,51 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_back"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/saveTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/add"
-                    android:onClick="@{model.actionAddEmployee}"
-                    android:textColor="@color/red_500"
-                    android:textSize="@dimen/text_size"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/margin_10"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/containerOne">
-
-                <TextView
-                    android:id="@+id/titleTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:text="@string/employee_list"
-                    android:textColor="@color/page_title_text_color"
-                    android:textSize="@dimen/title_text_size"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginTop="@dimen/padding_14"
+                    android:layout_marginRight="@dimen/margin_20"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <SearchView
                     android:id="@+id/searchMedicine"
-                    android:layout_width="@dimen/layout_315"
-                    android:layout_height="@dimen/height_40"
-                    android:layout_centerHorizontal="true"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:background="@drawable/search_fild"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/titleTv" />
-
-                <androidx.coordinatorlayout.widget.CoordinatorLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_15"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/margin_40"
+                    android:layout_marginRight="@dimen/margin_5"
+                    app:layout_constraintTop_toBottomOf="@+id/backIv"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_88"
+                app:layout_constraintTop_toBottomOf="@+id/containerOne">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:id="@+id/employeeListRecycle"
+                    tools:listitem="@layout/employee_list_item"
+                    android:scrollbars="vertical"/>
+
+                <com.google.android.material.floatingactionbutton.FloatingActionButton
+                    android:id="@+id/addEmployee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:layout_margin="@dimen/margin_10"
+                    android:layout_marginEnd="@dimen/margin_40"
+                    android:layout_marginBottom="@dimen/margin_28"
+                    android:backgroundTint="@color/lavender"
+                    android:src="@drawable/ic_add"
+                   app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/searchMedicine">
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/employeeListRecycle"
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        tools:listitem="@layout/employee_list_item" />
-                </androidx.coordinatorlayout.widget.CoordinatorLayout>
+                    app:tint="@color/white" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
 </layout>

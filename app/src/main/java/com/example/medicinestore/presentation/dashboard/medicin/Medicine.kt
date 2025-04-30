@@ -2,6 +2,7 @@ package com.example.medicinestore.presentation.dashboard.medicin
 
 data class Medicine(
     var medicineId:String? = null,
+    var image:String? = null,
     var name:String? = null,
     var company:String? = null,
     var details:String? = null,

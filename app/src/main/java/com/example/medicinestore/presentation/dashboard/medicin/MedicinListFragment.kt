@@ -49,7 +49,7 @@ class MedicinListFragment : Fragment() {
         }
          userArray = arrayListOf()
         adapter = MedicineListAdapter(userArray,this.requireContext())
-        binding.medicineListRecycle.layoutManager = GridLayoutManager(activity,2)
+        binding.medicineListRecycle.layoutManager = GridLayoutManager(activity,1)
         binding.medicineListRecycle.adapter = adapter
         binding.searchMedicine.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
@@ -74,6 +74,7 @@ class MedicinListFragment : Fragment() {
             bundle.putString("row",it.row)
             bundle.putString("column",it.column)
             bundle.putString("details",it.details)
+            bundle.putString("image",it.image)
             findNavController().navigate(R.id.action_medicineListFragment_to_medicineDetailsFragment,bundle)
         }
         return binding.root

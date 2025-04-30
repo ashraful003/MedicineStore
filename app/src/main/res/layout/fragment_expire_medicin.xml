@@ -2,7 +2,7 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".presentation.dashboard.medicin.ExpireMedicinFragment">
+    tools:context=".presentation.dashboard.admin.EmployeeFragment">
 
     <data>
 
@@ -15,61 +15,53 @@
         android:layout_height="match_parent"
         android:background="@color/background">
 
-        <ImageView
-            android:id="@+id/backIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_marginTop="@dimen/margin_22"
-            android:background="@drawable/ic_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerOne"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_50"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/backIv">
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_11"
+            android:layout_marginTop="@dimen/margin_5"
+            android:layout_marginRight="@dimen/margin_15"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-            <TextView
-                android:id="@+id/titleTv"
-                android:layout_width="match_parent"
+            <ImageView
+                android:id="@+id/backIv"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/expire_medicine"
-                android:textColor="@color/page_title_text_color"
-                android:textSize="@dimen/title_text_size"
-                app:layout_constraintEnd_toEndOf="parent"
+                android:background="@drawable/ic_back"
+                android:layout_marginTop="@dimen/padding_14"
+                android:layout_marginRight="@dimen/margin_20"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
             <SearchView
                 android:id="@+id/searchMedicine"
-                android:layout_width="310dp"
-                android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/search_fild"
-                android:layout_marginTop="@dimen/margin_10"
-                app:layout_constraintTop_toBottomOf="@id/titleTv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
-                android:layout_width="match_parent"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_15"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/searchMedicine">
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/margin_40"
+                android:layout_marginRight="@dimen/margin_5"
+                app:layout_constraintTop_toBottomOf="@+id/backIv"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/expireMedicineRecycle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/margin_8"
-                    tools:listitem="@layout/expire_medicine_item" />
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/margin_88"
+            app:layout_constraintTop_toBottomOf="@+id/containerOne">
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_10"
+                android:id="@+id/expireMedicineRecycle"
+                tools:listitem="@layout/medicine_list_item"
+                android:scrollbars="vertical"/>
+
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

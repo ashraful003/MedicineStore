@@ -60,12 +60,18 @@
                         android:layout_marginBottom="@dimen/margin_20"
                         app:cardCornerRadius="@dimen/margin_10">
 
-                        <ImageView
+
+                        <com.google.android.material.imageview.ShapeableImageView
                             android:id="@+id/profileIv"
-                            android:layout_width="@dimen/layout_size_68"
-                            android:layout_height="@dimen/layout_size_68"
-                            android:background="@color/profile_image_background"
-                            tools:srcCompat="@tools:sample/avatars" />
+                            android:layout_width="@dimen/layout_100"
+                            android:layout_height="@dimen/layout_100"
+                            android:layout_marginBottom="@dimen/margin_5"
+                            android:scaleType="centerCrop"
+                            android:src="@drawable/ic_human"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
                     </androidx.cardview.widget.CardView>
 
                     <androidx.constraintlayout.widget.ConstraintLayout

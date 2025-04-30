@@ -1,54 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/employeelistItemCard"
-    android:layout_width="wrap_content"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/margin_5"
     android:layout_marginStart="@dimen/margin_5"
-    android:layout_marginTop="@dimen/margin_5"
     android:layout_marginEnd="@dimen/margin_5"
-    android:layout_marginBottom="@dimen/margin_5"
-    app:cardCornerRadius="@dimen/radius_8"
-    app:cardElevation="@dimen/card_radius_20"
-    app:cardMaxElevation="@dimen/card_radius_20">
+    android:background="@color/background"
+    app:cardCornerRadius="@dimen/corner_radius_15"
+    app:cardElevation="@dimen/radius_8">
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="5dp"
-        android:orientation="vertical">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        <de.hdodenhof.circleimageview.CircleImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/employeeListItemImage"
-            android:layout_width="@dimen/layout_140"
-            android:layout_height="@dimen/layout_140"
-            android:layout_margin="@dimen/layout_10"
-            android:src="@drawable/human" />
+            android:layout_width="@dimen/layout_size_60"
+            android:layout_height="@dimen/layout_size_60"
+            android:layout_marginStart="@dimen/margin_10"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginBottom="@dimen/margin_10"
+            android:scaleType="centerCrop"
+            android:src="@drawable/ic_human"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
 
         <TextView
             android:id="@+id/employeelistItemName"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_5"
-            android:layout_marginTop="@dimen/margin_10"
-            android:layout_marginRight="@dimen/margin_5"
-            android:layout_marginBottom="@dimen/margin_12"
+            android:layout_width="@dimen/margin_120"
+            android:layout_height="@dimen/margin_30"
+            android:layout_marginStart="@dimen/margin_20"
+            android:layout_marginTop="@dimen/margin_15"
+            android:layout_toEndOf="@id/employeeListItemImage"
             android:text="@string/employee_name"
-            android:textAlignment="center"
-            android:textSize="@dimen/text_16"
-            android:textStyle="bold" />
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_20" />
 
         <TextView
             android:id="@+id/employeelistItemPost"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/layout_140"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_5"
-            android:layout_marginTop="@dimen/margin_10"
-            android:layout_marginRight="@dimen/margin_5"
+            android:layout_below="@id/employeelistItemName"
+            android:layout_marginStart="@dimen/margin_20"
+            android:layout_marginTop="@dimen/margin_7"
             android:layout_marginBottom="@dimen/margin_12"
-            android:text="@string/post_name"
-            android:textAlignment="center"
-            android:textSize="@dimen/text_16"
-            android:textStyle="bold" />
-    </LinearLayout>
+            android:layout_toEndOf="@id/employeeListItemImage"
+            android:maxLines="1"
+            android:text="@string/hint_post"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14" />
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

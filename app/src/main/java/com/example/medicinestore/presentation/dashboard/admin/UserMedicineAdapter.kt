@@ -8,6 +8,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.example.medicinestore.R
 import com.example.medicinestore.presentation.dashboard.medicin.Medicine
 
@@ -20,10 +21,10 @@ class UserMedicineAdapter(private var data: ArrayList<Medicine>, internal var co
         val card: CardView
 
         init {
-            medicineName = itemView.findViewById(R.id.userMedicineName)
-            medicineCompany = itemView.findViewById(R.id.userMedicineCompany)
-            image = itemView.findViewById(R.id.userMedicineCardImage)
-            card = itemView.findViewById(R.id.userMedicineCv)
+            medicineName = itemView.findViewById(R.id.userMedicinelistItemName)
+            medicineCompany = itemView.findViewById(R.id.userMedicinelistItemCompany)
+            image = itemView.findViewById(R.id.userMedicineListItemImage)
+            card = itemView.findViewById(R.id.userMedicinelistItemCard)
         }
 
         fun bind(medicine: Medicine) {
@@ -45,6 +46,7 @@ class UserMedicineAdapter(private var data: ArrayList<Medicine>, internal var co
     override fun onBindViewHolder(holder: ViewModel, position: Int) {
         val item = data[position]
         holder.bind(item)
+        Glide.with(context).load(item.image).into(holder.image)
     }
 
     fun searchUserMedicineList(searchMedicine: List<Medicine>) {

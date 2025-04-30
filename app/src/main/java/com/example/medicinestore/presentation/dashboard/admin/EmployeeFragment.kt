@@ -26,7 +26,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class EmployeeFragment : Fragment() {
-    val actionAddEmployee = Navigation.createNavigateOnClickListener(R.id.action_employeeFragment_to_addEmployeeFragment)
+    //val actionAddEmployee = Navigation.createNavigateOnClickListener(R.id.action_employeeFragment_to_addEmployeeFragment)
     @Inject
     lateinit var activityUtil: MSActivityUtil
     private lateinit var viewModel: AdminHomeViewModel
@@ -60,7 +60,7 @@ class EmployeeFragment : Fragment() {
             }
 
         })
-        binding.employeeListRecycle.layoutManager = GridLayoutManager(activity,2)
+        binding.employeeListRecycle.layoutManager = GridLayoutManager(activity,1)
         employeeArray = arrayListOf()
         adapter = EmployeeAdapter(employeeArray, requireContext())
         binding.employeeListRecycle.adapter = adapter
@@ -78,6 +78,9 @@ class EmployeeFragment : Fragment() {
             findNavController().navigate(R.id.action_employeeFragment_to_employeeDetailsFragment,bundle)
         }
 
+        binding.addEmployee.setOnClickListener {
+            findNavController().navigate(R.id.action_employeeFragment_to_addEmployeeFragment)
+        }
         return binding.root
     }
 
