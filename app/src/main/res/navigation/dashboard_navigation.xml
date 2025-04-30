@@ -40,8 +40,8 @@
             android:id="@+id/action_expireMedicinFragment_to_adminHomeFragment"
             app:destination="@id/adminHomeFragment" />
         <action
-            android:id="@+id/action_expireMedicineFragment_to_medicineDetailsFragment"
-            app:destination="@id/medicineDetailsFragment2" />
+            android:id="@+id/action_expireMedicineFragment_to_expiterMedicinneDetailsFragment"
+            app:destination="@id/expiterMedicinneDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/medicineListFragment"
@@ -54,9 +54,6 @@
         <action
             android:id="@+id/action_medicineListFragment_to_medicineDetailsFragment"
             app:destination="@id/medicineDetailsFragment2" />
-        <action
-            android:id="@+id/action_medicineListFragment_to_updateMedicineInfoFragment"
-            app:destination="@id/updateMedicineInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/profileFragment"
@@ -135,14 +132,17 @@
             android:id="@+id/action_medicineDetailsFragment_to_medicineListFragment"
             app:destination="@id/medicineListFragment" />
         <action
-            android:id="@+id/action_medicineDetailsFragment_to_expireMedicineFragment"
-            app:destination="@id/expireMedicineFragment" />
+            android:id="@+id/action_medicineDetailsFragment_to_updateMedicineInfoFragment"
+            app:destination="@id/updateMedicineInfoFragment" />
     </fragment>
     <fragment
         android:id="@+id/updateMedicineInfoFragment"
         android:name="com.example.medicinestore.presentation.dashboard.medicin.UpdateMedicineInfoFragment"
         android:label="fragment_update_medicine_info"
         tools:layout="@layout/fragment_update_medicine_info" >
+        <action
+            android:id="@+id/action_updateMedicineInfoFragment_to_medicineDetailsFragment"
+            app:destination="@id/medicineDetailsFragment2" />
         <action
             android:id="@+id/action_updateMedicineInfoFragment_to_medicineListFragment"
             app:destination="@id/medicineListFragment" />
@@ -155,5 +155,14 @@
         <action
             android:id="@+id/action_employeeDetailsFragment_to_employeeFragment"
             app:destination="@id/employeeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/expiterMedicinneDetailsFragment"
+        android:name="com.example.medicinestore.presentation.dashboard.medicin.ExpiterMedicinneDetailsFragment"
+        android:label="fragment_expiter_medicinne_details"
+        tools:layout="@layout/fragment_expiter_medicinne_details" >
+        <action
+            android:id="@+id/action_expiterMedicinneDetailsFragment_to_expireMedicineFragment"
+            app:destination="@id/expireMedicineFragment" />
     </fragment>
 </navigation>

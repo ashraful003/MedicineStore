@@ -39,14 +39,13 @@ class ExpireMedicinFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = DataBindingUtil.inflate(inflater,R.layout.fragment_expire_medicin, container, false)
         binding.model = this
         activityUtil.hideBottomNavigation(true)
         binding.backIv.setOnClickListener {
             findNavController().popBackStack()
         }
-        binding.expireMedicineRecycle.layoutManager = GridLayoutManager(activity,2)
+        binding.expireMedicineRecycle.layoutManager = GridLayoutManager(activity,1)
         userArray = arrayListOf()
         database = Firebase.database.reference
         adapter = ExpireMedicineAdapter(userArray,this.requireContext())
@@ -73,7 +72,8 @@ class ExpireMedicinFragment : Fragment() {
             bundle.putString("row",it.row)
             bundle.putString("column",it.column)
             bundle.putString("details",it.details)
-            findNavController().navigate(R.id.action_expireMedicineFragment_to_medicineDetailsFragment,bundle)
+            bundle.putString("image",it.image)
+            findNavController().navigate(R.id.action_expireMedicineFragment_to_expiterMedicinneDetailsFragment,bundle)
         }
         return binding.root
     }

@@ -11,79 +11,112 @@
             type="com.example.medicinestore.presentation.dashboard.admin.EmployeeDetailsFragment" />
     </data>
 
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background"
-        android:fillViewport="true">
+        android:background="@color/background">
+
+        <ImageView
+            android:id="@+id/backIv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/margin_15"
+            android:layout_marginTop="@dimen/margin_22"
+            android:background="@drawable/ic_back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="@color/background">
-
-            <ImageView
-                android:id="@+id/backIv"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_15"
-                android:layout_marginTop="@dimen/margin_22"
-                android:background="@drawable/ic_back"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+            android:layout_marginTop="@dimen/margin_30"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/backIv">
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerOne"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginLeft="@dimen/margin_15"
-                android:layout_marginTop="@dimen/margin_70"
-                android:layout_marginRight="@dimen/margin_15"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/backIv">
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_30"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-
-                <androidx.cardview.widget.CardView
-                    android:id="@+id/empProfileCv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_20"
-                    app:cardCornerRadius="@dimen/margin_10"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/profileIv"
+                    android:layout_width="@dimen/layout_100"
+                    android:layout_height="@dimen/layout_100"
+                    android:layout_marginBottom="@dimen/margin_5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_human"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
 
-                    <ImageView
-                        android:id="@+id/profileIv"
-                        android:layout_width="@dimen/layout_85"
-                        android:layout_height="@dimen/layout_85"
-                        android:src="@drawable/human" />
-                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/empNameTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:hint="@string/employee_name"
+                    android:paddingTop="@dimen/padding_10"
+                    android:paddingBottom="@dimen/padding_10"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/title_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/profileIv" />
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/container2"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/empPostTv"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="@dimen/margin_5"
                     android:layout_marginTop="@dimen/margin_5"
-                    android:paddingTop="@dimen/padding_10"
+                    android:hint="@string/post_name"
                     android:paddingBottom="@dimen/padding_10"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/text_size_20"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/empProfileCv">
+                    app:layout_constraintTop_toBottomOf="@id/empNameTv" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:backgroundTint="@color/text_color"
+                app:cardCornerRadius="@dimen/card_radius_20"
+                app:cardPreventCornerOverlap="true"
+                app:cardUseCompatPadding="true"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/containerOne">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_30"
+                    android:background="@color/text_color"
+                    android:paddingLeft="@dimen/margin_15"
+                    android:paddingBottom="@dimen/padding_70"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent">
 
                     <TextView
-                        android:id="@+id/empNameTv"
+                        android:id="@+id/dob"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="10dp"
-                        android:layout_marginLeft="@dimen/margin_5"
-                        android:paddingTop="@dimen/padding_10"
-                        android:paddingBottom="@dimen/padding_10"
-                        android:hint="@string/employee_name"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_50"
+                        android:hint="@string/hint_dob"
+                        android:textSize="@dimen/text_size_20"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
 
@@ -91,62 +124,68 @@
                         android:id="@+id/empDobTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_5"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:paddingTop="@dimen/padding_10"
-                        android:paddingBottom="@dimen/padding_10"
-                        android:hint="@string/employee_birthday"
-                        android:textAlignment="center"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_6"
+                        android:text="@string/hint_dob"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="@dimen/text_size_20"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/empNameTv" />
+                        app:layout_constraintTop_toBottomOf="@id/dob" />
 
                     <TextView
-                        android:id="@+id/empPostTv"
+                        android:id="@+id/phone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_5"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:paddingTop="@dimen/padding_10"
-                        android:paddingBottom="@dimen/padding_10"
-                        android:hint="@string/post_name"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:hint="@string/hint_phone_number"
+                        android:textSize="@dimen/text_size_20"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/empDobTv"/>
-                    <TextView
-                        android:id="@+id/empEmailTv"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_5"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:paddingTop="@dimen/padding_10"
-                        android:paddingBottom="@dimen/padding_10"
-                        android:hint="@string/employee_email"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/empPostTv"/>
+                        app:layout_constraintTop_toBottomOf="@id/empDobTv" />
 
                     <TextView
                         android:id="@+id/empPhoneTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_5"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:paddingTop="@dimen/padding_10"
-                        android:paddingBottom="@dimen/padding_10"
-                        android:hint="@string/employee_number"
-                        android:textAlignment="center"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_6"
+                        android:text="@string/hint_phone_number"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="@dimen/text_size_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/phone" />
+
+                    <TextView
+                        android:id="@+id/email"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:hint="@string/hint_email"
+                        android:textSize="@dimen/text_size_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/empPhoneTv" />
+
+                    <TextView
+                        android:id="@+id/empEmailTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_6"
+                        android:text="@string/hint_email"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/email" />
+
+                    <TextView
+                        android:id="@+id/adress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_20"
+                        android:hint="@string/hint_address"
+                        android:textSize="@dimen/text_size_20"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/empEmailTv" />
 
@@ -154,19 +193,15 @@
                         android:id="@+id/empLocationTv"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="@dimen/margin_5"
-                        android:layout_marginTop="@dimen/margin_5"
-                        android:paddingTop="@dimen/padding_10"
-                        android:paddingBottom="@dimen/padding_10"
-                        android:hint="@string/employee_address"
-                        android:textAlignment="center"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_6"
+                        android:text="@string/hint_address"
                         android:textColor="@color/black"
-                        android:textSize="@dimen/text_size"
-                        app:layout_constraintEnd_toEndOf="parent"
+                        android:textSize="@dimen/text_size_20"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/empPhoneTv"/>
+                        app:layout_constraintTop_toBottomOf="@id/adress" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.cardview.widget.CardView>
         </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

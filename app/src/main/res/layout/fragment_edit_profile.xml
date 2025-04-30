@@ -66,12 +66,17 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/containerOne">
 
-                <ImageView
+                <com.google.android.material.imageview.ShapeableImageView
                     android:id="@+id/imageView"
-                    android:layout_width="@dimen/margin_92"
-                    android:layout_height="@dimen/margin_92"
-                    android:background="@color/profile_image_background"
-                    tools:srcCompat="@tools:sample/avatars" />
+                    android:layout_width="@dimen/layout_100"
+                    android:layout_height="@dimen/layout_100"
+                    android:layout_marginBottom="@dimen/margin_5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_human"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
 
                 <ImageView
                     android:id="@+id/uploadTv"

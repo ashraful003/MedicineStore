@@ -50,14 +50,14 @@
     <string name="logout">Logout</string>
     <string name="notifications">Notifications</string>
     <string name="save">Save</string>
-    <string name="name">Name :</string>
-    <string name="company">Company :</string>
-    <string name="details">Details :</string>
-    <string name="price">Price :</string>
-    <string name="expire_date">Expire Date :</string>
-    <string name="self">Self :</string>
-    <string name="row">Row :</string>
-    <string name="column">Column :</string>
+    <string name="name">Name</string>
+    <string name="company">Company </string>
+    <string name="details">Details</string>
+    <string name="price">Price</string>
+    <string name="expire_date">Expire Date</string>
+    <string name="self">Self</string>
+    <string name="row">Row</string>
+    <string name="column">Column</string>
     <string name="error_medicine_name">Medicine name can not empty </string>
     <string name="error_company_name">Company name can not empty</string>
     <string name="error_details">Add medicine details</string>
@@ -101,5 +101,7 @@
     <string name="employee_address">Employee Address</string>
     <string name="hint_medicine_name">Medicine Name</string>
     <string name="hint_company_name">Company Name</string>
+    <string name="hint_address">Address</string>
+    <string name="no_image">No Image Selected</string>
 
 </resources>

@@ -2,6 +2,7 @@ package com.example.medicinestore.presentation.dashboard.medicin
 
 import android.app.DatePickerDialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.MotionEvent
@@ -12,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentUpdateMedicineInfoBinding
 import com.example.medicinestore.util.MSActivityUtil
@@ -152,7 +154,7 @@ private lateinit var database: DatabaseReference
              database.child("Medicine").child(medicineId!!).ref.updateChildren(medicineinfo)
                  .addOnSuccessListener {
                   activityUtil.setFullScreenLoading(false)
-                     findNavController().navigate(R.id.action_updateMedicineInfoFragment_to_medicineListFragment)
+                     findNavController().navigate(R.id.action_updateMedicineInfoFragment_to_medicineListFragment )
                   Toast.makeText(requireContext(), getString(R.string.update_massage), Toast.LENGTH_SHORT).show()
                  }.addOnFailureListener {
                      Toast.makeText(requireContext(), getString(R.string.update_fail_massage),Toast.LENGTH_SHORT).show()
@@ -163,6 +165,7 @@ private lateinit var database: DatabaseReference
     }
 
     private fun showMedicine(){
+        val id = requireArguments().getString("id")
         binding.nameEt.setText(requireArguments().getString("name"))
         binding.companyEt.setText(requireArguments().getString("company"))
         binding.detailsEt.setText(requireArguments().getString("details"))
@@ -171,6 +174,15 @@ private lateinit var database: DatabaseReference
         binding.selfEt.setText(requireArguments().getString("self"))
         binding.rowEt.setText(requireArguments().getString("row"))
         binding.columnEt.setText(requireArguments().getString("column"))
+        val pimage = requireArguments().getString("image")
+        if (!pimage.isNullOrEmpty()) {
+            Glide.with(this)
+                .load(pimage)
+                .error(R.drawable.ic_human)
+                .into(binding.medicineUploadImage)
+        } else {
+            Log.e("EmployeeDetailsFragment", "Image URL is null or empty")
+        }
     }
     private fun isEnableSaveButton(isEnable:Boolean){
         if (isEnable){

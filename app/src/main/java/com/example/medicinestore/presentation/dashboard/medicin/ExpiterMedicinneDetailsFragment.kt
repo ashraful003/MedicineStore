@@ -1,5 +1,6 @@
 package com.example.medicinestore.presentation.dashboard.medicin
 
+import android.app.AlertDialog
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -11,7 +12,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
 import com.example.medicinestore.R
+import com.example.medicinestore.databinding.FragmentExpiterMedicinneDetailsBinding
 import com.example.medicinestore.databinding.FragmentMedicineDetailsBinding
+import com.example.medicinestore.presentation.MainActivity
 import com.example.medicinestore.util.MSActivityUtil
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
@@ -22,24 +25,26 @@ import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MedicineDetailsFragment : Fragment() {
+class ExpiterMedicinneDetailsFragment : Fragment() {
   @Inject
   lateinit var activityUtil: MSActivityUtil
-  private lateinit var binding: FragmentMedicineDetailsBinding
-  private lateinit var viewModel: MedicinViewModel
+    private lateinit var binding: FragmentExpiterMedicinneDetailsBinding
+    private lateinit var viewModel: MedicinViewModel
     lateinit var database: DatabaseReference
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_medicine_details, container, false)
+        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_expiter_medicinne_details, container, false)
         binding.model = this
         activityUtil.hideBottomNavigation(true)
         binding.backIv.setOnClickListener {
             findNavController().popBackStack()
         }
-        val id = requireArguments().getString("id")
-        binding.medicineName.text = requireArguments().getString("name")
+        database = Firebase.database.reference
+        val mid = requireArguments().getString("id")
+        binding.expireMedicineName.text = requireArguments().getString("name")
         binding.companyNameTv.text = requireArguments().getString("company")
         binding.expireDateTv.text = requireArguments().getString("date")
         binding.medicinePriceTv.text = requireArguments().getString("price")
@@ -52,38 +57,26 @@ class MedicineDetailsFragment : Fragment() {
             Glide.with(this)
                 .load(pimage)
                 .error(R.drawable.ic_human)
-                .into(binding.medicineListImage)
+                .into(binding.expireMedicineImage)
         } else {
             Log.e("EmployeeDetailsFragment", "Image URL is null or empty")
         }
-        binding.btnEdite.visibility = View.GONE
-        database = Firebase.database.reference
-        val uid = FirebaseAuth.getInstance().currentUser!!.uid
-        database = FirebaseDatabase.getInstance().getReference("User").child(uid)
-        database.get().addOnSuccessListener {
-            if (it.hasChild("Admin") || it.hasChild("Employee")) {
-                binding.btnEdite.visibility = View.VISIBLE
-                binding.btnEdite.setOnClickListener {
-                    var bundle = Bundle()
-                    bundle.putString("id",id)
-                    bundle.putString("name", binding.medicineName.text.toString())
-                    bundle.putString("company",binding.companyNameTv.text.toString())
-                    bundle.putString("price",binding.medicinePriceTv.text.toString())
-                    bundle.putString("date",binding.expireDateTv.text.toString())
-                    bundle.putString("self",binding.medicineSelfTv.text.toString())
-                    bundle.putString("row",binding.medicineRowTv.text.toString())
-                    bundle.putString("column",binding.medicineColumnTv.text.toString())
-                    bundle.putString("details",binding.medicineDetailsTv.text.toString())
-                    bundle.putString("image",pimage)
-                    findNavController().navigate(R.id.action_medicineDetailsFragment_to_updateMedicineInfoFragment,bundle)
-                }
-
+        binding.btnDelete.setOnClickListener {
+            val builder = AlertDialog.Builder(context)
+            builder.setTitle("Delete")
+            builder.setMessage("Are you sure!")
+            builder.setCancelable(false)
+            builder.setPositiveButton("Yes") { _, _ ->
+                database.child("Medicine").child(mid!!).removeValue()
+                findNavController().navigate(R.id.action_expiterMedicinneDetailsFragment_to_expireMedicineFragment )
             }
+            builder.setNegativeButton("No") { _, _ -> }
+            val alartDialog = builder.create()
+            alartDialog.show()
         }
 
         return binding.root
     }
-
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MedicinViewModel::class.java)

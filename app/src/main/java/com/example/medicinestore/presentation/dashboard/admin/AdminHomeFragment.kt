@@ -61,6 +61,7 @@ class AdminHomeFragment : Fragment() {
         binding.userMedicineRecycle.layoutManager = LinearLayoutManager(requireContext())
         binding.userMedicineRecycle.adapter = adapter
         binding.gridLayout.visibility = View.GONE
+        binding.gridLayout.visibility = View.GONE
         binding.addMedicine.visibility = View.GONE
         binding.medicineList.visibility = View.GONE
         binding.expireMedicine.visibility = View.GONE
@@ -72,11 +73,13 @@ class AdminHomeFragment : Fragment() {
         database.get().addOnSuccessListener {
             if (it.hasChild("Admin")) {
                 binding.gridLayout.visibility = View.VISIBLE
+                binding.gridLayout.visibility = View.VISIBLE
                 binding.addMedicine.visibility = View.VISIBLE
                 binding.medicineList.visibility = View.VISIBLE
                 binding.expireMedicine.visibility = View.VISIBLE
                 binding.employee.visibility = View.VISIBLE
             } else if (it.hasChild("Employee")) {
+                binding.gridLayout.visibility = View.VISIBLE
                 binding.gridLayout.visibility = View.VISIBLE
                 binding.addMedicine.visibility = View.VISIBLE
                 binding.medicineList.visibility = View.VISIBLE

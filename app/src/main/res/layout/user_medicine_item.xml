@@ -1,70 +1,53 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/userMedicinelistItemCard"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/layout_80"
-    android:id="@+id/empCard"
-    android:layout_marginStart="@dimen/margin_3"
-    android:layout_marginTop="@dimen/margin_3"
-    android:layout_marginEnd="@dimen/margin_2"
-    android:layout_marginBottom="@dimen/margin_3"
-    app:cardCornerRadius="@dimen/radius_8">
+    android:layout_height="wrap_content"
+    android:layout_marginVertical="@dimen/margin_5"
+    android:layout_marginStart="@dimen/margin_5"
+    android:layout_marginEnd="@dimen/margin_5"
+    android:background="@color/background"
+    app:cardCornerRadius="@dimen/corner_radius_15"
+    app:cardElevation="@dimen/radius_8">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
-        <androidx.cardview.widget.CardView
-            android:id="@+id/userMedicineCv"
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/userMedicineListItemImage"
+            android:layout_width="@dimen/layout_size_60"
+            android:layout_height="@dimen/layout_size_60"
+            android:layout_marginStart="@dimen/margin_10"
+            android:layout_marginTop="@dimen/margin_10"
+            android:layout_marginBottom="@dimen/margin_10"
+            android:scaleType="centerCrop"
+            android:src="@drawable/medicine"
+            app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
+        <TextView
+            android:id="@+id/userMedicinelistItemName"
+            android:layout_width="wrap_content"
+            android:layout_height="@dimen/margin_30"
+            android:layout_marginStart="@dimen/margin_20"
+            android:layout_marginTop="@dimen/margin_15"
+            android:layout_toEndOf="@id/userMedicineListItemImage"
+            android:text="@string/medicine_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_20" />
+
+        <TextView
+            android:id="@+id/userMedicinelistItemCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            app:cardCornerRadius="@dimen/margin_10"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:id="@+id/userMedicineCardImage"
-                android:layout_width="80dp"
-                android:layout_height="80dp"
-                android:background="@color/profile_image_background"
-                tools:srcCompat="@tools:sample/avatars" />
-        </androidx.cardview.widget.CardView>
-
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/margin_10"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/userMedicineCv"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <TextView
-                android:id="@+id/userMedicineName"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_10"
-                android:hint="@string/hint_medicine_name"
-                android:textColor="@color/page_title_text_color"
-                android:textColorHint="@color/black"
-                android:textSize="@dimen/text_size"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/userMedicineCompany"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_10"
-                android:layout_marginBottom="20dp"
-                android:hint="@string/hint_company_name"
-                android:textColor="@color/page_title_text_color"
-                android:textColorHint="@color/black"
-                android:textSize="@dimen/text_size"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/userMedicineName" />
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            android:layout_below="@id/userMedicinelistItemName"
+            android:layout_marginStart="@dimen/margin_20"
+            android:layout_marginTop="@dimen/margin_7"
+            android:layout_marginBottom="@dimen/margin_12"
+            android:layout_toEndOf="@id/userMedicineListItemImage"
+            android:maxLines="1"
+            android:text="@string/hint_company_name"
+            android:textColor="@color/black"
+            android:textSize="@dimen/text_size_14" />
+    </RelativeLayout>
 </androidx.cardview.widget.CardView>

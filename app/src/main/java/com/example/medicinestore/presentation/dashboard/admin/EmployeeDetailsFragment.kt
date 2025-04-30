@@ -41,7 +41,7 @@ class EmployeeDetailsFragment : Fragment() {
         if (!pimage.isNullOrEmpty()) {
             Glide.with(this)
                 .load(pimage)
-                .error(R.drawable.human) // Error image if URL is broken
+                .error(R.drawable.ic_human)
                 .into(binding.profileIv)
         } else {
             Log.e("EmployeeDetailsFragment", "Image URL is null or empty")

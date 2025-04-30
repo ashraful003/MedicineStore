@@ -32,24 +32,21 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/margin_30"
-                android:layout_marginTop="@dimen/margin_22"
+                android:layout_marginTop="@dimen/margin_5"
                 android:layout_marginRight="@dimen/margin_30"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/backIv">
 
-                <TextView
-                    android:id="@+id/titleTv"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/add_medicine"
-                    android:textColor="@color/page_title_text_color"
-                    android:textSize="@dimen/title_text_size"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/medicineUploadImage"
+                    android:layout_width="@dimen/margin_120"
+                    android:layout_height="@dimen/margin_120"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_uploading"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:id="@+id/name"
@@ -60,7 +57,7 @@
                     android:textColorHint="@color/hint_text_color"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/titleTv"
+                    app:layout_constraintTop_toBottomOf="@+id/medicineUploadImage"
                     app:passwordToggleTint="@color/hint_text_color">
 
                     <com.google.android.material.textfield.TextInputEditText
