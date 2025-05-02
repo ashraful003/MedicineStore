@@ -21,6 +21,9 @@
         <action
             android:id="@+id/action_adminHomeFragment_to_employeeFragment"
             app:destination="@id/employeeFragment" />
+        <action
+            android:id="@+id/action_adminHomeFragment_to_userMedicineDetailsFragment"
+            app:destination="@id/userMedicineDetailsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addMedicineFragment"
@@ -78,7 +81,14 @@
     <fragment
         android:id="@+id/orderMedicineFragment"
         android:name="com.example.medicinestore.presentation.dashboard.medicin.OrderMedicineFragment"
-        android:label="OrderMedicineFragment" />
+        android:label="OrderMedicineFragment" >
+        <action
+            android:id="@+id/action_orderMedicineFragment_to_userMedicineDetailsFragment"
+            app:destination="@id/userMedicineDetailsFragment" />
+        <action
+            android:id="@+id/action_orderMedicineFragment_to_orderDetailsFragment"
+            app:destination="@id/orderDetailsFragment" />
+    </fragment>
     <fragment
         android:id="@+id/employeeFragment"
         android:name="com.example.medicinestore.presentation.dashboard.admin.EmployeeFragment"
@@ -164,5 +174,26 @@
         <action
             android:id="@+id/action_expiterMedicinneDetailsFragment_to_expireMedicineFragment"
             app:destination="@id/expireMedicineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userMedicineDetailsFragment"
+        android:name="com.example.medicinestore.presentation.dashboard.medicin.UserMedicineDetailsFragment"
+        android:label="fragment_user_medicine_details"
+        tools:layout="@layout/fragment_user_medicine_details" >
+        <action
+            android:id="@+id/action_userMedicineDetailsFragment_to_adminHomeFragment"
+            app:destination="@id/adminHomeFragment" />
+        <action
+            android:id="@+id/action_userMedicineDetailsFragment_to_orderMedicineFragment"
+            app:destination="@id/orderMedicineFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/orderDetailsFragment"
+        android:name="com.example.medicinestore.presentation.dashboard.medicin.OrderDetailsFragment"
+        android:label="fragment_order_details"
+        tools:layout="@layout/fragment_order_details" >
+        <action
+            android:id="@+id/action_orderDetailsFragment_to_orderMedicineFragment"
+            app:destination="@id/orderMedicineFragment" />
     </fragment>
 </navigation>

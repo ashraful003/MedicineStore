@@ -13,6 +13,7 @@ import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentAdminHomeBinding
@@ -66,7 +67,7 @@ class AdminHomeFragment : Fragment() {
         binding.medicineList.visibility = View.GONE
         binding.expireMedicine.visibility = View.GONE
         binding.employee.visibility = View.GONE
-        binding.recycleView.visibility = View.GONE
+        binding.userRecycler.visibility = View.GONE
         database = Firebase.database.reference
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
         database = FirebaseDatabase.getInstance().getReference("User").child(uid)
@@ -85,10 +86,10 @@ class AdminHomeFragment : Fragment() {
                 binding.medicineList.visibility = View.VISIBLE
                 binding.expireMedicine.visibility = View.VISIBLE
             } else if (it.hasChild("User")) {
-                binding.recycleView.visibility = View.VISIBLE
+                binding.userRecycler.visibility = View.VISIBLE
             }
         }
-        binding.userSearchMedicine.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+        binding.searchMedicine.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(p0: String?): Boolean {
                 return false
             }
@@ -100,6 +101,17 @@ class AdminHomeFragment : Fragment() {
                 return true
             }
         })
+        adapter.onItemClick = {
+            var bundle = Bundle()
+            bundle.putString("id",it.medicineId)
+            bundle.putString("name",it.name)
+            bundle.putString("company",it.company)
+            bundle.putString("price", it.price.toString())
+            bundle.putString("date",it.date)
+            bundle.putString("details",it.details)
+            bundle.putString("image",it.image)
+            findNavController().navigate(R.id.action_adminHomeFragment_to_userMedicineDetailsFragment,bundle)
+        }
         return binding.root
     }
 

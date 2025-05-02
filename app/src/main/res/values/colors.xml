@@ -27,4 +27,7 @@
     <color name="black_100">#f2f2f2</color>
     <color name="black_200">#d9d9d9</color>
     <color name="lavender">#8692f7</color>
+    <color name="text_hint">#1a1a1a</color>
+    <color name="body_color">#595959</color>
+    <color name="navy_blue">#3366cc</color>
 </resources>

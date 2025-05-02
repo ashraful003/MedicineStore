@@ -169,45 +169,46 @@
         </GridLayout>
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/recycleView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_20"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/gridLayout">
-
-
-            <SearchView
-                android:id="@+id/userSearchMedicine"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginRight="@dimen/margin_20"
-                android:layout_marginBottom="15dp"
-                app:layout_constraintBottom_toTopOf="@+id/constraintLayout3"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
+            android:id="@+id/userRecycler"
+            app:layout_constraintTop_toBottomOf="@+id/gridLayout"
+            android:background="@color/background">
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/constraintLayout3"
+                android:id="@+id/containerOne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_5"
-                android:layout_marginTop="@dimen/margin_15"
-                android:layout_marginRight="@dimen/margin_5"
+                android:layout_marginLeft="@dimen/margin_11"
+                android:layout_marginTop="@dimen/margin_5"
+                android:layout_marginRight="@dimen/margin_15"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/userSearchMedicine">
+                app:layout_constraintTop_toTopOf="parent">
+
+                <SearchView
+                    android:id="@+id/searchMedicine"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginLeft="@dimen/margin_40"
+                    android:layout_marginRight="@dimen/margin_5"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_40"
+                app:layout_constraintTop_toBottomOf="@+id/containerOne">
 
                 <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/userMedicineRecycle"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/margin_10"
-                    android:scrollbars="vertical"
-                    tools:listitem="@layout/user_medicine_item" />
+                    android:id="@+id/userMedicineRecycle"
+                    tools:listitem="@layout/employee_list_item"
+                    android:scrollbars="vertical"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
