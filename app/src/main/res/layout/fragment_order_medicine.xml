@@ -5,7 +5,6 @@
     tools:context=".presentation.dashboard.medicin.OrderMedicineFragment">
 
     <data>
-
         <variable
             name="model"
             type="com.example.medicinestore.presentation.dashboard.medicin.OrderMedicineFragment" />
@@ -13,63 +12,45 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:id="@+id/userRecycler"
+        app:layout_constraintTop_toBottomOf="@+id/gridLayout"
         android:background="@color/background">
-
-        <ImageView
-            android:id="@+id/backIv"
-            android:layout_width="wrap_content"
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/containerOne"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_marginTop="@dimen/margin_22"
-            android:background="@drawable/ic_back"
+            android:layout_marginLeft="@dimen/margin_11"
+            android:layout_marginTop="@dimen/margin_5"
+            android:layout_marginRight="@dimen/margin_15"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <SearchView
+                android:id="@+id/searchMedicine"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_marginLeft="@dimen/margin_40"
+                android:layout_marginRight="@dimen/margin_5"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_50"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/backIv">
+            android:layout_marginTop="@dimen/margin_40"
+            app:layout_constraintTop_toBottomOf="@+id/containerOne">
 
-            <TextView
-                android:id="@+id/titleTv"
+            <androidx.recyclerview.widget.RecyclerView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal"
-                android:text="@string/order_medicine"
-                android:textColor="@color/page_title_text_color"
-                android:textSize="@dimen/title_text_size"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                android:layout_height="match_parent"
+                android:layout_marginTop="@dimen/margin_5"
+                android:id="@+id/orderMedicineRecycle"
+                tools:listitem="@layout/order_medicine_item"
+                android:scrollbars="vertical"/>
 
-            <androidx.appcompat.widget.SearchView
-                android:id="@+id/searchMedicine"
-                android:layout_width="310dp"
-                android:layout_height="40dp"
-                android:layout_centerHorizontal="true"
-                android:background="@drawable/search_fild"
-                android:layout_marginTop="@dimen/margin_10"
-                app:layout_constraintTop_toBottomOf="@id/titleTv"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <androidx.coordinatorlayout.widget.CoordinatorLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_15"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/searchMedicine">
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:id="@+id/orderMedicineRecycle"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_marginTop="@dimen/margin_8"
-                    tools:listitem="@layout/order_medicine_item" />
-            </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.constraintlayout.widget.ConstraintLayout>
-
 </layout>

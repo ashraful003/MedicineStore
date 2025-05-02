@@ -14,6 +14,7 @@ import com.example.medicinestore.presentation.dashboard.medicin.Medicine
 
 class UserMedicineAdapter(private var data: ArrayList<Medicine>, internal var context: Context) :
     RecyclerView.Adapter<UserMedicineAdapter.ViewModel>() {
+    var onItemClick:((Medicine) ->Unit)? = null
     class ViewModel(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val medicineName: TextView
         val medicineCompany: TextView
@@ -47,6 +48,9 @@ class UserMedicineAdapter(private var data: ArrayList<Medicine>, internal var co
         val item = data[position]
         holder.bind(item)
         Glide.with(context).load(item.image).into(holder.image)
+        holder.card.setOnClickListener {
+            onItemClick?.invoke(item)
+        }
     }
 
     fun searchUserMedicineList(searchMedicine: List<Medicine>) {

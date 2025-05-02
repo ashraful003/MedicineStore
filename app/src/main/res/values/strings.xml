@@ -103,5 +103,7 @@
     <string name="hint_company_name">Company Name</string>
     <string name="hint_address">Address</string>
     <string name="no_image">No Image Selected</string>
+    <string name="quantity">Quantity</string>
+    <string name="shipping_address">Shipping Address</string>
 
 </resources>
