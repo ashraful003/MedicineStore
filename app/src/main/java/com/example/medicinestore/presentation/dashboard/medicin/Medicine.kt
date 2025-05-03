@@ -16,5 +16,6 @@ data class Medicine(
     var quantity:String? = null,
     var twoNumbers:String? = null,
     var complete:String? = null,
-    var timestamp: Long? = null
+    var timestamp: Long? = null,
+    var number:String? = null
 )

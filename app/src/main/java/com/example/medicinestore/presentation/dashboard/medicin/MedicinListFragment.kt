@@ -105,7 +105,7 @@ class MedicinListFragment : Fragment() {
                         val medicine = snap.getValue(Medicine::class.java)
                         medicine?.medicineId = snap.key
                         if (!userArray.contains(medicine) && isExpiredDate(medicine?.date)){
-                            userArray.add(medicine!!)
+                            userArray.add(0,medicine!!)
                         }
                     }
                     adapter.searchDataList(userArray)

@@ -12,7 +12,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
 <ScrollView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background">
+    android:background="@color/offwhite">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -38,7 +38,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
             app:layout_constraintTop_toBottomOf="@+id/backIv">
 
             <com.google.android.material.imageview.ShapeableImageView
-                android:id="@+id/medicineUploadImage"
+                android:id="@+id/medicineUpdateImage"
                 android:layout_width="@dimen/margin_120"
                 android:layout_height="@dimen/margin_120"
                 android:scaleType="centerCrop"
@@ -57,7 +57,7 @@ xmlns:app="http://schemas.android.com/apk/res-auto">
                 android:textColorHint="@color/hint_text_color"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/medicineUploadImage"
+                app:layout_constraintTop_toBottomOf="@+id/medicineUpdateImage"
                 app:passwordToggleTint="@color/hint_text_color">
 
                 <com.google.android.material.textfield.TextInputEditText

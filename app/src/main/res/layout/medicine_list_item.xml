@@ -6,7 +6,7 @@
     android:layout_marginVertical="@dimen/margin_5"
     android:layout_marginStart="@dimen/margin_5"
     android:layout_marginEnd="@dimen/margin_5"
-    android:background="@color/background"
+    android:backgroundTint="@color/offwhite"
     app:cardCornerRadius="@dimen/corner_radius_15"
     app:cardElevation="@dimen/radius_8">
 
@@ -26,7 +26,7 @@
             app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
 
         <TextView
-            android:id="@+id/userMedicinelistItemName"
+            android:id="@+id/medicinelistItemName"
             android:layout_width="wrap_content"
             android:layout_height="@dimen/margin_30"
             android:layout_marginStart="@dimen/margin_20"
@@ -37,10 +37,10 @@
             android:textSize="@dimen/text_size_20" />
 
         <TextView
-            android:id="@+id/userMedicinelistItemCompany"
+            android:id="@+id/medicinelistItemCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_below="@id/userMedicinelistItemName"
+            android:layout_below="@id/medicinelistItemName"
             android:layout_marginStart="@dimen/margin_20"
             android:layout_marginTop="@dimen/margin_7"
             android:layout_marginBottom="@dimen/margin_12"

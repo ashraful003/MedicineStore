@@ -104,7 +104,7 @@
                 android:layout_columnWeight="1"
                 android:layout_marginLeft="@dimen/margin_11"
                 android:layout_marginTop="@dimen/margin_top_12"
-                android:backgroundTint="@color/black_200"
+                android:backgroundTint="@color/red_100"
                 android:onClick="@{model.actionExpireMedicin}"
                 app:cardCornerRadius="@dimen/corner_radius_10">
 
@@ -207,7 +207,7 @@
                     android:layout_height="match_parent"
                     android:layout_marginTop="@dimen/margin_10"
                     android:id="@+id/userMedicineRecycle"
-                    tools:listitem="@layout/employee_list_item"
+                    tools:listitem="@layout/user_medicine_item"
                     android:scrollbars="vertical"/>
 
             </androidx.constraintlayout.widget.ConstraintLayout>

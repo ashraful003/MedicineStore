@@ -6,7 +6,7 @@
     android:layout_marginVertical="@dimen/margin_5"
     android:layout_marginStart="@dimen/margin_5"
     android:layout_marginEnd="@dimen/margin_5"
-    android:background="@color/background"
+    android:backgroundTint="@color/red_100"
     app:cardCornerRadius="@dimen/corner_radius_15"
     app:cardElevation="@dimen/radius_8">
 
@@ -37,7 +37,7 @@
             android:textSize="@dimen/text_size_20" />
 
         <TextView
-            android:id="@+id/userMedicinelistItemCompany"
+            android:id="@+id/expireMedicineCompany"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/expireMedicineItemName"

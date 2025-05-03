@@ -41,7 +41,7 @@ class MedicineDetailsFragment : Fragment() {
         val id = requireArguments().getString("id")
         binding.medicineName.text = requireArguments().getString("name")
         binding.companyNameTv.text = requireArguments().getString("company")
-        binding.expireDateTv.text = requireArguments().getString("date")
+        binding.medicineDateTv.text = requireArguments().getString("date")
         binding.medicinePriceTv.text = requireArguments().getString("price")
         binding.medicineSelfTv.text = requireArguments().getString("self")
         binding.medicineRowTv.text = requireArguments().getString("row")
@@ -56,6 +56,7 @@ class MedicineDetailsFragment : Fragment() {
         } else {
             Log.e("EmployeeDetailsFragment", "Image URL is null or empty")
         }
+        activityUtil.setFullScreenLoading(true)
         binding.btnEdite.visibility = View.GONE
         database = Firebase.database.reference
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
@@ -63,13 +64,14 @@ class MedicineDetailsFragment : Fragment() {
         database.get().addOnSuccessListener {
             if (it.hasChild("Admin") || it.hasChild("Employee")) {
                 binding.btnEdite.visibility = View.VISIBLE
+                activityUtil.setFullScreenLoading(false)
                 binding.btnEdite.setOnClickListener {
                     var bundle = Bundle()
                     bundle.putString("id",id)
                     bundle.putString("name", binding.medicineName.text.toString())
                     bundle.putString("company",binding.companyNameTv.text.toString())
                     bundle.putString("price",binding.medicinePriceTv.text.toString())
-                    bundle.putString("date",binding.expireDateTv.text.toString())
+                    bundle.putString("date",binding.medicineDateTv.text.toString())
                     bundle.putString("self",binding.medicineSelfTv.text.toString())
                     bundle.putString("row",binding.medicineRowTv.text.toString())
                     bundle.putString("column",binding.medicineColumnTv.text.toString())
@@ -77,7 +79,6 @@ class MedicineDetailsFragment : Fragment() {
                     bundle.putString("image",pimage)
                     findNavController().navigate(R.id.action_medicineDetailsFragment_to_updateMedicineInfoFragment,bundle)
                 }
-
             }
         }
 

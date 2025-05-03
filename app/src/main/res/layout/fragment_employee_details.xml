@@ -13,109 +13,103 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/background">
-
-        <ImageView
-            android:id="@+id/backIv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/margin_15"
-            android:layout_marginTop="@dimen/margin_22"
-            android:background="@drawable/ic_back"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent">
+        <ScrollView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="@dimen/margin_30"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/backIv">
+            android:background="@color/white">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/containerOne"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_30"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="match_parent">
 
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/profileIv"
-                    android:layout_width="@dimen/layout_100"
-                    android:layout_height="@dimen/layout_100"
-                    android:layout_marginBottom="@dimen/margin_5"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/ic_human"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
-
-                <TextView
-                    android:id="@+id/empNameTv"
-                    android:layout_width="wrap_content"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerOne"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:hint="@string/employee_name"
-                    android:paddingTop="@dimen/padding_10"
-                    android:paddingBottom="@dimen/padding_10"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/title_text_size"
+                    android:background="@color/offwhite"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/profileIv" />
+                    app:layout_constraintTop_toTopOf="parent">
 
-                <TextView
-                    android:id="@+id/empPostTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_5"
-                    android:layout_marginTop="@dimen/margin_5"
-                    android:hint="@string/post_name"
-                    android:paddingBottom="@dimen/padding_10"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/text_size_20"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/empNameTv" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    <ImageView
+                        android:id="@+id/backIv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_11"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:background="@drawable/ic_back"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
 
-            <androidx.cardview.widget.CardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:backgroundTint="@color/text_color"
-                app:cardCornerRadius="@dimen/card_radius_20"
-                app:cardPreventCornerOverlap="true"
-                app:cardUseCompatPadding="true"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/containerOne">
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/profileIv"
+                        android:layout_width="@dimen/layout_150"
+                        android:layout_height="@dimen/layout_150"
+                        android:layout_marginBottom="@dimen/margin_5"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/medicine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/backIv"
+                        app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
+                    <TextView
+                        android:id="@+id/empNameTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:hint="@string/employee_name"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/title_text_size"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/profileIv" />
+
+                    <TextView
+                        android:id="@+id/empPostTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:hint="@string/post_name"
+                        android:paddingBottom="@dimen/padding_20"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/text_size_17"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/empNameTv" />
+
+                    <View
+                        android:id="@+id/roundedView"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/layout_20"
+                        android:background="@drawable/top_round_shape"
+                        android:backgroundTint="@color/white"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/empPostTv" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <androidx.constraintlayout.widget.ConstraintLayout
                     android:id="@+id/containerTwo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_30"
-                    android:background="@color/text_color"
-                    android:paddingLeft="@dimen/margin_15"
-                    android:paddingBottom="@dimen/padding_70"
+                    android:layout_marginLeft="@dimen/margin_20"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent">
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/containerOne">
 
                     <TextView
-                        android:id="@+id/dob"
+                        android:id="@+id/empDob"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_15"
-                        android:layout_marginTop="@dimen/margin_50"
+                        android:layout_marginTop="@dimen/margin_5"
                         android:hint="@string/hint_dob"
+                        android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/text_size_20"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent" />
@@ -125,20 +119,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_15"
-                        android:layout_marginTop="@dimen/margin_6"
+                        android:layout_marginTop="@dimen/margin_2"
                         android:text="@string/hint_dob"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_20"
+                        android:textColor="@color/text_hint"
+                        android:textSize="@dimen/text_18"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/dob" />
+                        app:layout_constraintTop_toBottomOf="@id/empDob" />
 
                     <TextView
-                        android:id="@+id/phone"
+                        android:id="@+id/empPhone"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_15"
-                        android:layout_marginTop="@dimen/margin_20"
-                        android:hint="@string/hint_phone_number"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:hint="@string/phone_number"
+                        android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/text_size_20"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/empDobTv" />
@@ -148,20 +143,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_15"
-                        android:layout_marginTop="@dimen/margin_6"
-                        android:text="@string/hint_phone_number"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_20"
+                        android:layout_marginTop="@dimen/margin_2"
+                        android:text="@string/phone_number"
+                        android:textColor="@color/text_hint"
+                        android:textSize="@dimen/text_18"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/phone" />
+                        app:layout_constraintTop_toBottomOf="@id/empPhone" />
 
                     <TextView
-                        android:id="@+id/email"
+                        android:id="@+id/empEmail"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_15"
-                        android:layout_marginTop="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_15"
                         android:hint="@string/hint_email"
+                        android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/text_size_20"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/empPhoneTv" />
@@ -171,20 +167,21 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_15"
-                        android:layout_marginTop="@dimen/margin_6"
+                        android:layout_marginTop="@dimen/margin_2"
                         android:text="@string/hint_email"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_20"
+                        android:textColor="@color/text_hint"
+                        android:textSize="@dimen/text_18"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/email" />
+                        app:layout_constraintTop_toBottomOf="@id/empEmail" />
 
                     <TextView
-                        android:id="@+id/adress"
+                        android:id="@+id/empLocation"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_15"
-                        android:layout_marginTop="@dimen/margin_20"
+                        android:layout_marginTop="@dimen/margin_15"
                         android:hint="@string/hint_address"
+                        android:textColorHint="@color/text_hint"
                         android:textSize="@dimen/text_size_20"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/empEmailTv" />
@@ -194,14 +191,28 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="@dimen/margin_15"
-                        android:layout_marginTop="@dimen/margin_6"
+                        android:layout_marginTop="@dimen/margin_2"
                         android:text="@string/hint_address"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/text_size_20"
+                        android:textColor="@color/text_hint"
+                        android:textSize="@dimen/text_18"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/adress" />
+                        app:layout_constraintTop_toBottomOf="@id/empLocation" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
-            </androidx.cardview.widget.CardView>
-        </androidx.constraintlayout.widget.ConstraintLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </ScrollView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnCall"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/margin_10"
+            android:layout_marginEnd="@dimen/margin_40"
+            android:layout_marginBottom="@dimen/margin_28"
+            android:backgroundTint="@color/lavender"
+            android:src="@drawable/ic_call"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

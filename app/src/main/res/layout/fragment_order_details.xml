@@ -10,241 +10,258 @@
             name="model"
             type="com.example.medicinestore.presentation.dashboard.medicin.OrderDetailsFragment" />
     </data>
-
-    <ScrollView
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/text_color">
-
-        <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_height="match_parent">
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="match_parent"
+            android:background="@color/text_color">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/containerOne"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@color/white"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_height="wrap_content">
 
-                <ImageView
-                    android:id="@+id/backIv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_11"
-                    android:layout_marginTop="@dimen/margin_15"
-                    android:background="@drawable/ic_back"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/btnSubmit"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_15"
-                    android:layout_marginRight="@dimen/margin_15"
-                    android:hint="@string/submit"
-                    android:textColorHint="@color/red_500"
-                    android:textSize="@dimen/text_18"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/expireMedicineImage"
-                    android:layout_width="@dimen/layout_150"
-                    android:layout_height="@dimen/layout_150"
-                    android:layout_marginBottom="@dimen/margin_5"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/medicine"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/backIv"
-                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
-
-                <TextView
-                    android:id="@+id/orderMedicineName"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_10"
-                    android:hint="@string/medicine_name"
-                    android:paddingTop="@dimen/padding_10"
-                    android:paddingBottom="@dimen/padding_14"
-                    android:textAlignment="center"
-                    android:textColor="@color/black"
-                    android:textSize="@dimen/title_text_size"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/expireMedicineImage" />
-
-                <View
-                    android:id="@+id/roundedView"
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerOne"
                     android:layout_width="match_parent"
-                    android:layout_height="@dimen/layout_20"
-                    android:background="@drawable/top_round_shape"
-                    android:backgroundTint="@color/text_color"
-                    app:layout_constraintHorizontal_chainStyle="spread"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/orderMedicineName" />
+                    android:layout_height="wrap_content"
+                    android:background="@color/white"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <ImageView
+                        android:id="@+id/backIv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="@dimen/margin_11"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:background="@drawable/ic_back"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/btnComplete"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:layout_marginRight="@dimen/margin_15"
+                        android:hint="@string/complete"
+                        android:textColorHint="@color/red_500"
+                        android:textSize="@dimen/text_18"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <com.google.android.material.imageview.ShapeableImageView
+                        android:id="@+id/expireMedicineImage"
+                        android:layout_width="@dimen/layout_150"
+                        android:layout_height="@dimen/layout_150"
+                        android:layout_marginBottom="@dimen/margin_5"
+                        android:scaleType="centerCrop"
+                        android:src="@drawable/medicine"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/backIv"
+                        app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
+                    <TextView
+                        android:id="@+id/orderMedicineName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/margin_10"
+                        android:hint="@string/medicine_name"
+                        android:paddingTop="@dimen/padding_10"
+                        android:paddingBottom="@dimen/padding_14"
+                        android:textAlignment="center"
+                        android:textColor="@color/black"
+                        android:textSize="@dimen/title_text_size"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/expireMedicineImage" />
+
+                    <View
+                        android:id="@+id/roundedView"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/layout_20"
+                        android:background="@drawable/top_round_shape"
+                        android:backgroundTint="@color/text_color"
+                        app:layout_constraintHorizontal_chainStyle="spread"
+                        app:layout_constraintLeft_toLeftOf="parent"
+                        app:layout_constraintRight_toRightOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderMedicineName" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/containerTwo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_20"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/containerOne">
+
+                    <TextView
+                        android:id="@+id/orderMedicineCompany"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_5"
+                        android:hint="@string/company"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/text_size_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/orderMedicineCompanyTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_2"
+                        android:text="@string/company"
+                        android:textColor="@color/text_hint"
+                        android:textSize="@dimen/text_18"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderMedicineCompany" />
+
+                    <TextView
+                        android:id="@+id/orderMedicineDate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:hint="@string/expire_date"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/text_size_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderMedicineCompanyTv" />
+
+                    <TextView
+                        android:id="@+id/orderMedicineDateTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_2"
+                        android:text="@string/expire_date"
+                        android:textColor="@color/text_hint"
+                        android:textSize="@dimen/text_18"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderMedicineDate" />
+
+                    <TextView
+                        android:id="@+id/orderMedicineAmount"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:hint="@string/quantity"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/text_size_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderMedicineDateTv" />
+
+                    <TextView
+                        android:id="@+id/orderMedicineAmountTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_2"
+                        android:text="@string/quantity"
+                        android:textColor="@color/text_hint"
+                        android:textSize="@dimen/text_18"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderMedicineAmount" />
+
+                    <TextView
+                        android:id="@+id/orderMedicinePrice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:hint="@string/price"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/text_size_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderMedicineAmountTv" />
+
+                    <TextView
+                        android:id="@+id/orderMedicinePriceTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_2"
+                        android:text="@string/medicine_price"
+                        android:textColor="@color/text_hint"
+                        android:textSize="@dimen/text_18"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderMedicinePrice" />
+
+                    <TextView
+                        android:id="@+id/orderMedicineDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:hint="@string/details"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/text_size_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderMedicinePriceTv" />
+
+                    <TextView
+                        android:id="@+id/orderMedicineDetailsTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_2"
+                        android:text="@string/details"
+                        android:textColor="@color/text_hint"
+                        android:textSize="@dimen/text_18"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderMedicineDetails" />
+
+                    <TextView
+                        android:id="@+id/shippingAddress"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_15"
+                        android:hint="@string/shipping_address"
+                        android:textColorHint="@color/text_hint"
+                        android:textSize="@dimen/text_size_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/orderMedicineDetailsTv" />
+
+                    <TextView
+                        android:id="@+id/shippingAddressTv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/margin_15"
+                        android:layout_marginTop="@dimen/margin_2"
+                        android:paddingBottom="@dimen/text_18"
+                        android:text="@string/shipping_address"
+                        android:textColor="@color/text_hint"
+                        android:textSize="@dimen/text_size_20"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/shippingAddress" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
             </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/containerTwo"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_20"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/containerOne">
-
-                <TextView
-                    android:id="@+id/orderMedicineCompany"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_5"
-                    android:hint="@string/company"
-                    android:textColorHint="@color/text_hint"
-                    android:textSize="@dimen/text_size_20"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/orderMedicineCompanyTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_2"
-                    android:text="@string/company"
-                    android:textColor="@color/text_hint"
-                    android:textSize="@dimen/text_18"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/orderMedicineCompany" />
-
-                <TextView
-                    android:id="@+id/orderMedicineDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_15"
-                    android:hint="@string/expire_date"
-                    android:textColorHint="@color/text_hint"
-                    android:textSize="@dimen/text_size_20"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/orderMedicineCompanyTv" />
-
-                <TextView
-                    android:id="@+id/orderMedicineDateTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_2"
-                    android:text="@string/expire_date"
-                    android:textColor="@color/text_hint"
-                    android:textSize="@dimen/text_18"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/orderMedicineDate" />
-
-                <TextView
-                    android:id="@+id/orderMedicineAmount"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_15"
-                    android:hint="@string/quantity"
-                    android:textColorHint="@color/text_hint"
-                    android:textSize="@dimen/text_size_20"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/orderMedicineDateTv" />
-
-                <TextView
-                    android:id="@+id/orderMedicineAmountTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_2"
-                    android:text="@string/quantity"
-                    android:textColor="@color/text_hint"
-                    android:textSize="@dimen/text_18"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/orderMedicineAmount" />
-
-                <TextView
-                    android:id="@+id/orderMedicinePrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_15"
-                    android:hint="@string/price"
-                    android:textColorHint="@color/text_hint"
-                    android:textSize="@dimen/text_size_20"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/orderMedicineAmountTv" />
-
-                <TextView
-                    android:id="@+id/orderMedicinePriceTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_2"
-                    android:text="@string/medicine_price"
-                    android:textColor="@color/text_hint"
-                    android:textSize="@dimen/text_18"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/orderMedicinePrice" />
-
-                <TextView
-                    android:id="@+id/orderMedicineDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_15"
-                    android:hint="@string/details"
-                    android:textColorHint="@color/text_hint"
-                    android:textSize="@dimen/text_size_20"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/orderMedicinePriceTv" />
-
-                <TextView
-                    android:id="@+id/orderMedicineDetailsTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_2"
-                    android:text="@string/details"
-                    android:textColor="@color/text_hint"
-                    android:textSize="@dimen/text_18"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/orderMedicineDetails" />
-
-                <TextView
-                    android:id="@+id/shippingAddress"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_15"
-                    android:hint="@string/shipping_address"
-                    android:textColorHint="@color/text_hint"
-                    android:textSize="@dimen/text_size_20"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/orderMedicineDetailsTv" />
-
-                <TextView
-                    android:id="@+id/shippingAddressTv"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_15"
-                    android:layout_marginTop="@dimen/margin_2"
-                    android:paddingBottom="@dimen/text_18"
-                    android:text="@string/shipping_address"
-                    android:textColor="@color/text_hint"
-                    android:textSize="@dimen/text_size_20"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/shippingAddress" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
-        </androidx.constraintlayout.widget.ConstraintLayout>
-    </ScrollView>
+        </ScrollView>
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/btnCallUser"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="@dimen/margin_10"
+            android:layout_marginEnd="@dimen/margin_40"
+            android:layout_marginBottom="@dimen/margin_28"
+            android:backgroundTint="@color/navy_blue"
+            android:src="@drawable/ic_call"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:tint="@color/white" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -141,7 +141,7 @@ class AdminHomeFragment : Fragment() {
                         val medicine = snap.getValue(Medicine::class.java)
                         medicine?.medicineId = snap.key
                         if (!medicineArray.contains(medicine) && isExpiredDate(medicine?.date)) {
-                            medicineArray.add(medicine!!)
+                            medicineArray.add(0,medicine!!)
                         }
                     }
                     adapter.searchUserMedicineList(medicineArray)

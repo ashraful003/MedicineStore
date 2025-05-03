@@ -121,17 +121,6 @@
         <action
             android:id="@+id/action_passwordFragment_to_profileFragment"
             app:destination="@id/profileFragment" />
-        <action
-            android:id="@+id/action_passwordFragment_to_loginChangePassFragment2"
-            app:destination="@id/loginChangePassFragment2" />
-    </fragment>
-    <fragment
-        android:id="@+id/loginChangePassFragment2"
-        android:name="com.example.medicinestore.presentation.login.LoginChangePassFragment"
-        android:label="LoginChangePassFragment" >
-        <action
-            android:id="@+id/action_loginChangePassFragment2_to_passwordFragment"
-            app:destination="@id/passwordFragment" />
     </fragment>
     <fragment
         android:id="@+id/medicineDetailsFragment2"

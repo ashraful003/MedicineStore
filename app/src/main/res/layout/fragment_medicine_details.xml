@@ -14,20 +14,17 @@
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@color/background">
+        android:background="@color/white">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/background">
+            android:layout_height="wrap_content">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/container"
+                android:id="@+id/containerOne"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/margin_11"
-                android:layout_marginTop="@dimen/margin_20"
-                android:layout_marginRight="@dimen/margin_15"
+                android:background="@color/offwhite"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
@@ -36,8 +33,9 @@
                     android:id="@+id/backIv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/margin_11"
+                    android:layout_marginTop="@dimen/margin_15"
                     android:background="@drawable/ic_back"
-                    app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
@@ -45,244 +43,230 @@
                     android:id="@+id/btnEdite"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/edit"
-                    android:textColor="@color/red_500"
-                    android:textSize="@dimen/text_size"
-                    app:layout_constraintBottom_toBottomOf="parent"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:layout_marginRight="@dimen/margin_15"
+                    android:hint="@string/edit"
+                    android:textColorHint="@color/black"
+                    android:textSize="@dimen/text_18"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/medicineListImage"
+                    android:layout_width="@dimen/layout_150"
+                    android:layout_height="@dimen/layout_150"
+                    android:layout_marginBottom="@dimen/margin_5"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/medicine"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/backIv"
+                    app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
+
+                <TextView
+                    android:id="@+id/medicineName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/margin_10"
+                    android:hint="@string/medicine_name"
+                    android:paddingBottom="@dimen/padding_20"
+                    android:textAlignment="center"
+                    android:textColor="@color/black"
+                    android:textSize="@dimen/title_text_size"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicineListImage" />
+
+                <View
+                    android:id="@+id/roundedView"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/layout_20"
+                    android:background="@drawable/top_round_shape"
+                    android:backgroundTint="@color/white"
+                    app:layout_constraintHorizontal_chainStyle="spread"
+                    app:layout_constraintLeft_toLeftOf="parent"
+                    app:layout_constraintRight_toRightOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicineName" />
             </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerTwo"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:layout_marginTop="@dimen/margin_20"
-                app:layout_constraintBottom_toBottomOf="parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/margin_20"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/container">
+                app:layout_constraintTop_toBottomOf="@id/containerOne">
 
-                <androidx.constraintlayout.widget.ConstraintLayout
-                    android:id="@+id/containerOne"
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/companyName"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/margin_30"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_5"
+                    android:hint="@string/company"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="@dimen/text_size_20"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
+                    app:layout_constraintTop_toTopOf="parent" />
 
-                    <com.google.android.material.imageview.ShapeableImageView
-                        android:id="@+id/medicineListImage"
-                        android:layout_width="@dimen/layout_150"
-                        android:layout_height="@dimen/layout_150"
-                        android:layout_marginBottom="@dimen/margin_5"
-                        android:scaleType="centerCrop"
-                        android:src="@drawable/medicine"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent"
-                        app:shapeAppearanceOverlay="@style/roundedImageViewRounded" />
-
-                    <TextView
-                        android:id="@+id/medicineName"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/margin_10"
-                        android:hint="@string/medicine_name"
-                        android:paddingTop="@dimen/padding_10"
-                        android:paddingBottom="@dimen/padding_10"
-                        android:textAlignment="center"
-                        android:textColor="@color/black"
-                        android:textSize="@dimen/title_text_size"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@id/medicineListImage" />
-                </androidx.constraintlayout.widget.ConstraintLayout>
-
-                <androidx.cardview.widget.CardView
-                    android:layout_width="match_parent"
+                <TextView
+                    android:id="@+id/companyNameTv"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="@color/text_color"
-                    app:cardCornerRadius="@dimen/margin_5"
-                    app:cardPreventCornerOverlap="true"
-                    app:cardUseCompatPadding="true"
-                    app:layout_constraintEnd_toEndOf="parent"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_2"
+                    android:text="@string/company"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/text_18"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@id/containerOne">
+                    app:layout_constraintTop_toBottomOf="@id/companyName" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:id="@+id/containerTwo"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:background="@color/text_color"
-                        android:paddingLeft="@dimen/margin_15"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toStartOf="parent">
+                <TextView
+                    android:id="@+id/medicineDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:hint="@string/expire_date"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="@dimen/text_size_20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/companyNameTv" />
 
-                        <TextView
-                            android:id="@+id/companyName"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_20"
-                            android:hint="@string/company"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent" />
+                <TextView
+                    android:id="@+id/medicineDateTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_2"
+                    android:text="@string/expire_date"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/text_18"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicineDate" />
 
-                        <TextView
-                            android:id="@+id/companyNameTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_2"
-                            android:text="@string/company"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/companyName" />
+                <TextView
+                    android:id="@+id/medicinePrice"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:hint="@string/price"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="@dimen/text_size_20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicineDateTv" />
 
-                        <TextView
-                            android:id="@+id/expireDate"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_10"
-                            android:hint="@string/expire_date"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/companyNameTv" />
+                <TextView
+                    android:id="@+id/medicinePriceTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_2"
+                    android:text="@string/price"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/text_18"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicinePrice" />
 
-                        <TextView
-                            android:id="@+id/expireDateTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_2"
-                            android:text="@string/expire_date"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/expireDate" />
+                <TextView
+                    android:id="@+id/medicineSelf"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:hint="@string/self_no"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="@dimen/text_size_20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicinePriceTv" />
 
-                        <TextView
-                            android:id="@+id/medicinePrice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_10"
-                            android:hint="@string/price"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/expireDateTv" />
+                <TextView
+                    android:id="@+id/medicineSelfTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_2"
+                    android:text="@string/self"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/text_18"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicineSelf" />
 
-                        <TextView
-                            android:id="@+id/medicinePriceTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_2"
-                            android:text="@string/medicine_price"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/medicinePrice" />
+                <TextView
+                    android:id="@+id/medicineRow"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:hint="@string/row_no"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="@dimen/text_size_20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicineSelfTv" />
 
-                        <TextView
-                            android:id="@+id/medicineSelf"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_10"
-                            android:hint="@string/self_no"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/medicinePriceTv" />
+                <TextView
+                    android:id="@+id/medicineRowTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_2"
+                    android:text="@string/details"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/text_18"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicineRow" />
 
-                        <TextView
-                            android:id="@+id/medicineSelfTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_2"
-                            android:text="@string/self"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/medicineSelf" />
+                <TextView
+                    android:id="@+id/medicineColumn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:hint="@string/column_no"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="@dimen/text_size_20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicineRowTv" />
 
-                        <TextView
-                            android:id="@+id/medicineRow"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_10"
-                            android:hint="@string/row_no"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/medicineSelfTv" />
+                <TextView
+                    android:id="@+id/medicineColumnTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_2"
+                    android:text="@string/column"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/text_size_20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicineColumn" />
 
-                        <TextView
-                            android:id="@+id/medicineRowTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_2"
-                            android:text="@string/row"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/medicineRow" />
-                        <TextView
-                            android:id="@+id/medicineColumn"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_10"
-                            android:hint="@string/column_no"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/medicineRowTv" />
+                <TextView
+                    android:id="@+id/medicineDetails"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_15"
+                    android:hint="@string/details"
+                    android:textColorHint="@color/text_hint"
+                    android:textSize="@dimen/text_size_20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicineColumnTv" />
 
-                        <TextView
-                            android:id="@+id/medicineColumnTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_2"
-                            android:text="@string/column"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/medicineColumn" />
-
-                        <TextView
-                            android:id="@+id/medicineAddress"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_10"
-                            android:hint="@string/details"
-                            android:textSize="@dimen/text_size_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/medicineColumnTv" />
-
-                        <TextView
-                            android:id="@+id/medicineDetailsTv"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/margin_15"
-                            android:layout_marginTop="@dimen/margin_2"
-                            android:text="@string/details"
-                            android:textColor="@color/black"
-                            android:textSize="@dimen/text_size_20"
-                            android:paddingBottom="@dimen/padding_20"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toBottomOf="@id/medicineAddress" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.cardview.widget.CardView>
+                <TextView
+                    android:id="@+id/medicineDetailsTv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin_15"
+                    android:layout_marginTop="@dimen/margin_2"
+                    android:paddingBottom="@dimen/text_18"
+                    android:text="@string/details"
+                    android:textColor="@color/text_hint"
+                    android:textSize="@dimen/text_size_20"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/medicineDetails" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
-
     </ScrollView>
 </layout>

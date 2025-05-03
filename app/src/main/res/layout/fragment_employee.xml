@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:background="@drawable/ic_back"
-                    android:layout_marginTop="@dimen/padding_14"
+                    android:layout_marginTop="@dimen/padding_3"
                     android:layout_marginRight="@dimen/margin_20"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
