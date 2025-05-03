@@ -95,7 +95,7 @@ class EmployeeFragment : Fragment() {
                       if (snap.hasChild("Employee")){
                           val employee = snap.getValue(EmployeeModel::class.java)
                           if (!employeeArray.contains(employee)){
-                              employeeArray.add(employee!!)
+                              employeeArray.add(0,employee!!)
                           }
                       }
                     }

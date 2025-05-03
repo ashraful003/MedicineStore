@@ -21,8 +21,8 @@ class MedicineListAdapter(private var data: ArrayList<Medicine>, internal var co
         val card: CardView
 
         init {
-            name = itemView.findViewById(R.id.userMedicinelistItemName)
-            company = itemView.findViewById(R.id.userMedicinelistItemCompany)
+            name = itemView.findViewById(R.id.medicinelistItemName)
+            company = itemView.findViewById(R.id.medicinelistItemCompany)
             imageM = itemView.findViewById(R.id.medicineListItemImage)
             card = itemView.findViewById(R.id.medicinelistItemCard)
         }

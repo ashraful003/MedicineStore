@@ -84,6 +84,7 @@ class OrderMedicineFragment : Fragment() {
                 putString("date", it.date)
                 putString("details", it.details)
                 putString("address", it.address)
+                putString("number", it.number)
                 putString("image", it.image)
                 putString("twoNumbers", it.twoNumbers)
             }
@@ -103,29 +104,49 @@ class OrderMedicineFragment : Fragment() {
             if (it.hasChild("Admin") || it.hasChild("Employee")) {
                 adminLoadOrder()
             } else if (it.hasChild("User")) {
-                userLoadOrder()
+                userOrder()
             }
         }
     }
 
     private fun adminLoadOrder() {
         userArray.clear()
-        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
-        database = FirebaseDatabase.getInstance().getReference("Order")
+        database = FirebaseDatabase.getInstance().getReference("order")
 
         database.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 activityUtil.setFullScreenLoading(false)
                 userArray.clear()
-                for (uid in snapshot.children) {
-                    val userID = uid.key
-                    for (snap in uid.children) {
-                        val medicineId = snap.key
-                        val medicine = snap.getValue(Medicine::class.java)
-                        medicine?.medicineId = snap.key
-                        medicine?.let {
-                            it.medicineId = medicineId
-                            it.userId = userID
+                for (snap in snapshot.children) {
+                    val medicine = snap.getValue(Medicine::class.java)
+                    medicine?.let {
+                            it.medicineId = snap.key
+                            userArray.add(0, it)
+                    }
+                }
+                adapter.searchMedicineList(userArray)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                Toast.makeText(requireActivity(), error.message, Toast.LENGTH_SHORT).show()
+            }
+        })
+    }
+
+
+    private fun userOrder() {
+        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
+        val userRef = FirebaseDatabase.getInstance().getReference("order")
+
+        userRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                activityUtil.setFullScreenLoading(false)
+                userArray.clear()
+                for (snap in snapshot.children) {
+                    val medicine = snap.getValue(Medicine::class.java)
+                    medicine?.let {
+                        if (it.userId == uid) {
+                            it.medicineId = snap.key
                             userArray.add(0, it)
                         }
                     }
@@ -134,10 +155,11 @@ class OrderMedicineFragment : Fragment() {
             }
 
             override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(requireActivity(), error.toString(), Toast.LENGTH_SHORT).show()
+                Toast.makeText(requireActivity(), error.message, Toast.LENGTH_SHORT).show()
             }
         })
     }
+
 
     private fun userLoadOrder() {
         userArray.clear()

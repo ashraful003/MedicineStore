@@ -6,7 +6,7 @@
     <color name="purple_700">#FF3700B3</color>
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
-    <color name="black">#FF000000</color>
+    <color name="black">#000000</color>
     <color name="white">#FFFFFFFF</color>
     <color name="gray">#82888A</color>
     <color name="blue_500">#9999ff</color>
@@ -17,11 +17,15 @@
     <color name="page_title_text_color">#222B45</color>
     <color name="hint_text_color">#262626</color>
     <color name="red_500">#FFFF5949</color>
+    <color name="red_200">#ffb3b3</color>
+    <color name="red_100">#ffcccc</color>
+    <color name="red_050">#ffe6e6</color>
     <color name="text_color">#8F9BB3</color>
     <color name="black_500">#4d4d4d</color>
     <color name="dash_board_text_color">#222B45</color>
     <color name="profile_image_background">#82888A</color>
     <color name="offwhite">#d9d9d9</color>
+    <color name="black_003">#f2f2f2</color>
     <color name="offsky">#b3e6ff</color>
     <color name="progress_bar_background_color">#9d000000</color>
     <color name="black_100">#f2f2f2</color>
@@ -30,4 +34,5 @@
     <color name="text_hint">#1a1a1a</color>
     <color name="body_color">#595959</color>
     <color name="navy_blue">#3366cc</color>
+    <color name="black_300">#333333</color>
 </resources>

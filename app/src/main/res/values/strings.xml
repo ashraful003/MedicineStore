@@ -80,6 +80,7 @@
     <string name="update_massage">Update Successful</string>
     <string name="update_fail_massage">Failed to update</string>
     <string name="error_wrong_password_massage">Your password is incorrect please input correct password</string>
+    <string name="error_wrong_email_massage">Your email is incorrect please input correct email</string>
     <string name="old_password">Old Password</string>
     <string name="medicine_price">Medicine Price</string>
     <string name="self_no">Self no</string>
@@ -105,5 +106,7 @@
     <string name="no_image">No Image Selected</string>
     <string name="quantity">Quantity</string>
     <string name="shipping_address">Shipping Address</string>
+    <string name="call">Call</string>
+    <string name="complete">Complete</string>
 
 </resources>

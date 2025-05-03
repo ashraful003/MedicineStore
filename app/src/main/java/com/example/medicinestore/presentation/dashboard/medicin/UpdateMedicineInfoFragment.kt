@@ -1,6 +1,8 @@
 package com.example.medicinestore.presentation.dashboard.medicin
 
 import android.app.DatePickerDialog
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
@@ -9,6 +11,10 @@ import android.view.MotionEvent
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import androidx.activity.result.ActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProvider
@@ -18,9 +24,9 @@ import com.example.medicinestore.R
 import com.example.medicinestore.databinding.FragmentUpdateMedicineInfoBinding
 import com.example.medicinestore.util.MSActivityUtil
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
 import com.jakewharton.rxbinding2.widget.RxTextView
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.Observable
@@ -34,10 +40,19 @@ class UpdateMedicineInfoFragment : Fragment() {
     @Inject
     lateinit var activityUtil: MSActivityUtil
     private lateinit var viewModel: MedicinViewModel
-private lateinit var binding:FragmentUpdateMedicineInfoBinding
-private lateinit var database: DatabaseReference
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        binding = DataBindingUtil.inflate(inflater,R.layout.fragment_update_medicine_info, container, false)
+    private lateinit var binding: FragmentUpdateMedicineInfoBinding
+    private lateinit var database: DatabaseReference
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        binding = DataBindingUtil.inflate(
+            inflater,
+            R.layout.fragment_update_medicine_info,
+            container,
+            false
+        )
         binding.model = this
         activityUtil.hideBottomNavigation(true)
         database = Firebase.database.reference
@@ -117,16 +132,16 @@ private lateinit var database: DatabaseReference
             selfStream,
             rowStream,
             columnStream
-        ){nameInvalid:Boolean, companyInvalid:Boolean,detailsInvalid:Boolean,priceInvalid:Boolean, expiredateInvalid:Boolean, selfInvalid:Boolean,rowInvalid:Boolean,columnInvalid:Boolean ->
+        ) { nameInvalid: Boolean, companyInvalid: Boolean, detailsInvalid: Boolean, priceInvalid: Boolean, expiredateInvalid: Boolean, selfInvalid: Boolean, rowInvalid: Boolean, columnInvalid: Boolean ->
             !nameInvalid && !columnInvalid && !detailsInvalid && !priceInvalid && !expiredateInvalid && !selfInvalid && !rowInvalid && !columnInvalid
         }
         invalidFiledStream.subscribe { isValid ->
             isEnableSaveButton(isValid)
         }
-         showMedicine()
-         binding.btnSave.setOnClickListener {
+        showMedicine()
+        binding.btnSave.setOnClickListener {
             updateMedicineInfo(requireArguments().getString("id"))
-         }
+        }
         return binding.root
     }
 
@@ -139,32 +154,39 @@ private lateinit var database: DatabaseReference
         var self = binding.selfEt.text.toString().trim()
         var row = binding.rowEt.text.toString().trim()
         var column = binding.columnEt.text.toString().trim()
-        if (name.isNotEmpty() && company.isNotEmpty() && details.isNotEmpty() && price.isNotEmpty() && date.isNotEmpty() && self.isNotEmpty() && row.isNotEmpty() && column.isNotEmpty()){
-            var medicineinfo = HashMap<String,Any>()
-            medicineinfo.put("name",name)
-            medicineinfo.put("company",company)
-            medicineinfo.put("details",details)
-            medicineinfo.put("price",price)
-            medicineinfo.put("date",date)
-            medicineinfo.put("self",self)
-            medicineinfo.put("row",row)
-            medicineinfo.put("column",column)
-            id.let {medicineId ->
+        if (name.isNotEmpty() && company.isNotEmpty() && details.isNotEmpty() && price.isNotEmpty() && date.isNotEmpty() && self.isNotEmpty() && row.isNotEmpty() && column.isNotEmpty()) {
+            var medicineinfo = HashMap<String, Any>()
+            medicineinfo.put("name", name)
+            medicineinfo.put("company", company)
+            medicineinfo.put("details", details)
+            medicineinfo.put("price", price)
+            medicineinfo.put("date", date)
+            medicineinfo.put("self", self)
+            medicineinfo.put("row", row)
+            medicineinfo.put("column", column)
+            id.let { medicineId ->
                 activityUtil.setFullScreenLoading(true)
-             database.child("Medicine").child(medicineId!!).ref.updateChildren(medicineinfo)
-                 .addOnSuccessListener {
-                  activityUtil.setFullScreenLoading(false)
-                     findNavController().navigate(R.id.action_updateMedicineInfoFragment_to_medicineListFragment )
-                  Toast.makeText(requireContext(), getString(R.string.update_massage), Toast.LENGTH_SHORT).show()
-                 }.addOnFailureListener {
-                     Toast.makeText(requireContext(), getString(R.string.update_fail_massage),Toast.LENGTH_SHORT).show()
-                 }
-
+                database.child("Medicine").child(medicineId!!).ref.updateChildren(medicineinfo)
+                    .addOnSuccessListener {
+                        activityUtil.setFullScreenLoading(false)
+                        findNavController().navigate(R.id.action_updateMedicineInfoFragment_to_medicineListFragment)
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.update_massage),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }.addOnFailureListener {
+                        Toast.makeText(
+                            requireContext(),
+                            getString(R.string.update_fail_massage),
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
             }
         }
     }
 
-    private fun showMedicine(){
+    private fun showMedicine() {
         val id = requireArguments().getString("id")
         binding.nameEt.setText(requireArguments().getString("name"))
         binding.companyEt.setText(requireArguments().getString("company"))
@@ -179,21 +201,24 @@ private lateinit var database: DatabaseReference
             Glide.with(this)
                 .load(pimage)
                 .error(R.drawable.ic_human)
-                .into(binding.medicineUploadImage)
+                .into(binding.medicineUpdateImage)
         } else {
             Log.e("EmployeeDetailsFragment", "Image URL is null or empty")
         }
     }
-    private fun isEnableSaveButton(isEnable:Boolean){
-        if (isEnable){
+
+    private fun isEnableSaveButton(isEnable: Boolean) {
+        if (isEnable) {
             binding.btnSave.isEnabled = true
-            binding.btnSave.backgroundTintList = ContextCompat.getColorStateList(requireContext(),R.color.colorPrimary)
-        }
-        else{
+            binding.btnSave.backgroundTintList =
+                ContextCompat.getColorStateList(requireContext(), R.color.colorPrimary)
+        } else {
             binding.btnSave.isEnabled = false
-            binding.btnSave.backgroundTintList = ContextCompat.getColorStateList(requireContext(),R.color.blue_500)
+            binding.btnSave.backgroundTintList =
+                ContextCompat.getColorStateList(requireContext(), R.color.blue_500)
         }
     }
+
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProvider(this).get(MedicinViewModel::class.java)

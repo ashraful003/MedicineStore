@@ -35,7 +35,7 @@
                     android:id="@+id/profileTv"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/margin_15"
+                    android:layout_marginLeft="@dimen/margin_25"
                     android:layout_marginTop="@dimen/margin_19"
                     android:text="@string/profile"
                     android:textColor="@color/page_title_text_color"
@@ -88,6 +88,7 @@
                         <androidx.constraintlayout.widget.ConstraintLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginLeft="@dimen/padding_7"
                             app:layout_constraintLeft_toRightOf="@+id/profile"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="parent"

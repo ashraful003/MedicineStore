@@ -95,7 +95,7 @@ class ExpireMedicinFragment : Fragment() {
                         val medicine =snap.getValue(Medicine::class.java)
                         medicine?.medicineId = snap.key
                         if (!userArray.contains(Medicine()) && isExpireDate(medicine?.date)){
-                            userArray.add(medicine!!)
+                            userArray.add(0,medicine!!)
                         }
                     }
                     adapter.searchExpireDataList(userArray)
