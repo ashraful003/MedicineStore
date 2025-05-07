@@ -27,8 +27,8 @@
 
         <TextView
             android:id="@+id/employeelistItemName"
-            android:layout_width="@dimen/margin_120"
-            android:layout_height="@dimen/margin_30"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin_20"
             android:layout_marginTop="@dimen/margin_15"
             android:layout_toEndOf="@id/employeeListItemImage"
@@ -38,7 +38,7 @@
 
         <TextView
             android:id="@+id/employeelistItemPost"
-            android:layout_width="@dimen/layout_140"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_below="@id/employeelistItemName"
             android:layout_marginStart="@dimen/margin_20"

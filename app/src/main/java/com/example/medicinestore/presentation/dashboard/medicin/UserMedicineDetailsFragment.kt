@@ -132,9 +132,9 @@ class UserMedicineDetailsFragment : Fragment() {
             medicine["number"] = phone.trim()
 
             database.child("order").child(medicineId).setValue(medicine)
-            Toast.makeText(activity, getText(R.string.update_massage), Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, getText(R.string.order_message), Toast.LENGTH_SHORT).show()
         } else {
-            Toast.makeText(activity, "Invalid price or quantity input", Toast.LENGTH_SHORT).show()
+            Toast.makeText(activity, getText(R.string.invalid_quantity), Toast.LENGTH_SHORT).show()
         }
 
         activityUtil.setFullScreenLoading(false)

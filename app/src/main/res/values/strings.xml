@@ -108,5 +108,8 @@
     <string name="shipping_address">Shipping Address</string>
     <string name="call">Call</string>
     <string name="complete">Complete</string>
+    <string name="invalid_quantity">Invalid quantity input</string>
+    <string name="order_message">Order Successful</string>
+    <string name="order_complete">Order Completed</string>
 
 </resources>

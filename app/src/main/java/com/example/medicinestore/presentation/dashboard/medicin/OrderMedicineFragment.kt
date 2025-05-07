@@ -120,8 +120,8 @@ class OrderMedicineFragment : Fragment() {
                 for (snap in snapshot.children) {
                     val medicine = snap.getValue(Medicine::class.java)
                     medicine?.let {
-                            it.medicineId = snap.key
-                            userArray.add(0, it)
+                        it.medicineId = snap.key
+                        userArray.add(0, it)
                     }
                 }
                 adapter.searchMedicineList(userArray)
@@ -133,11 +133,9 @@ class OrderMedicineFragment : Fragment() {
         })
     }
 
-
     private fun userOrder() {
         val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
         val userRef = FirebaseDatabase.getInstance().getReference("order")
-
         userRef.addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
                 activityUtil.setFullScreenLoading(false)
@@ -159,31 +157,6 @@ class OrderMedicineFragment : Fragment() {
             }
         })
     }
-
-
-    private fun userLoadOrder() {
-        userArray.clear()
-        val uid = FirebaseAuth.getInstance().currentUser?.uid ?: return
-        database = FirebaseDatabase.getInstance().getReference("Order").child(uid)
-
-        database.addValueEventListener(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) {
-                activityUtil.setFullScreenLoading(false)
-                userArray.clear()
-                for (snap in snapshot.children) {
-                    val medicine = snap.getValue(Medicine::class.java)
-                    medicine?.medicineId = snap.key
-                    medicine?.let { userArray.add(0, it) }
-                }
-                adapter.searchMedicineList(userArray)
-            }
-
-            override fun onCancelled(error: DatabaseError) {
-                Toast.makeText(requireActivity(), error.toString(), Toast.LENGTH_SHORT).show()
-            }
-        })
-    }
-
 
     private fun searchList(text: String) {
         val filteredList = userArray.filter {

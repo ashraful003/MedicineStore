@@ -43,7 +43,7 @@
             android:layout_height="@dimen/margin_18"
             android:textColor="@color/navy_blue"
             android:layout_marginTop="@dimen/margin_30"
-            android:layout_marginRight="@dimen/margin_2"
+            android:layout_marginRight="@dimen/margin_5"
             android:layout_alignParentEnd="true"/>
 
         <TextView

@@ -107,12 +107,12 @@
                                 app:layout_constraintTop_toTopOf="parent" />
 
                             <TextView
-                                android:id="@+id/phoneNumberTv"
+                                android:id="@+id/emailTv"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="@dimen/margin_9"
                                 android:layout_marginBottom="@dimen/margin_10"
-                                android:text="@string/phone_number"
+                                android:text="@string/hint_email"
                                 android:textColor="@color/page_title_text_color"
                                 android:textSize="@dimen/text_size"
                                 app:layout_constraintBottom_toBottomOf="parent"
