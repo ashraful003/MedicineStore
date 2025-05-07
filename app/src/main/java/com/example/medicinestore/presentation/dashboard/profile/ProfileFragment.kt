@@ -62,7 +62,7 @@ class ProfileFragment : Fragment() {
         val uid = FirebaseAuth.getInstance().currentUser!!.uid
         database.child("User").child(uid).get().addOnSuccessListener {
              binding.fullNameTv.text = it.child("name").value.toString()
-             binding.phoneNumberTv.text = it.child("number").value.toString()
+             binding.emailTv.text = it.child("email").value.toString()
             Glide.with(this).load(it.child("image").value.toString()).into(binding.profileIv)
             activityUtil.setFullScreenLoading(false)
         }

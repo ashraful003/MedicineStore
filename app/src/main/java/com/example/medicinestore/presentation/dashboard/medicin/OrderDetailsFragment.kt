@@ -86,14 +86,12 @@ lateinit var database: DatabaseReference
         if (ContextCompat.checkSelfPermission(requireContext(), Manifest.permission.CALL_PHONE)
             != PackageManager.PERMISSION_GRANTED
         ) {
-            // Request permission
             ActivityCompat.requestPermissions(
                 requireActivity(),
                 arrayOf(Manifest.permission.CALL_PHONE),
                 REQUEST_CALL_PERMISSION
             )
         } else {
-            // Permission already granted
             val callIntent = Intent(Intent.ACTION_CALL)
             callIntent.data = Uri.parse("tel:$phoneNumber")
             startActivity(callIntent)
@@ -138,19 +136,30 @@ lateinit var database: DatabaseReference
             builder.setCancelable(false)
             builder.setPositiveButton("Yes") { _, _ ->
                 activity?.let {
-                    database = FirebaseDatabase.getInstance().getReference("order")
                     val medicine = HashMap<String, Any>()
                     medicine.put("complete","Done")
-                    database.child(mid!!).updateChildren(medicine).addOnSuccessListener {
-                        findNavController().navigate(R.id.action_orderDetailsFragment_to_orderMedicineFragment)
-                        Toast.makeText(activity, getText(R.string.update_massage), Toast.LENGTH_SHORT).show()
-                        activityUtil.setFullScreenLoading(false)
-                    }
+                    saveData(medicine,mid)
                 }
             }
-            builder.setNegativeButton("No") { _, _ -> }
+            builder.setNeutralButton("No") { _, _ ->
+            }
+            builder.setNegativeButton("Cancel") { _, _ ->
+                val medicine = HashMap<String, Any>()
+                medicine.put("complete","Cancel")
+                saveData(medicine,mid)
+            }
             val alartDialog = builder.create()
             alartDialog.show()
+        }
+    }
+
+    private fun saveData(medicine: HashMap<String, Any>, mid: String?) {
+        database = FirebaseDatabase.getInstance().getReference("order")
+        database.child(mid!!).updateChildren(medicine).addOnSuccessListener {
+            findNavController().navigate(R.id.action_orderDetailsFragment_to_orderMedicineFragment)
+            Toast.makeText(activity, getText(R.string.order_complete), Toast.LENGTH_SHORT).show()
+            activityUtil.setFullScreenLoading(false)
+
         }
     }
 
